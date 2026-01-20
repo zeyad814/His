@@ -22,7 +22,7 @@ class Doctor extends Model
 
     public function family()
     {
-       return $this->belongsTo(Family::class);
+        return $this->belongsTo(Family::class);
     }
 
     public function healthUnit()
@@ -63,5 +63,15 @@ class Doctor extends Model
     public function surgeyUterus()
     {
         return $this->hasMany(SurgeryUterus::class);
+    }
+
+    public function familyInjections()
+    {
+        return $this->hasMany(FamilyInjection::class);
+    }
+
+    public function consents()
+    {
+        return $this->hasMany(Consent::class);
     }
 }

@@ -23,7 +23,7 @@ class Family extends Model
         'nearest_phone'
     ];
 
-    public function members()
+    public function familyMembers()
     {
         return $this->hasMany(FamilyMember::class);
     }

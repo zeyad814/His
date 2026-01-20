@@ -59,7 +59,7 @@ class FamilyMember extends Model
         return $this->hasMany(HypertensionFollowUp::class);
     }
 
-     public function diabetesFollowUp()
+    public function diabetesFollowUp()
     {
         return $this->hasMany(DiabetesFollowUp::class);
     }
@@ -77,5 +77,15 @@ class FamilyMember extends Model
     public function surgeyUterus()
     {
         return $this->hasMany(SurgeryUterus::class);
+    }
+
+    public function familyInjections()
+    {
+        return $this->hasMany(FamilyInjection::class);
+    }
+
+    public function groom()
+    {
+        return $this->hasOne(Groom::class);
     }
 }

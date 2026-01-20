@@ -46,4 +46,9 @@ class SurgeryUterus extends Model
     {
         return $this->belongsTo(Nurse::class);
     }
+
+    public function procedureEquipments()
+    {
+        return $this->hasMany(ProcedureEquipment::class);
+    }
 }
