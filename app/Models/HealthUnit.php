@@ -31,4 +31,9 @@ class HealthUnit extends Model
     {
         return $this->hasMany(Nurse::class);
     }
+
+    public function medicalProcedures()
+    {
+        return $this->hasMany(MedicalProcedure::class);
+    }
 }

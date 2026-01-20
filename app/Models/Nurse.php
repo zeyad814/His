@@ -26,4 +26,14 @@ class Nurse extends Model
     {
         return $this->hasMany(SurgeryUterus::class);
     }
+
+    public function procedureTimeOuts()
+    {
+        return $this->hasMany(ProcedureTimeout::class);
+    }
+
+    public function preProcedureChecklists()
+    {
+        return $this->hasMany(PreProcedureChecklist::class);
+    }
 }

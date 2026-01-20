@@ -74,4 +74,24 @@ class Doctor extends Model
     {
         return $this->hasMany(Consent::class);
     }
+
+    public function geriatricAssessments()
+    {
+        return $this->hasMany(GeriatricAssessmentMaster::class);
+    }
+
+    public function medicalProcedures()
+    {
+        return $this->hasMany(MedicalProcedure::class);
+    }
+
+    public function procedureTimeOuts()
+    {
+        return $this->hasMany(ProcedureTimeout::class);
+    }
+
+    public function preProcedureChecklists()
+    {
+        return $this->hasMany(PreProcedureChecklist::class);
+    }
 }

@@ -88,4 +88,14 @@ class FamilyMember extends Model
     {
         return $this->hasOne(Groom::class);
     }
+
+    public function geriatricAssessments()
+    {
+        return $this->hasMany(GeriatricAssessmentMaster::class);
+    }
+
+    public function medicalProcedures()
+    {
+        return $this->hasMany(MedicalProcedure::class);
+    }
 }
