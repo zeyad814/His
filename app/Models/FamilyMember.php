@@ -98,4 +98,34 @@ class FamilyMember extends Model
     {
         return $this->hasMany(MedicalProcedure::class);
     }
+
+    public function referrals()
+    {
+        return $this->hasMany(Referral::class);
+    }
+
+    public function pharmacies()
+    {
+        return $this->hasMany(Pharmacy::class);
+    }
+
+    public function labRequests()
+    {
+        return $this->hasMany(LabRequest::class);
+    }
+
+    public function medicalConsents()
+    {
+        return $this->hasMany(MedicalConsent::class);
+    }
+
+    public function radiologicalRequests()
+    {
+        return $this->hasMany(RadiologicalRequest::class);
+    }
+
+    public function emergencyForms()
+    {
+        return $this->hasMany(EmergencyForm::class);
+    }
 }

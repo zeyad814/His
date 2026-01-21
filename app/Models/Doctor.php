@@ -94,4 +94,39 @@ class Doctor extends Model
     {
         return $this->hasMany(PreProcedureChecklist::class);
     }
+
+    public function referrals()
+    {
+        return $this->hasMany(Referral::class);
+    }
+
+    public function feedbackReferrals()
+    {
+        return $this->hasMany(FeedbackReferral::class);
+    }
+
+    public function drugCompatibilities()
+    {
+        return $this->hasMany(DrugCompatibility::class);
+    }
+
+    public function labRequests()
+    {
+        return $this->hasMany(LabRequest::class);
+    }
+
+    public function medicalConsents()
+    {
+        return $this->hasMany(MedicalConsent::class);
+    }
+
+    public function radiologicalRequests()
+    {
+        return $this->hasMany(RadiologicalRequest::class);
+    }
+
+    public function radiologyReports()
+    {
+        return $this->hasMany(RadiologyReport::class);
+    }
 }

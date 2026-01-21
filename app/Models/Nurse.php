@@ -36,4 +36,9 @@ class Nurse extends Model
     {
         return $this->hasMany(PreProcedureChecklist::class);
     }
+
+     public function emergencyForms()
+    {
+        return $this->hasMany(EmergencyForm::class);
+    }
 }
