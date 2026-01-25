@@ -10,13 +10,14 @@ class SocialResearch extends Model
     use HasFactory;
 
     protected $fillable = [
-        'family_id',
-        'income_level',
-        'avg_income',
-        'chronic_diseases',
-        'free_service',
-        'pension',
-        'disability',
+        "family_id",
+        "income_type",
+        "avg_income",
+        "has_chronic_diseases",
+        "has_disability",
+        "receives_pension",
+        "eligible_for_free_service",
+        "supporter_name_on_death",
     ];
 
     public function family()

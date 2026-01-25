@@ -12,6 +12,7 @@ class MedicalHistory extends Model
       protected $fillable = [
        'family_member_id',
        'discovery_date',
+       "disease_type",
        'type_of_illness',
        'note',
     ];

@@ -27,6 +27,11 @@ return new class extends Migration
             $table->string('work_phone')->nullable();
             $table->string('nearest_phone')->nullable();
 
+            $table->foreignId('family_doctor_id')->nullable()->constrained('doctors')->onDelete('set null');
+            $table->date('family_doctor_assign_date')->nullable();
+            $table->foreignId('dentist_id')->nullable()->constrained('doctors')->onDelete('set null');
+            $table->date('dentist_assign_date')->nullable();
+
             $table->timestamps();
         });
     }
