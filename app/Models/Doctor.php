@@ -10,7 +10,7 @@ class Doctor extends Model
     use HasFactory;
 
     protected $fillable = [
-        'family_id',
+        // 'family_id',
         'health_unit_id',
         'national_id',
         'name',
@@ -20,9 +20,16 @@ class Doctor extends Model
         'start_date',
     ];
 
-    public function family()
+    public function familyFollowUps()
     {
-       return $this->belongsTo(Family::class);
+        // الدكتور كـ "طبيب أسرة" بيتابع عائلات كتير
+        return $this->hasMany(Family::class, 'family_doctor_id');
+    }
+
+    public function dentistFollowUps()
+    {
+        // الدكتور كـ "طبيب أسنان" بيتابع عائلات كتير
+        return $this->hasMany(Family::class, 'dentist_id');
     }
 
     public function healthUnit()
@@ -63,5 +70,10 @@ class Doctor extends Model
     public function surgeyUterus()
     {
         return $this->hasMany(SurgeryUterus::class);
+    }
+
+    public function user()
+    {
+        return $this->morphOne(User::class, 'userable');
     }
 }

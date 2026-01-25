@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('family_member_id')->constrained()->cascadeOnDelete();
             $table->date('discovery_date')->nullable();
+            $table->string('disease_type')->nullable();
             $table->string('type_of_illness');
             $table->text('note')->nullable();
             $table->timestamps();

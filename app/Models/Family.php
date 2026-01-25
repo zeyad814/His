@@ -20,7 +20,11 @@ class Family extends Model
         'address',
         'mobile_phone',
         'work_phone',
-        'nearest_phone'
+        'nearest_phone',
+        "family_doctor_id",
+        "family_doctor_assign_date",
+        "dentist_id",
+        "dentist_assign_date",
     ];
 
     public function members()
@@ -28,9 +32,21 @@ class Family extends Model
         return $this->hasMany(FamilyMember::class);
     }
 
-    public function doctors()
+    // public function deathRecord()
+    // {
+    //     return $this->hasMany(DeathRecord::class);
+    // }
+
+    public function familyDoctor()
     {
-        return $this->hasMany(Doctor::class);
+        // العيلة تنتمي لطبيب أسرة محدد
+        return $this->belongsTo(Doctor::class, 'family_doctor_id');
+    }
+
+    public function dentistDoctor()
+    {
+        // العيلة تنتمي لطبيب أسنان محدد
+        return $this->belongsTo(Doctor::class, 'dentist_id');
     }
 
     public function socialResearch()
@@ -41,5 +57,10 @@ class Family extends Model
     public function housingInfo()
     {
         return $this->hasOne(HousingInfo::class);
+    }
+
+    public function headOfFamily()
+    {
+        return $this->hasOne(FamilyMember::class)->whereIn('relationship_to_head', ['father', 'husband']);
     }
 }

@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('social_research', function (Blueprint $table) {
             $table->id();
             $table->foreignId('family_id')->constrained()->cascadeOnDelete();
-            $table->enum('income_level', ['low', 'medium', 'high'])->nullable();
-            $table->decimal('avg_income', 10, 2)->nullable();
-            $table->string('chronic_diseases')->nullable();
-            $table->boolean('free_service')->default(false);
-            $table->boolean('pension')->default(false);
-            $table->boolean('disability')->default(false);
+            $table->enum('income_type', ['fixed', 'variable'])->nullable(); 
+            $table->decimal('avg_income', 12, 2)->nullable();
+            $table->boolean('has_chronic_diseases')->default(false);
+            $table->boolean('has_disability')->default(false);
+            $table->boolean('receives_pension')->default(false);
+            $table->boolean('eligible_for_free_service')->default(false);
+            $table->string('supporter_name_on_death')->nullable();
             $table->timestamps();
         });
     }
