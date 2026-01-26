@@ -22,6 +22,7 @@ class HousingInfoStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'family_id' => 'required|exists:families,id',
             'rooms_count' => 'required|integer|min:1',
             'sleeping_rooms_specified' => 'required|integer|min:1',
             'ventilation' => 'required|string',

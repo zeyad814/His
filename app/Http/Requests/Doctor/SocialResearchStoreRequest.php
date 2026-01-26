@@ -22,6 +22,7 @@ class SocialResearchStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'family_id' => 'required|exists:families,id',
             'income_type' => 'required|in:fixed,variable',
             'avg_income' => 'required|numeric|min:0',
             'has_chronic_diseases' => 'required|boolean',

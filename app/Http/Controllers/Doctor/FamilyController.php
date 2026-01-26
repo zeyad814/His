@@ -6,11 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Doctor\AssignDoctorsToFamilyRequest;
 use App\Http\Requests\Doctor\DeathRecordsStoreRequest;
 use App\Http\Requests\Doctor\FamilyStoreRequest;
+use App\Http\Requests\Doctor\FamilyUpdateRequest;
+use App\Http\Requests\Doctor\MemberUpdateRequest;
 use App\Http\Requests\Doctor\HousingInfoStoreRequest;
 use App\Http\Requests\Doctor\MedicalHistoryStoreRequest;
 use App\Http\Requests\Doctor\MemberStoreRequest;
 use App\Http\Requests\Doctor\SocialResearchStoreRequest;
 use App\Http\Resources\DoctorResource;
+use App\Http\Resources\FamilyBasicResource;
+use App\Http\Resources\FamilyShowResource;
+use App\Http\Resources\IndexFamilyResource;
 use App\Models\DeathRecord;
 use App\Models\Doctor;
 use App\Models\Family;
@@ -47,13 +52,10 @@ class FamilyController extends Controller
             ], 200);
         }
 
-        return response()->json([
-            'status' => 'success',
-            // 'message' => 'Families retrieved successfully.',
-            'data' => $families
-        ], 200);
+        return IndexFamilyResource::collection($families)->additional([
+            'status' => 'success'
+        ]);
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -110,7 +112,23 @@ class FamilyController extends Controller
         DB::beginTransaction();
         try
         {
-            $family->members()->createMany($data);
+            // $family->members()->createMany($data);
+            foreach ($data as $memberData)
+            {
+                $memberId = $memberData['id'] ?? null;
+                $family->members()->updateOrCreate(
+        [
+                        'full_name' => $memberData['full_name'],
+                        'birth_date' => $memberData['birth_date'],
+                    ],
+            [
+                        'is_male' => $memberData['is_male'],
+                        'relationship_to_head' => $memberData['relationship_to_head'],
+                        'insurance_type' => $memberData['insurance_type'] ?? null,
+                        'notes' => $memberData['notes'] ?? null,
+                    ]
+                );
+            }
             $doctors = Doctor::where("health_unit_id" , $user->health_unit_id)
                 ->whereIn('specialization', ['dentist', 'family'])
                 ->where('id', '!=', $user->id)
@@ -134,7 +152,7 @@ class FamilyController extends Controller
             DB::rollback();
             return response()->json([
                 'status' => 'error',
-                'message' => 'Failed to complete the members registration step. Please verify the entered data',
+                'message' => 'Failed to complete the members registration step. Please verify the entered data' . $e->getMessage(),
                 'family_id' => $family->id
             ], 500);
         }
@@ -242,12 +260,15 @@ class FamilyController extends Controller
                 $member = FamilyMember::find($history['family_member_id']);
                 if ($member)
                 {
-                    $member->medicalHistories()->create([
-                        'discovery_date' => $history['discovery_date'],
-                        'disease_type' => $history['disease_type'],
-                        'type_of_illness' => $history['type_of_illness'],
-                        'note' => $history['note'] ?? null,
-                    ]);
+                    $member->medicalHistories()->updateOrCreate(
+            ['id' => $history['id'] ?? null], 
+                [
+                            'discovery_date' => $history['discovery_date'],
+                            'disease_type' => $history['disease_type'],
+                            'type_of_illness' => $history['type_of_illness'],
+                            'note' => $history['note'] ?? null,
+                        ]
+                    );
                 }
             }
 
@@ -286,14 +307,8 @@ class FamilyController extends Controller
                 'message' => 'Family not found.'
             ], 404);
         }
-        
-        // return response()->json([
-        //     'status' => 'success',
-        //     'message' => 'good.',
-        //     "data" => $data
-        // ], 200);
 
-        $familyMemberIds = $family->members()->pluck('id')->toArray();
+        $familyMemberIds = $family->familyMembers()->pluck('id')->toArray();
         foreach ($data as $record)
         {
             if (!in_array($record['family_member_id'], $familyMemberIds))
@@ -310,13 +325,15 @@ class FamilyController extends Controller
         {
             foreach ($data as $record)
             {
-                DeathRecord::create([
-                    'family_member_id' => $record['family_member_id'],
-                    'death_date' => $record['death_date'],
-                    'age_at_death' => $record['age_at_death'],
-                    'cause_of_death' => $record['cause_of_death'],
-                    'death_code' => $record['death_code'],
-                ]);
+                DeathRecord::updateOrCreate(
+        ['family_member_id'=> $record['family_member_id']], // شرط البحث
+            [
+                        'death_date'=> $record['death_date'],
+                        'age_at_death'=> $record['age_at_death'],
+                        'cause_of_death'=> $record['cause_of_death'],
+                        'death_code'=> $record['death_code'],
+                    ]
+                );
             }
 
             DB::commit();
@@ -349,7 +366,10 @@ class FamilyController extends Controller
             ], 404);
         }
 
-        $housing = $family->housingInfo()->create($data);
+        $housing = $family->housingInfo()->updateOrCreate(
+    ['family_id' => $family->id],
+        $data
+        );
         return response()->json([
             'status' => 'success',
             'message' => 'Housing information saved successfully',
@@ -371,7 +391,11 @@ class FamilyController extends Controller
             ], 404);
         }
 
-        $socialResearch = $family->socialResearch()->create($data);
+        $socialResearch = $family->socialResearch()->updateOrCreate(
+['family_id' => $family->id],
+    $data
+        );
+        
         return response()->json([
             'status' => 'success',
             'message' => 'Social research records saved. Family profile has been successfully created and finalized.',
@@ -382,17 +406,281 @@ class FamilyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $family = Family::with([
+            'familyMembers', 
+            'familyDoctor', 
+            'dentistDoctor', 
+            'socialResearch', 
+            'housingInfo'
+        ])->findOrFail($id);
+
+        return response()->json([
+            'status' => 'success',
+            'data' => new FamilyShowResource($family)
+        ]);
+    }
+
+    public function edit($family_id)
+    {
+        $user = $this->getAuthenticatedDoctor();
+        $family = Family::find($family_id);
+        if(!$family)
+        {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Family not found.'
+            ], 404);
+        }
+        
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Family details retrieved successfully for editing.',
+            'data'    => new FamilyBasicResource($family),
+        ], 200);
+    }
+
+    public function editMembers($family_id)
+    {
+        $user = $this->getAuthenticatedDoctor();
+        $family = Family::find($family_id);
+        if(!$family)
+        {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Family not found.'
+            ], 404);
+        }
+
+        $members = $family->familyMembers;
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Family members retrieved successfully for mass editing.',
+            'data' => [
+                'family_id' => $family->id,
+                'members'   => $members
+            ]
+        ], 200);
+    }
+
+    public function editAssignDoctors($family_id)
+    {
+        $user = $this->getAuthenticatedDoctor();
+        $family = Family::with(['familyDoctor.user', 'dentistDoctor.user'])->find($family_id);
+
+        if(!$family)
+        {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Family not found.'
+            ], 404);
+        }
+        
+        $availableDoctors = Doctor::with('user')
+            ->where('health_unit_id', $user->health_unit_id)
+            ->whereIn('specialization', ['family', 'dentist'])
+            ->get()
+            ->groupBy('specialization');
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Current assignments and available doctors retrieved successfully.',
+            'data' => [
+                'family_id' => $family->id,
+                'current_assignments' => [
+                    'family_doctor_id' => $family->family_doctor_id,
+                    'family_doctor_name' => $family->familyDoctor->user->name ?? null,
+                    'family_doctor_date' => $family->family_doctor_assign_date,
+                    'dentist_id' => $family->dentist_id,
+                    'dentist_name' => $family->dentistDoctor->user->name ?? null,
+                    'dentist_date' => $family->dentist_assign_date,
+                ],
+                'available_options' => [
+                    'family_doctors' => DoctorResource::collection($availableDoctors->get('family', [])),
+                    'dentists' => DoctorResource::collection($availableDoctors->get('dentist', [])),
+                ]
+            ]
+        ], 200);
+    }
+
+    public function editMedicalHistory($family_id)
+    {
+        $user = $this->getAuthenticatedDoctor();
+        $family = Family::find($family_id);
+        if(!$family)
+        {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Family not found.'
+            ], 404);
+        }
+
+        $membersWithHistory = $family->members->map(function ($member) {
+            return [
+                'member_id' => $member->id,
+                'full_name' => $member->full_name,
+                'birth_date' => $member->birth_date,
+                'histories' => $member->medicalHistories
+            ];
+        });
+
+        return response()->json([
+            'status' => 'success',
+            "message" => "Family members and their medical history records have been retrieved successfully.",
+            'data' => [
+                'family_id' => $family->id,
+                "membersWithHistory" => $membersWithHistory
+            ]
+        ], 200);
+    }
+
+    public function editDeathRecords($family_id)
+    {
+        $user = $this->getAuthenticatedDoctor();
+        $family = Family::find($family_id);
+        if(!$family)
+        {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Family not found.'
+            ], 404);
+        }
+
+        $records = $family->members->filter(function($member) {
+            return $member->deathRecord !== null;
+        })->map(function ($member) {
+            return [
+                'family_member_id' => $member->id,
+                'full_name'        => $member->full_name,
+                'death_date'       => $member->deathRecord->death_date,
+                'age_at_death'     => $member->deathRecord->age_at_death,
+                'cause_of_death'   => $member->deathRecord->cause_of_death,
+                'death_code'       => $member->deathRecord->death_code,
+            ];
+        })->values();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Death records retrieved successfully.',
+            'family_id' => $family->id,
+            'data' => [
+                'family_id' => $family->id,
+                "records" => $records
+            ]
+        ], 200);
+    }
+
+    public function editHousingInfo($family_id)
+    {
+        $user = $this->getAuthenticatedDoctor();
+        $family = Family::find($family_id);
+        if(!$family)
+        {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Family not found.'
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Housing information retrieved successfully.',
+            'data' => [
+                'family_id' => $family->id,
+                "housingInfo" => $family->housingInfo
+            ]
+        ], 200);
+    }
+
+    public function editSocialResearch($family_id)
+    {
+        $user = $this->getAuthenticatedDoctor();
+        $family = Family::find($family_id);
+        if(!$family)
+        {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Family not found.'
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Social research records retrieved successfully.',
+            'data' => [
+                'family_id' => $family->id,
+                "socialResearch" => $family->socialResearch
+            ]
+        ], 200);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+
+    public function update(FamilyUpdateRequest $request, $family_id)
     {
-        //
+        $data = $request->validated();
+        $user = $this->getAuthenticatedDoctor();
+        $family = Family::find($family_id);
+        if(!$family)
+        {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Family not found.'
+            ], 404);
+        }
+
+        $family->update($data);
+        return response()->json([
+            'status' => 'success',
+            'message' => 'The family profile was updated without any issues.',
+        ], 200);
+    }
+
+    public function updateMembers(MemberUpdateRequest $request, $family_id)
+    {
+        $data = $request->validated()['members'];
+        $user = $this->getAuthenticatedDoctor();
+        $family = Family::find($family_id);
+        if(!$family)
+        {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Family not found.'
+            ], 404);
+        }
+
+        DB::beginTransaction();
+        try
+        {
+            foreach ($data as $memberData)
+            {
+                $updated = $family->familyMembers()
+                    ->where('id', $memberData['id'])
+                    ->update($memberData);
+
+                if ($updated === 0)
+                {
+                    throw new \Exception("Member {$memberData['full_name']} does not belong to this family.");
+                }
+            }
+
+            DB::commit();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'All family members have been successfully verified and updated.',
+            ], 200);
+        }
+        catch (\Exception $e)
+        {
+            DB::rollback();
+            return response()->json([
+                'status' => 'error',
+                'message' => "We couldn't update the family members' information at this time. Please check the data and try again."
+            ], 400);
+        }
     }
 
     /**

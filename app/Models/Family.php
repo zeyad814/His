@@ -27,9 +27,15 @@ class Family extends Model
         "dentist_assign_date",
     ];
 
-    public function familyMembers()
+    public function members()
     {
         return $this->hasMany(FamilyMember::class);
+    }
+
+    public function deathRecords()
+    {
+        // بتجيب سجلات الوفاة من خلال أفراد الأسرة
+        return $this->hasManyThrough(DeathRecord::class, FamilyMember::class);
     }
 
     // public function deathRecord()
@@ -62,5 +68,10 @@ class Family extends Model
     public function headOfFamily()
     {
         return $this->hasOne(FamilyMember::class)->whereIn('relationship_to_head', ['father', 'husband']);
+    }
+
+    public function familyMembers()
+    {
+        return $this->hasMany(FamilyMember::class, 'family_id');
     }
 }

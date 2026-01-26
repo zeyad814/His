@@ -4,7 +4,7 @@ namespace App\Http\Requests\Doctor;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MedicalHistoryStoreRequest extends FormRequest
+class MemberUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,15 @@ class MedicalHistoryStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'family_id' => 'required|exists:families,id',
-            'medical_histories' => 'nullable|array',
-            'medical_histories.*.family_member_id' => 'required|exists:family_members,id',
-            'medical_histories.*.discovery_date' => 'nullable|date|before_or_equal:today',
-            'medical_histories.*.disease_type' => 'nullable|string',
-            'medical_histories.*.type_of_illness' => 'nullable|string',
-            'medical_histories.*.note' => 'nullable|string',
+            "family_id" => "required|exists:families,id",
+            'members' => 'required|array|min:1',
+            'members.*.id' => 'required|exists:family_members,id',
+            'members.*.full_name' => 'required|string|max:255',
+            'members.*.is_male' => 'required|boolean',
+            'members.*.birth_date' => 'required|date',
+            'members.*.relationship_to_head' => 'required|string',
+            'members.*.insurance_type' => 'nullable|string',
+            'members.*.notes' => 'nullable|string',
         ];
     }
 
