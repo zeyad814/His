@@ -26,5 +26,6 @@ class DatabaseSeeder extends Seeder
             'userable_type' => \App\Models\Doctor::class,
         ]);
         $this->call(AdminSeeder::class);
+        $this->call(FamilyFullProcessSeeder::class);
     }
 }

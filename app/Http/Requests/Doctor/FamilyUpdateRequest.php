@@ -21,7 +21,7 @@ class FamilyUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        $familyId = $this->route('family');
+        $familyId = $this->route('family_id');
 
         return [
             'family_id' => 'required|exists:families,id',

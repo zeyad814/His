@@ -15,36 +15,37 @@ return new class extends Migration
             $table->id();
             $table->foreignId('physical_examination_id')->constrained()->cascadeOnDelete();
 
-            $table->string('blood_pressure')->nullable(); // ضغط الدم
-            $table->string('pulse')->nullable(); // النبض
-            $table->string('temperature')->nullable(); // درجة الحرارة
-            $table->string('respiratory_rate')->nullable(); // معدل التنفس
+            // العلامات الحيوية والقياسات
+            $table->string('blood_pressure')->nullable();
+            $table->string('pulse')->nullable();
+            $table->string('temperature')->nullable();
+            $table->string('respiratory_rate')->nullable();
+            $table->string('height')->nullable();
+            $table->string('weight')->nullable();
+            $table->string('bmi')->nullable();
 
-            $table->string('height')->nullable(); // الطول
-            $table->string('weight')->nullable(); // الوزن
-            $table->string('bmi')->nullable(); // مؤشر كتلة الجسم
+            // الحقول التي تم تحويلها لـ JSON (بناءً على صور Figma)
+            $table->json('skin_complexion')->nullable(); // يحتوي على (Jaundice, Cyanosis, Pallor, bruises, etc.)
+            $table->json('head_neck')->nullable();       // يحتوي على (Jaundice, Sutures, Fontanels, Other)
+            $table->json('heart')->nullable();           // يحتوي على (Heart sounds, Murmurs, Other)
+            $table->json('chest')->nullable();           // يحتوي على (Expansion, Breathing sounds, Breast mass, etc.)
+            $table->json('abdomen')->nullable();         // يحتوي على (Liver, Spleen, Kidneys, Ascites, etc.)
+            $table->json('neurological')->nullable();    // يحتوي على (Motor, Sensory systems)
+            $table->json('upper_limb')->nullable();
+            $table->json('lower_limb')->nullable();
+            $table->json('disabilities')->nullable();
+            $table->json('eyes')->nullable();            // جدول العيون (R, L, Result, Comment)
+            $table->json('ent')->nullable();             // جدول الأنف والأذن (Hearing, Nose, Throat)
+            $table->json('risk_factors')->nullable();    // قائمة عوامل الخطورة (Smoking, DM, Obesity, etc.)
+            $table->json('lab_results')->nullable();
 
-            $table->text('skin_complexion')->nullable(); // الجلد ولون البشرة
-            $table->text('general_appearance')->nullable(); // المظهر العام
+            // حقول نصية للوصف والتقييم
+            $table->text('general_appearance')->nullable();
+            $table->text('pain_assessment')->nullable();
+            $table->text('deformities')->nullable();
+            $table->text('nutritional_assessment')->nullable();
+            $table->text('conclusion')->nullable();
 
-            $table->text('upper_limb')->nullable(); // الطرف العلوي
-            $table->text('lower_limb')->nullable(); // الطرف السفلي
-
-            $table->text('pain_assessment')->nullable(); // تقييم الألم
-            $table->text('disabilities')->nullable(); // الإعاقات
-            $table->text('deformities')->nullable(); // التشوهات
-
-            $table->text('abdomen')->nullable(); // البطن
-            $table->text('head_neck')->nullable(); // الرأس والرقبة
-            $table->text('heart')->nullable(); // القلب
-            $table->text('chest')->nullable(); // الصدر
-            $table->text('neurological')->nullable(); // الجهاز العصبي
-            $table->text('eyes')->nullable(); // العين
-            $table->text('ent')->nullable(); // الأنف والأذن والحنجرة
-
-            $table->text('nutritional_assessment')->nullable(); // التقييم الغذائي
-            $table->text('risk_factors')->nullable(); // عوامل الخطورة
-            $table->text('conclusion')->nullable(); // الخلاصة الطبية
             $table->timestamps();
         });
     }

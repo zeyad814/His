@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Doctor\FamilyController;
+use App\Http\Controllers\Doctor\GeneralExaminationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,18 @@ Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
     Route::get('/family/death-records/edit/{family_id}', [FamilyController::class, 'editDeathRecords']);
     Route::get('/family/housing-info/edit/{family_id}', [FamilyController::class, 'editHousingInfo']);
     Route::get('/family/social-research/edit/{family_id}', [FamilyController::class, 'editSocialResearch']);
+
+    //General Examination
+    Route::prefix('doctor')->group(function () {
+        Route::post('/physical-examination/history', [GeneralExaminationController::class, 'store']);
+        Route::post('/general-examination/vitals', [GeneralExaminationController::class, 'storeVitals']);
+        Route::patch('/general-examination/systemic-exam', [GeneralExaminationController::class, 'storeSystemicExamination']);
+        Route::patch('/general-examination/final-exam', [GeneralExaminationController::class, 'storeFinalAssessment']);
+        Route::get('/physical-examination/edit/{family_member_id}', [GeneralExaminationController::class, 'edit']);
+        Route::get('/general-examination/vitals/edit/{physical_examination_id}', [GeneralExaminationController::class, 'editVitals']);
+        Route::get('/general-examination/systemic-exam/edit/{physical_examination_id}', [GeneralExaminationController::class, 'editSystemic']);
+        Route::get('/general-examination/final-exam/edit/{physical_examination_id}', [GeneralExaminationController::class, 'editFinalAssessment']);
+    });
 });
 
 // Admin
