@@ -14,6 +14,7 @@ class SignificantData extends Model
         'family_member_id',
         'record_date',
         'case_description',
+        "action_doctor_name",
     ];
 
     public function doctor()

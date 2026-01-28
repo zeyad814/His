@@ -7,6 +7,7 @@ use App\Http\Requests\Doctor\StoreFinalAssessmentRequest;
 use App\Http\Requests\Doctor\StoreHistoryRequest;
 use App\Http\Requests\Doctor\StoreSystemicExamRequest;
 use App\Http\Requests\Doctor\StoreVitalsRequest;
+use App\Models\FamilyMember;
 use App\Models\GeneralExamination;
 use App\Models\PhysicalExamination;
 use App\Traits\HasDoctorContext;
@@ -15,15 +16,7 @@ use Illuminate\Http\Request;
 class GeneralExaminationController extends Controller
 {
     use HasDoctorContext;
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      */
@@ -105,9 +98,39 @@ class GeneralExaminationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($family_member_id)
     {
-        //
+        $user = $this->getAuthenticatedDoctor();
+        $member = FamilyMember::with(['physicalExamination.generalExamination'])
+            ->where("id" , $family_member_id)
+            ->first();
+
+        if (!$member)
+        {
+            return response()->json([
+                'status'  => false,
+                'message' => 'The specified family member does not exist.'
+            ], 404);
+        }
+
+        $physical = $member->physicalExamination;
+        $general  = $physical ? $physical->generalExamination : null;
+
+        // إخفاء العلاقات من جوه الـ $member عشان ميتكرروش في الـ JSON
+        $member->makeHidden(['physicalExamination']);
+        if ($physical)
+        {
+            $physical->makeHidden(['generalExamination']);
+        }
+
+        return response()->json([
+            'status' => true,
+            'data'   => [
+                'member' => $member,
+                'physical_examination' => $physical,
+                'general_examination' => $general,
+            ]
+        ], 200);
     }
 
     /**
@@ -261,14 +284,6 @@ class GeneralExaminationController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
     {
         //
     }

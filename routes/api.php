@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Doctor\FamilyController;
 use App\Http\Controllers\Doctor\GeneralExaminationController;
+use App\Http\Controllers\Doctor\SignificantDataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,16 +37,24 @@ Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
     Route::get('/family/housing-info/edit/{family_id}', [FamilyController::class, 'editHousingInfo']);
     Route::get('/family/social-research/edit/{family_id}', [FamilyController::class, 'editSocialResearch']);
 
-    //General Examination
     Route::prefix('doctor')->group(function () {
+        //General Examination
         Route::post('/physical-examination/history', [GeneralExaminationController::class, 'store']);
         Route::post('/general-examination/vitals', [GeneralExaminationController::class, 'storeVitals']);
         Route::patch('/general-examination/systemic-exam', [GeneralExaminationController::class, 'storeSystemicExamination']);
         Route::patch('/general-examination/final-exam', [GeneralExaminationController::class, 'storeFinalAssessment']);
+        Route::get('/family-members/{family_member_id}/full-examination', [GeneralExaminationController::class, 'show']);
         Route::get('/physical-examination/edit/{family_member_id}', [GeneralExaminationController::class, 'edit']);
         Route::get('/general-examination/vitals/edit/{physical_examination_id}', [GeneralExaminationController::class, 'editVitals']);
         Route::get('/general-examination/systemic-exam/edit/{physical_examination_id}', [GeneralExaminationController::class, 'editSystemic']);
         Route::get('/general-examination/final-exam/edit/{physical_examination_id}', [GeneralExaminationController::class, 'editFinalAssessment']);
+
+        // Significant Data
+        Route::get('/family-member/{family_member_id}/significant-data/index', [SignificantDataController::class, 'index']);
+        Route::post('/family-member/{family_member_id}/significant-data/store', [SignificantDataController::class, 'store']);
+        Route::get('/family-member/significant-data/edit/{id}', [SignificantDataController::class, 'edit']);
+        Route::put('/family-member/significant-data/update/{id}', [SignificantDataController::class, 'update']);
+        Route::delete('/family-member/significant-data/{id}', [SignificantDataController::class, 'destroy']);
     });
 });
 

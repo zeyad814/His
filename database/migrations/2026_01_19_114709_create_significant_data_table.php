@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('family_member_id') ->constrained() ->cascadeOnDelete();
             $table->date('record_date'); // تاريخ تسجيل الحالة
             $table->text('case_description');
+            $table->string('action_doctor_name')->nullable();
             // وصف الحالة / التشخيص
             $table->timestamps();
         });
