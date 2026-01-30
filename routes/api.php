@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Doctor\FamilyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Doctor\VisitController;
+use App\Http\Controllers\Doctor\FamilyController;
+use App\Models\Visit;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -34,7 +36,16 @@ Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
     Route::get('/family/death-records/edit/{family_id}', [FamilyController::class, 'editDeathRecords']);
     Route::get('/family/housing-info/edit/{family_id}', [FamilyController::class, 'editHousingInfo']);
     Route::get('/family/social-research/edit/{family_id}', [FamilyController::class, 'editSocialResearch']);
+
+    //Visits Form
+    Route::post('/visits', [VisitController::class, 'store']);
+    Route::get('/family-members/{family_member}/visits',[VisitController::class, 'index']);
+    Route::get('/family-members/{family_member}/visits/{visit}',[VisitController::class, 'show']);
+    Route::get('/family-members/{family_member}/visits/{visit}/edit', [VisitController::class, 'edit']);
+    Route::put('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'update']);
+    Route::delete('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'destroy']);
 });
+
 
 // Admin
 Route::middleware(['auth:sanctum', 'admin'])->group(function () {
