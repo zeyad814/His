@@ -21,6 +21,7 @@ class HypertensionFollowUp extends Model
         "workup_annual",
         "health_education",
         "treatment_plan",
+        "visit_id",
     ];
 
     protected $casts = [
@@ -41,5 +42,10 @@ class HypertensionFollowUp extends Model
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
+    }
+
+    public function visit()
+    {
+        return $this->belongsTo(Visit::class);
     }
 }

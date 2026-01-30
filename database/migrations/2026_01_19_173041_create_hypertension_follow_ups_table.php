@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('family_member_id')->constrained()->cascadeOnDelete();
             $table->foreignId('doctor_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('visit_id')->constrained('visits')->cascadeOnDelete();
 
             // الخطوة الأولى: التاريخ والشكوى والضغط
             $table->date('date');

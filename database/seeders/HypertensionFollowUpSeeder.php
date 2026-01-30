@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\HypertensionFollowUp;
 use App\Models\FamilyMember;
 use App\Models\Doctor;
+use App\Models\Visit;
 
 class HypertensionFollowUpSeeder extends Seeder
 {
@@ -15,13 +16,29 @@ class HypertensionFollowUpSeeder extends Seeder
         $members = FamilyMember::limit(5)->get();
         $doctor = Doctor::first();
 
-        if (!$doctor || $members->isEmpty()) {
-            $this->command->info('Please seed Doctors and FamilyMembers first!');
+        if (!$doctor || $members->isEmpty())
+        {
+            $this->command->error('Please seed Doctors and FamilyMembers first!');
             return;
         }
 
-        foreach ($members as $member) {
+        foreach ($members as $member)
+        {
+            // 1. إنشاء الزيارة أولاً (نموذج التردد)
+            $visit = Visit::create([
+                'family_member_id' => $member->id,
+                'doctor_id' => $doctor->id,
+                'date' => now()->format('Y-m-d'),
+                'visit_type' => 'أمراض مزمنة', // النوع المطلوب
+                'complaint' => 'Occasional headaches',
+                'clinical_examination' => 'Normal clinical signs, BP elevated.',
+                'diagnoses' => 'Hypertension Follow-up',
+                'management_follow_up' => 'See hypertension details',
+            ]);
+
+            // 2. إنشاء سجل الضغط وربطه بالزيارة عبر الـ visit_id
             HypertensionFollowUp::create([
+                'visit_id' => $visit->id, // الربط هنا
                 'family_member_id' => $member->id,
                 'doctor_id' => $doctor->id,
                 'date' => now()->format('Y-m-d'),
@@ -75,5 +92,7 @@ class HypertensionFollowUpSeeder extends Seeder
                 'treatment_plan' => 'Start Enalapril 10mg once daily. Re-evaluate in 2 weeks.',
             ]);
         }
+
+        $this->command->info('Hypertension records linked to Chronic Disease visits created successfully!');
     }
 }

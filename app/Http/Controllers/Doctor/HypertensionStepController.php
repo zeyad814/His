@@ -7,10 +7,13 @@ use App\Http\Requests\Doctor\Hypertension\Step1Request;
 use App\Http\Requests\Doctor\Hypertension\Step2Request;
 use App\Http\Requests\Doctor\Hypertension\Step3Request;
 use App\Http\Requests\Doctor\Hypertension\Step4Request;
+use App\Http\Requests\Doctor\Hypertension\UpdateStep1Request;
 use App\Models\FamilyMember;
 use App\Models\HypertensionFollowUp;
+use App\Models\Visit;
 use App\Traits\HasDoctorContext;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HypertensionStepController extends Controller
 {
@@ -35,19 +38,33 @@ class HypertensionStepController extends Controller
         if (!$member)
         {
             return response()->json([
-                'status'  => false,
+                'status'  => "error",
                 'message' => 'The specified family member does not exist.'
             ], 404);
         }
 
-        // $alreadyExists = HypertensionFollowUp::where('family_member_id', $data["family_member_id"])->exists();
-        // if ($alreadyExists)
-        // {
-        //     return response()->json([
-        //         'status'  => "error",
-        //         'message' => 'A hypertension follow-up record already exists for this family member. Multiple records are not allowed.'
-        //     ], 400); // 400 تعني Bad Request لأن الطلب خالف منطق العمل
-        // }
+        $message = null;
+        $visit = Visit::find($data["visit_id"]);
+        if (!$visit)
+        {
+            $message = 'Visit record not found.';
+        }
+        else if ($visit->visit_type !== 'أمراض مزمنة')
+        {
+            $message = 'Invalid visit type. Hypertension follow-up can only be recorded for visits categorized as "أمراض مزمنة".';
+        }
+        else if ($visit->family_member_id != $data['family_member_id'])
+        {
+            $message = "Data Mismatch: The provided visit ID does not belong to the selected family member.";
+        }
+
+        if ($message)
+        {
+            return response()->json([
+                'status'  => false,
+                'message' => $message
+            ], 400);
+        }
 
         $data['doctor_id'] = $doctor->id;
         try
@@ -77,13 +94,21 @@ class HypertensionStepController extends Controller
     {
         $data = $request->validated();
         $doctor = $this->getAuthenticatedDoctor();
-        $followUp = HypertensionFollowUp::find($data["id"]);
+        $followUp = HypertensionFollowUp::with('visit')->find($data["id"]);
         if (!$followUp)
         {
             return response()->json([
-                'status'  => false,
+                'status'  => "error",
                 'message' => 'Process Error: Hypertension record not found. Please complete Step 1 first.'
             ], 404);
+        }
+
+        if (!$followUp->visit || $followUp->visit->visit_type !== 'أمراض مزمنة')
+        {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'Invalid Access: This record is not classified as "أمراض مزمنة". Update denied.'
+            ], 403);
         }
 
         try
@@ -112,13 +137,21 @@ class HypertensionStepController extends Controller
     {
         $data = $request->validated();
         $doctor = $this->getAuthenticatedDoctor();
-        $followUp = HypertensionFollowUp::find($data["id"]);
+        $followUp = HypertensionFollowUp::with('visit')->find($data["id"]);
         if (!$followUp)
         {
             return response()->json([
-                'status'  => false,
+                'status'  => "error",
                 'message' => 'Process Error: Follow-up record not found. Please complete previous steps.'
             ], 404);
+        }
+
+        if (!$followUp->visit || $followUp->visit->visit_type !== 'أمراض مزمنة')
+        {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'Invalid Access: This record is not classified as "أمراض مزمنة". Update denied.'
+            ], 403);
         }
 
         try
@@ -147,13 +180,21 @@ class HypertensionStepController extends Controller
     {
         $data = $request->validated();
         $doctor = $this->getAuthenticatedDoctor();
-        $followUp = HypertensionFollowUp::find($data["id"]);
+        $followUp = HypertensionFollowUp::with('visit')->find($data["id"]);
         if (!$followUp)
         {
             return response()->json([
-                'status'  => false,
+                'status'  => "error",
                 'message' => 'Process Error: Follow-up record not found. Please complete previous steps.'
             ], 404);
+        }
+
+        if (!$followUp->visit || $followUp->visit->visit_type !== 'أمراض مزمنة')
+        {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'Invalid Access: This record is not classified as "أمراض مزمنة". Update denied.'
+            ], 403);
         }
 
         try
@@ -183,13 +224,21 @@ class HypertensionStepController extends Controller
     public function show($id)
     {
         $doctor = $this->getAuthenticatedDoctor();
-        $followUp = HypertensionFollowUp::find($id);
+        $followUp = HypertensionFollowUp::with('visit')->find($id);
         if (!$followUp)
         {
             return response()->json([
-                'status' => false,
+                'status' => "error",
                 'message' => 'The clinical follow-up record for hypertension could not be located. Please ensure the assessment was initiated in Step 1.'
             ], 404);
+        }
+
+        if (!$followUp->visit || $followUp->visit->visit_type !== 'أمراض مزمنة')
+        {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'Security Error: This record is not linked to a valid "Chronic Disease" visit.'
+            ], 403);
         }
 
         $member = $followUp->familyMember;
@@ -209,24 +258,210 @@ class HypertensionStepController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function editStep1($id)
     {
-        //
+        $followUp = HypertensionFollowUp::with("visit")->find($id);
+        if (!$followUp)
+        {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'The specified hypertension record does not exist.'
+            ], 404);
+        }
+
+        if ($followUp->visit->visit_type !== 'أمراض مزمنة')
+        {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'Invalid Access: This record is not linked to an "أمراض مزمنة" visit.'
+            ], 403);
+        }
+
+        return response()->json([
+            'status'  => "success",
+            'message' => 'Data retrieved successfully for Step 1.',
+            'data'    => [
+                'id' => $followUp->id,
+                // 'family_member_id' => $followUp->family_member_id,
+                // 'member_name' => $followUp->familyMember->name, // مفيد للعرض في الـ UI
+                // 'visit_id' => $followUp->visit_id,
+                'date' => $followUp->date,
+                'chief_complaint' => $followUp->chief_complaint,
+                'bp' => $followUp->bp, // Systolic & Diastolic
+            ]
+        ], 200);
     }
 
+    public function editStep2($id)
+    {
+        $followUp = HypertensionFollowUp::with('visit')->find($id);
+        if (!$followUp)
+        {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'The specified hypertension record does not exist. Please complete Step 1 first.'
+            ], 404);
+        }
+
+        if (!$followUp->visit || $followUp->visit->visit_type !== 'أمراض مزمنة') {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'Invalid Access: This record is not classified as "أمراض مزمنة".'
+            ], 403);
+        }
+
+        // 3. إرجاع البيانات المخصصة للخطوة الثانية
+        return response()->json([
+            'status'  => "success",
+            'message' => 'Data retrieved successfully for Step 2.',
+            'data'    => [
+                'id' => $followUp->id,
+                'risk_factors' => $followUp->risk_factors,
+                'complications_and_target_organ_affection' => $followUp->complications_and_target_organ_affection,
+            ]
+        ], 200);
+    }
+
+    public function editStep3($id)
+    {
+        $followUp = HypertensionFollowUp::with('visit')->find($id);
+        if (!$followUp)
+        {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'The specified hypertension record does not exist. Please complete Step 1 first.'
+            ], 404);
+        }
+
+        if (!$followUp->visit || $followUp->visit->visit_type !== 'أمراض مزمنة') {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'Invalid Access: This record is not classified as "أمراض مزمنة".'
+            ], 403);
+        }
+
+        // 3. إرجاع البيانات المخصصة للخطوة الثانية
+        return response()->json([
+            'status'  => "success",
+            'message' => 'Data retrieved successfully for Step 2.',
+            'data'    => [
+                'id' => $followUp->id,
+                'workup_6_month' => $followUp->workup_6_month,
+                'workup_annual' => $followUp->workup_annual,
+            ]
+        ], 200);
+    }
+
+    public function editStep4($id)
+    {
+        $followUp = HypertensionFollowUp::with('visit')->find($id);
+        if (!$followUp)
+        {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'The specified hypertension record does not exist. Please complete Step 1 first.'
+            ], 404);
+        }
+
+        if (!$followUp->visit || $followUp->visit->visit_type !== 'أمراض مزمنة') {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'Invalid Access: This record is not classified as "أمراض مزمنة".'
+            ], 403);
+        }
+
+        return response()->json([
+            'status'  => "success",
+            'message' => 'Data retrieved successfully for Step 2.',
+            'data'    => [
+                'id' => $followUp->id,
+                'treatment_plan' => $followUp->treatment_plan,
+                'health_education' => $followUp->health_education,
+            ]
+        ], 200);
+    }
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function updateStep1(UpdateStep1Request $request, $id)
     {
-        //
+        $data = $request->validated();
+        $followUp = HypertensionFollowUp::find($id);
+        if (!$followUp)
+        {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'The specified hypertension record does not exist.'
+            ], 404);
+        }
+
+        if ($followUp->visit->visit_type !== 'أمراض مزمنة')
+        {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'Invalid Access: This record is not linked to an "أمراض مزمنة" visit.'
+            ], 403);
+        }
+
+        try
+        {
+            $followUp->update($data);
+
+            return response()->json([
+                'status'  => "success",
+                'message' => 'Step 1: Clinical assessment updated successfully.',
+                'data'    => ['id' => $followUp->id]
+            ], 200);
+
+        }
+        catch (\Exception $e)
+        {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'System Error: Could not update the record.',
+            ], 500);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $followUp = HypertensionFollowUp::with('visit')->find($id);
+        if (!$followUp)
+        {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'The specified hypertension record does not exist.'
+            ], 404);
+        }
+
+        if (!$followUp->visit || $followUp->visit->visit_type !== 'أمراض مزمنة') {
+            return response()->json([
+                'status'  => "error",
+                'message' => 'Invalid Access: This record is not classified as "أمراض مزمنة".'
+            ], 403);
+        }
+
+        DB::beginTransaction();
+        try
+        {
+            $associatedVisit = $followUp->visit;
+            $followUp->delete();
+            $associatedVisit->delete();
+
+            DB::commit();
+            return response()->json([
+                'status'  => "success",
+                'message' => 'Hypertension record and its associated visit have been successfully deleted.'
+            ], 200);
+        }
+        catch (\Exception $e) {
+            return response()->json([
+                'status'  => "error",
+                'message' => "System Error: Unable to complete the deletion process. Please try again later or contact support."
+            ], 500);
+        }
     }
 }

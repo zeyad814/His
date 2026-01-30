@@ -25,10 +25,14 @@ class DatabaseSeeder extends Seeder
             'userable_id' => Doctor::first()->id,
             'userable_type' => \App\Models\Doctor::class,
         ]);
-        $this->call(AdminSeeder::class);
-        $this->call(FamilyFullProcessSeeder::class);
-        $this->call(MedicalExaminationSeeder::class);
-        $this->call(SignificantDataSeeder::class);
-        $this->call(HypertensionFollowUpSeeder::class);
+        
+        $this->call([
+            AdminSeeder::class,
+            FamilyFullProcessSeeder::class,
+            MedicalExaminationSeeder::class,
+            SignificantDataSeeder::class,
+            VisitSeeder::class,
+            HypertensionFollowUpSeeder::class,
+        ]);
     }
 }

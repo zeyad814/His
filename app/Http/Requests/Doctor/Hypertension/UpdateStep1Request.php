@@ -4,7 +4,7 @@ namespace App\Http\Requests\Doctor\Hypertension;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Step1Request extends FormRequest
+class UpdateStep1Request extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,7 @@ class Step1Request extends FormRequest
     public function rules(): array
     {
         return [
-            'family_member_id' => 'required|exists:family_members,id',
-            "visit_id" => 'required|exists:visits,id|unique:hypertension_follow_ups,visit_id',
+            "id" => "required|exists:hypertension_follow_ups,id",
             'date' => 'required|date',
             'chief_complaint' => 'nullable|string',
             'bp' => 'required|array',
@@ -32,16 +31,10 @@ class Step1Request extends FormRequest
         ];
     }
 
-    public function messages(): array
+    protected function prepareForValidation()
     {
-        return [
-            // الرسالة المناسبة لـ unique visit_id
-            'visit_id.unique' => 'A hypertension follow-up record already exists for this visit. Duplicate entries are not allowed.',
-
-            'visit_id.required' => 'The visit ID is required to link this follow-up.',
-            'visit_id.exists' => 'The selected visit ID is invalid or does not exist.',
-
-            'bp.required' => 'Blood pressure readings (systolic and diastolic) are mandatory.',
-        ];
+        $this->merge([
+            'id' => $this->route('id'),
+        ]);
     }
 }

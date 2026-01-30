@@ -61,12 +61,18 @@ Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
         Route::delete('/family-member/significant-data/{id}', [SignificantDataController::class, 'destroy']);
 
         // Hypertension
-        Route::prefix('hypertension')->group(function () {
+        Route::prefix('/hypertension')->group(function () {
             Route::post('/store/step-1', [HypertensionStepController::class, 'storeStep1']);
             Route::patch('/store/step-2', [HypertensionStepController::class, 'storeStep2']);
             Route::patch('/store/step-3', [HypertensionStepController::class, 'storeStep3']);
             Route::patch('/store/step-4', [HypertensionStepController::class, 'storeStep4']);
             Route::get('/{id}/show', [HypertensionStepController::class, 'show']);
+            Route::get('/edit-step-1/{id}', [HypertensionStepController::class, 'editStep1']);
+            Route::patch('/update-step-1/{id}', [HypertensionStepController::class, 'updateStep1']);
+            Route::get('/edit-step-2/{id}', [HypertensionStepController::class, 'editStep2']);
+            Route::get('/edit-step-3/{id}', [HypertensionStepController::class, 'editStep3']);
+            Route::get('/edit-step-4/{id}', [HypertensionStepController::class, 'editStep4']);
+            Route::delete('/{id}/delete', [HypertensionStepController::class, 'destroy']);
         });
     });
 

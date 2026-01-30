@@ -30,4 +30,9 @@ class Visit extends Model
     {
         return $this->belongsTo(Doctor::class);
     }
+
+    public function hypertensionFollowUp()
+    {
+        return $this->hasOne(HypertensionFollowUp::class);
+    }
 }

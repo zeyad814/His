@@ -16,7 +16,15 @@ return new class extends Migration
             $table->foreignId('family_member_id')->constrained()->cascadeOnDelete();
             $table->foreignId('doctor_id') ->constrained() ->cascadeOnDelete();
             $table->date('date'); // تاريخ الزيارة
-            $table->string('visit_type')->nullable();
+            $table->enum('visit_type', [
+                'متابعة الحمل',
+                'تنظيم الأسرة',
+                'متابعة طفل',
+                'أمراض مزمنة',
+                'زيارة دورية',
+                'أسنان'
+            ])->default('زيارة دورية');
+            // $table->string('visit_type')->nullable();
             $table->text('complaint')->nullable(); // الشكوى الرئيسية
             $table->text('clinical_examination')->nullable();  // الفحص الإكلينيكي
             $table->text('investigations')->nullable(); // الفحوصات والتحاليل
