@@ -44,7 +44,7 @@ class FamilyMember extends Model
         return $this->hasMany(SignificantData::class);
     }
 
-    public function visit()
+    public function visits()
     {
         return $this->hasMany(Visit::class);
     }
