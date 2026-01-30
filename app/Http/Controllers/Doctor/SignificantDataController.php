@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Doctor;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Doctor\StoreSignificantDataRequest;
-use App\Http\Requests\UpdateSignificantDataRequest;
+use App\Http\Requests\Doctor\UpdateSignificantDataRequest;
 use App\Http\Resources\SignificantDataResource;
 use App\Models\FamilyMember;
 use App\Models\SignificantData;

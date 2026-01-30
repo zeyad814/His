@@ -15,15 +15,24 @@ return new class extends Migration
             $table->id();
             $table->foreignId('family_member_id')->constrained()->cascadeOnDelete();
             $table->foreignId('doctor_id')->constrained()->cascadeOnDelete();
-            $table->date('date'); // تاريخ المتابعة
-            $table->text('health_education')->nullable(); // التثقيف الصحي
-            $table->text('treatment_plan')->nullable(); // الخطة العلاجية
-            $table->text('chief_complaint')->nullable(); // الشكوى الرئيسية
-            $table->string('bp')->nullable(); // ضغط الدم
-            $table->text('risk_factors')->nullable(); // عوامل الخطورة
-            $table->text('target_organ_affection')->nullable(); // تأثر الأعضاء المستهدفة
-            $table->text('workup_6_month')->nullable(); // فحوصات كل 6 شهور
-            $table->text('workup_annual')->nullable(); // فحوصات سنوية 
+
+            // الخطوة الأولى: التاريخ والشكوى والضغط
+            $table->date('date');
+            $table->text('chief_complaint')->nullable();
+            $table->json('bp')->nullable(); // هيشيل الـ bp_systolic و bp_diastolic
+
+            // الخطوة الثانية: عوامل الخطورة وتأثر الأعضاء
+            $table->json('risk_factors')->nullable();
+            $table->json('complications_and_target_organ_affection')->nullable(); // JSON كما طلبت
+
+            // الخطوة الثالثة: الفحوصات (6 شهور وسنوية)
+            $table->json('workup_6_month')->nullable();
+            $table->json('workup_annual')->nullable();
+
+            // الخطوة الرابعة: التثقيف والعلاج
+            $table->json('health_education')->nullable(); // تحول إلى JSON
+            $table->text('treatment_plan')->nullable();    // تحول إلى Text
+
             $table->timestamps();
         });
     }

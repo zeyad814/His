@@ -27,5 +27,8 @@ class DatabaseSeeder extends Seeder
         ]);
         $this->call(AdminSeeder::class);
         $this->call(FamilyFullProcessSeeder::class);
+        $this->call(MedicalExaminationSeeder::class);
+        $this->call(SignificantDataSeeder::class);
+        $this->call(HypertensionFollowUpSeeder::class);
     }
 }

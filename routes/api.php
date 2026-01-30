@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Doctor\FamilyController;
 use App\Http\Controllers\Doctor\GeneralExaminationController;
+use App\Http\Controllers\Doctor\HypertensionStepController;
 use App\Http\Controllers\Doctor\SignificantDataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,15 @@ Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
         Route::get('/family-member/significant-data/edit/{id}', [SignificantDataController::class, 'edit']);
         Route::put('/family-member/significant-data/update/{id}', [SignificantDataController::class, 'update']);
         Route::delete('/family-member/significant-data/{id}', [SignificantDataController::class, 'destroy']);
+
+        //
+        Route::prefix('hypertension')->group(function () {
+            Route::post('/store/step-1', [HypertensionStepController::class, 'storeStep1']);
+            Route::patch('/store/step-2', [HypertensionStepController::class, 'storeStep2']);
+            Route::patch('/store/step-3', [HypertensionStepController::class, 'storeStep3']);
+            Route::patch('/store/step-4', [HypertensionStepController::class, 'storeStep4']);
+            Route::get('/{id}/show', [HypertensionStepController::class, 'show']);
+        });
     });
 });
 

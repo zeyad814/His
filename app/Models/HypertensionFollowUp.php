@@ -10,18 +10,27 @@ class HypertensionFollowUp extends Model
     use HasFactory;
 
     protected $fillable = [
-        'family_member_id',
-        'doctor_id',
-        'date',
-        'health_education',
-        'treatment_plan',
-        'chief_complaint',
-        'bp',
-        'risk_factors',
-        'target_organ_affection',
-        'workup_6_month',
-        'workup_annual',
+        "family_member_id",
+        "doctor_id",
+        "date",
+        "chief_complaint",
+        "bp",
+        "risk_factors",
+        "complications_and_target_organ_affection",
+        "workup_6_month",
+        "workup_annual",
+        "health_education",
+        "treatment_plan",
+    ];
 
+    protected $casts = [
+        'date' => 'date',
+        'bp' => 'array',
+        'risk_factors' => 'array',
+        'complications_and_target_organ_affection' => 'array',
+        'workup_6_month' => 'array',
+        'workup_annual' => 'array',
+        'health_education' => 'array',
     ];
 
     public function familyMember()
