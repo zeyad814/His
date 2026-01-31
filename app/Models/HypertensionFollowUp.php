@@ -14,7 +14,8 @@ class HypertensionFollowUp extends Model
         "doctor_id",
         "date",
         "chief_complaint",
-        "bp",
+        "bp_systolic",
+        "bp_diastolic",
         "risk_factors",
         "complications_and_target_organ_affection",
         "workup_6_month",
@@ -26,7 +27,7 @@ class HypertensionFollowUp extends Model
 
     protected $casts = [
         'date' => 'date',
-        'bp' => 'array',
+        // 'bp' => 'array',
         'risk_factors' => 'array',
         'complications_and_target_organ_affection' => 'array',
         'workup_6_month' => 'array',

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Doctor\DiabetesFollowUpController;
 use App\Http\Controllers\Doctor\VisitController;
 use App\Http\Controllers\Doctor\FamilyController;
 use App\Http\Controllers\Doctor\GeneralExaminationController;
@@ -60,7 +61,7 @@ Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
         Route::put('/family-member/significant-data/update/{id}', [SignificantDataController::class, 'update']);
         Route::delete('/family-member/significant-data/{id}', [SignificantDataController::class, 'destroy']);
 
-        // Hypertension
+        // Hypertension Follow Up
         Route::prefix('/hypertension')->group(function () {
             Route::post('/store/step-1', [HypertensionStepController::class, 'storeStep1']);
             Route::patch('/store/step-2', [HypertensionStepController::class, 'storeStep2']);
@@ -73,6 +74,21 @@ Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
             Route::get('/edit-step-3/{id}', [HypertensionStepController::class, 'editStep3']);
             Route::get('/edit-step-4/{id}', [HypertensionStepController::class, 'editStep4']);
             Route::delete('/{id}/delete', [HypertensionStepController::class, 'destroy']);
+        });
+
+        // Diabetes Follow Up
+        Route::prefix('/diabetes-follow-up')->group(function () {
+            Route::post('/store/step-1', [DiabetesFollowUpController::class, 'storeStep1']);
+            Route::patch('/store/step-2', [DiabetesFollowUpController::class, 'storeStep2']);
+            Route::patch('/store/step-3', [DiabetesFollowUpController::class, 'storeStep3']);
+            Route::patch('/store/step-4', [DiabetesFollowUpController::class, 'storeStep4']);
+            Route::get('/{id}/show', [DiabetesFollowUpController::class, 'show']);
+            Route::get('/edit-step-1/{id}', [DiabetesFollowUpController::class, 'editStep1']);
+            Route::patch('/update-step-1/{id}', [DiabetesFollowUpController::class, 'updateStep1']);
+            Route::get('/edit-step-2/{id}', [DiabetesFollowUpController::class, 'editStep2']);
+            Route::get('/edit-step-3/{id}', [DiabetesFollowUpController::class, 'editStep3']);
+            Route::get('/edit-step-4/{id}', [DiabetesFollowUpController::class, 'editStep4']);
+            Route::delete('/{id}/delete', [DiabetesFollowUpController::class, 'destroy']);
         });
     });
 

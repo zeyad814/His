@@ -20,7 +20,9 @@ return new class extends Migration
             // الخطوة الأولى: التاريخ والشكوى والضغط
             $table->date('date');
             $table->text('chief_complaint')->nullable();
-            $table->json('bp')->nullable(); // هيشيل الـ bp_systolic و bp_diastolic
+            $table->integer('bp_systolic')->nullable();
+            $table->integer('bp_diastolic')->nullable();
+            // $table->json('bp')->nullable(); // هيشيل الـ bp_systolic و bp_diastolic
 
             // الخطوة الثانية: عوامل الخطورة وتأثر الأعضاء
             $table->json('risk_factors')->nullable();

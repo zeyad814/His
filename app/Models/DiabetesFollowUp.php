@@ -10,18 +10,35 @@ class DiabetesFollowUp extends Model
     use HasFactory;
 
     protected $fillable = [
-        'family_member_id',
-        'doctor_id',
-        'date',
-        'workup_every_visit',
-        'health_education',
-        'chief_complaint',
-        'referrals',
-        'risk_factors',
-        'treatment_plan',
-        'complications',
-        'workup_6_month',
-        'workup_annual',
+        "family_member_id",
+        "doctor_id",
+        "visit_id",
+        "date",
+        "chief_complaint",
+        // "bmi",
+        "risk_factors",
+        "complications",
+        "workup_every_visit",
+        "workup_6_month",
+        "workup_annual",
+        "health_education",
+        "referrals",
+        "treatment_plan",
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'date' => 'date',
+        'risk_factors' => 'array',
+        'complications' => 'array',
+        'workup_every_visit' => 'array',
+        'workup_6_month' => 'array',
+        'workup_annual' => 'array',
+        'health_education' => 'array',
     ];
 
     public function familyMember()
@@ -32,5 +49,10 @@ class DiabetesFollowUp extends Model
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
+    }
+
+    public function visit()
+    {
+        return $this->belongsTo(Visit::class);
     }
 }

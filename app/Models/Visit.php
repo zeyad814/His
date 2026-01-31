@@ -35,4 +35,9 @@ class Visit extends Model
     {
         return $this->hasOne(HypertensionFollowUp::class);
     }
+
+    public function diabetesFollowUp()
+    {
+        return $this->hasOne(DiabetesFollowUp::class);
+    }
 }
