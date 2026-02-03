@@ -128,4 +128,9 @@ class FamilyMember extends Model
     {
         return $this->hasMany(EmergencyForm::class);
     }
+
+    public function clinicalExaminations()
+    {
+        return $this->hasMany(ClinicalExamination::class, 'family_member_id');
+    }
 }

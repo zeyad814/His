@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Doctor\BirthScreeningController;
+use App\Http\Controllers\Doctor\ClinicalExaminationController;
 use App\Http\Controllers\Doctor\DiabetesFollowUpController;
 use App\Http\Controllers\Doctor\VisitController;
 use App\Http\Controllers\Doctor\FamilyController;
@@ -89,6 +91,29 @@ Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
             Route::get('/edit-step-3/{id}', [DiabetesFollowUpController::class, 'editStep3']);
             Route::get('/edit-step-4/{id}', [DiabetesFollowUpController::class, 'editStep4']);
             Route::delete('/{id}/delete', [DiabetesFollowUpController::class, 'destroy']);
+        });
+
+        // Birth Screening
+        Route::prefix('/birth-screening')->group(function () {
+            Route::post("/store", [BirthScreeningController::class, "store"]);
+            Route::get("/edit/{family_member_id}", [BirthScreeningController::class, "edit"]);
+            Route::patch("/store-special-cases", [BirthScreeningController::class, "storeSpecialCases"]);
+            Route::get("/edit-special-cases/{family_member_id}", [BirthScreeningController::class, "editSpecialCases"]);
+        });
+
+        // Growth Visit
+        Route::prefix('/growth-visit')->group(function () {
+            Route::post('/store', [BirthScreeningController::class, 'storeGrowthVisit']);
+            Route::get('/edit/{id}', [BirthScreeningController::class, 'editGrowthVisit']);
+            Route::put('/update/{id}', [BirthScreeningController::class, 'updateGrowthVisit']);
+        });
+
+        // Clinical Examination
+        Route::prefix('/clinical-examination')->group(function () {
+            Route::post('/store', [ClinicalExaminationController::class, 'store']);
+            Route::get('/edit/{id}', [ClinicalExaminationController::class, 'edit']);
+            Route::put('/update/{id}', [ClinicalExaminationController::class, 'update']);
+            Route::delete('/delete/{id}', [ClinicalExaminationController::class, 'destroy']);
         });
     });
 
