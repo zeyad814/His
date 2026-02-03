@@ -16,8 +16,12 @@ return new class extends Migration
             $table->foreignId('family_member_id')->constrained()->cascadeOnDelete();
             $table->foreignId('doctor_id')->constrained()->cascadeOnDelete();
             $table->string('diagnosis'); // التشخيص
-            $table->date('date_diagnosed')->nullable(); // تاريخ التشخيص
             $table->text('risk_factors')->nullable(); // عوامل الخطورة
+            $table->date('date_diagnosed')->nullable(); // تاريخ التشخيص
+
+
+            // تفاصيل الزيارة (ممكن نربطها بجدول زيارات لو حبينا نفصلها)
+
             $table->text('complain')->nullable(); // الشكوى
             $table->text('exam')->nullable();
             $table->text('vital_signs')->nullable(); // العلامات الحيوية
@@ -25,7 +29,7 @@ return new class extends Migration
             $table->text('management')->nullable();  // الخطة العلاجية
             $table->text('notes')->nullable();  // ملاحظات
             $table->date('visit_date'); // تاريخ الزيارة
-            
+
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role', ['admin', 'doctor', 'receptionist'])->default('doctor');
-            $table->unsignedBigInteger('userable_id'); // الرقم التعريفي لأي نوع مستخدم
+            $table->unsignedBigInteger('userable_id'); 
             $table->string('userable_type');
             $table->rememberToken();
             $table->timestamps();

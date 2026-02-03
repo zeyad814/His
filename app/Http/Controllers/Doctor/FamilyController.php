@@ -239,7 +239,7 @@ class FamilyController extends Controller
         }
 
         $familyMemberIds = $family->members()->pluck('id')->toArray(); // IDs الأفراد بتوع العيلة دي بس
-        foreach ($data as $history) 
+        foreach ($data as $history)
         {
             if (!in_array($history['family_member_id'], $familyMemberIds))
             {
@@ -257,11 +257,11 @@ class FamilyController extends Controller
             // {
             foreach ($data as $history)
             {
-                $member = FamilyMember::find($history['family_member_id']);
+                $member = FamilyMember::find($history['fadmily_member_id']);
                 if ($member)
                 {
                     $member->medicalHistories()->updateOrCreate(
-            ['id' => $history['id'] ?? null], 
+            ['id' => $history['id'] ?? null],
                 [
                             'discovery_date' => $history['discovery_date'],
                             'disease_type' => $history['disease_type'],
@@ -281,7 +281,7 @@ class FamilyController extends Controller
                 'family_id' => $family->id,
                 'family members' => $familyMembers,
                 // الخطوة الجاية: البحث الاجتماعي أو معلومات السكن
-                // 'next_step' => 'social research' 
+                // 'next_step' => 'social research'
             ], 200);
         }
         catch (\Exception $e)
@@ -395,7 +395,7 @@ class FamilyController extends Controller
 ['family_id' => $family->id],
     $data
         );
-        
+
         return response()->json([
             'status' => 'success',
             'message' => 'Social research records saved. Family profile has been successfully created and finalized.',
@@ -409,10 +409,10 @@ class FamilyController extends Controller
     public function show($id)
     {
         $family = Family::with([
-            'familyMembers', 
-            'familyDoctor', 
-            'dentistDoctor', 
-            'socialResearch', 
+            'familyMembers',
+            'familyDoctor',
+            'dentistDoctor',
+            'socialResearch',
             'housingInfo'
         ])->findOrFail($id);
 
@@ -433,7 +433,7 @@ class FamilyController extends Controller
                 'message' => 'Family not found.'
             ], 404);
         }
-        
+
         return response()->json([
             'status' => 'success',
             'message' => 'Family details retrieved successfully for editing.',
@@ -476,7 +476,7 @@ class FamilyController extends Controller
                 'message' => 'Family not found.'
             ], 404);
         }
-        
+
         $availableDoctors = Doctor::with('user')
             ->where('health_unit_id', $user->health_unit_id)
             ->whereIn('specialization', ['family', 'dentist'])
