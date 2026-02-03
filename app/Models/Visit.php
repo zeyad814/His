@@ -40,4 +40,14 @@ class Visit extends Model
     {
         return $this->hasOne(DiabetesFollowUp::class);
     }
+
+    public function growthVisit()
+    {
+        return $this->hasOne(GrowthVisit::class);
+    }
+
+    public function clinicalExamination()
+    {
+        return $this->hasOne(ClinicalExamination::class, 'visit_id');
+    }
 }

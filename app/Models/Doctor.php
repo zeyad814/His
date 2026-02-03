@@ -141,4 +141,9 @@ class Doctor extends Model
     {
         return $this->morphOne(User::class, 'userable');
     }
+
+    public function clinicalExaminations()
+    {
+        return $this->hasMany(ClinicalExamination::class, 'doctor_id');
+    }
 }

@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             'userable_id' => Doctor::first()->id,
             'userable_type' => \App\Models\Doctor::class,
         ]);
-        
+
         $this->call([
             AdminSeeder::class,
             FamilyFullProcessSeeder::class,
@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             SignificantDataSeeder::class,
             VisitSeeder::class,
             HypertensionFollowUpSeeder::class,
+            DiabetesFollowUpSeeder::class,
         ]);
     }
 }
