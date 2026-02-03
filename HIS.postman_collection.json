@@ -1,0 +1,2290 @@
+{
+  "info": {
+    "_postman_id": "fb06c2ee-d953-4603-9069-3e062cc1a57c",
+    "name": "HIS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "33133758"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "// Doctor\r\n{\r\n    \"email\": \"test@example.com\",\r\n    \"password\": \"password\"\r\n}\r\n\r\n// Admin\r\n// {\r\n//     \"email\": \"admin1@example.com\",\r\n//     \"password\": \"password\"\r\n// }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{production_url}}/api/login",
+              "host": [
+                "{{production_url}}"
+              ],
+              "path": [
+                "api",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Doctor",
+      "item": [
+        {
+          "name": "Families",
+          "item": [
+            {
+              "name": "Store",
+              "item": [
+                {
+                  "name": "Store Family",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "2|fWdytUDa3FB1hWTlf8nyEGjZEdECTnB1zJOPBLS0face1736",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"family_code\": \"FAM-998872\",\r\n    \"national_id\": \"29001011234562\",\r\n    \"head_name\": \"أحمد محمد علي إبراهيم\",\r\n    \"governorate\": \"القاهرة\",\r\n    \"village_or_city\" : \"الدقى\",\r\n    \"health_department\": \"الإدارة الصحية الأولى\",\r\n    \"health_unit\": \"وحدة الحي السابع\",\r\n    \"address\": \"12 شارع النصر، مدينة نصر\",\r\n    \"mobile_phone\": \"01012345678\",\r\n    \"work_phone\": \"01112345678\",\r\n    \"nearest_phone\": \"01212345678\"\r\n    \r\n    // \"members\": [\r\n    //     {\r\n    //         \"full_name\": \"أحمد محمد علي إبراهيم\",\r\n    //         \"is_male\": true,\r\n    //         \"birth_date\": \"1980-05-15\",\r\n    //         \"relationship_to_head\": \"father\",\r\n    //         \"insurance_type\": \"public\", \r\n    //         \"notes\" : \"مريض السكري يرفض الالتزام بالنظام الغذائي الموصى به.\"\r\n    //     },\r\n    //     {\r\n    //         \"full_name\": \"سارة محمود حسن\",\r\n    //         \"is_male\": false,\r\n    //         \"birth_date\": \"1985-10-20\",\r\n    //         \"relationship_to_head\": \"wife\",\r\n    //         \"insurance_type\": \"private\"\r\n    //     }\r\n    // ],\r\n\r\n    // \"medical_histories\": [\r\n    //     {\r\n    //         \"member_index\": 0,\r\n    //         \"discovery_date\": \"2019-11-20\",\r\n    //         \"disease_type\": \"سكري من النوع الثاني\",\r\n    //         \"type_of_illness\": \"مزمن\",\r\n    //         \"note\": \"يتناول أنسولين بانتظام وتحت السيطرة\"\r\n    //     },\r\n    //     {\r\n    //         \"member_index\": 1,\r\n    //         \"discovery_date\": \"2021-05-10\",\r\n    //         \"disease_type\": \"ضغط دم مرتفع\",\r\n    //         \"type_of_illness\": \"مزمن\",\r\n    //         \"note\": \"يحتاج لمتابعة قياس الضغط أسبوعياً\"\r\n    //     }\r\n    // ],\r\n\r\n    // \"death_records\": [\r\n    //     {\r\n    //         \"member_name\": \"محمد علي إبراهيم\",\r\n    //         \"death_date\": \"2019-11-20\",\r\n    //         \"age_at_death\": 75,\r\n    //         \"cause_of_death\": \"أزمة قلبية حادة\",\r\n    //         \"death_code\": \"D-102\"\r\n    //     }\r\n    // ],\r\n\r\n    // \"housing_info\": {\r\n    //     \"rooms_count\": 5,\r\n    //     \"sleeping_rooms_specified\": 3,\r\n    //     \"ventilation\": \"good\",\r\n    //     \"water_source\": \"public\",\r\n    //     \"sanitation_type\": \"pit\",\r\n    //     \"lighting_type\": \"electricity\",\r\n    //     \"has_animals\": true,\r\n    //     \"barn_location\": \"outside\"\r\n    // },\r\n\r\n    // \"social_research\": {\r\n    //     \"income_level\": \"medium\",\r\n    //     \"avg_income\": 7500.50,\r\n    //     \"chronic_diseases\": \"يوجد\",\r\n    //     \"free_service\": \"1\",\r\n    //     \"pension\": \"1\",\r\n    //     \"disability\": \"0\"\r\n    // }\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/store",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "store"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Store Member Family",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"members\": [\r\n        {\r\n            \"full_name\": \"أحمد محمد علي إبراهيم\",\r\n            \"is_male\": true,\r\n            \"birth_date\": \"1980-05-15\",\r\n            \"relationship_to_head\": \"father\",\r\n            \"insurance_type\": \"public\", \r\n            \"notes\" : \"مريض السكري\"\r\n        },\r\n        {\r\n            \"full_name\": \"سارة محمود حسن\",\r\n            \"is_male\": false,\r\n            \"birth_date\": \"1985-10-20\",\r\n            \"relationship_to_head\": \"wife\",\r\n            \"insurance_type\": \"private\"\r\n        }\r\n    ]\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/store/member/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "store",
+                        "member",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Store & Update Assign Doctor To Family",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"family_doctor_id\": 1,\r\n    \"family_doctor_date\": \"2026-01-29\",\r\n    \"dentist_id\": 2,\r\n    \"dentist_date\": \"2026-01-29\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/assign/doctor/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "assign",
+                        "doctor",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Store & Update Medical History",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"medical_histories\": [\r\n        {\r\n            \"family_member_id\": 1, \r\n            \"discovery_date\": \"2019-11-20\",\r\n            \"disease_type\": \"سكري من النوع الثاني\",\r\n            \"type_of_illness\": \"مزمن\",\r\n            \"note\": \"يتناول أنسولين بانتظام\"\r\n        },\r\n        {\r\n            \"family_member_id\": 2,\r\n            \"discovery_date\": \"2021-05-10\",\r\n            \"disease_type\": \"ضغط دم مرتفع\",\r\n            \"type_of_illness\": \"مزمن\",\r\n            \"note\": \"متابعة أسبوعية\"\r\n        }\r\n    ]\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/store/medical/history/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "store",
+                        "medical",
+                        "history",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Store & Update Death Record",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"death_records\": [\r\n        {\r\n            \"family_member_id\": 1,\r\n            \"death_date\": \"2024-01-20\",\r\n            \"age_at_death\": \"75\",\r\n            \"cause_of_death\": \"Natural causes\",\r\n            \"death_code\": \"R99\"\r\n        }\r\n        // ,\r\n        // {\r\n        //     \"family_member_id\": 2,\r\n        //     \"death_date\": \"2023-05-15\",\r\n        //     \"age_at_death\": \"60 سنة\",\r\n        //     \"cause_of_death\": \"Heart failure\",\r\n        //     \"death_code\": \"I50.9\"\r\n        // }\r\n    ]\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/store/death/record/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "store",
+                        "death",
+                        "record",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Store & Update Housing Info",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"rooms_count\": 3,\r\n    \"sleeping_rooms_specified\": 2,\r\n    \"ventilation\": \"good\", \r\n    \"water_source\": \"public\",\r\n    \"sanitation_type\": \"sanitary\",\r\n    \"lighting_type\": \"electricity\",\r\n    \"has_animals\": true,\r\n    \"barn_location\": \"inside\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/store/housing/info/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "store",
+                        "housing",
+                        "info",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Store & Update Social Research",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"income_type\": \"fixed\",\r\n    \"avg_income\": 7500.50,\r\n    \"has_chronic_diseases\": true,\r\n    \"has_disability\": false,\r\n    \"receives_pension\": true,\r\n    \"eligible_for_free_service\": true,\r\n    \"supporter_name_on_death\": \"أحمد محمد علي\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/store/social/research/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "store",
+                        "social",
+                        "research",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Edit",
+              "item": [
+                {
+                  "name": "Edit Family",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/edit/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "edit",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Family",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"family_code\": \"FAM-C-10020\",\r\n    \"national_id\": \"19901010123456\",\r\n    \"head_name\": \"سيد عبد الرحمن حسن\",\r\n    \"governorate\": \"الإسكندرية\",\r\n    \"village_or_city\": \"سموحة\",\r\n    \"health_department\": \"شرق الإسكندرية\",\r\n    \"health_unit\": \"مركز طبي سموحة\",\r\n    \"address\": \"عمارة 4، الدور الثالث، خلف نادي سموحة\",\r\n    \"mobile_phone\": \"01223344556\",\r\n    \"work_phone\": \"034200100\",\r\n    \"nearest_phone\": \"01555667788\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/update/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "update",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Edit Member Family",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/edit/members/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "edit",
+                        "members",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Member Family",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"members\": [\r\n        {\r\n            \"id\": 1,\r\n            \"full_name\": \"أحمد محمد علي\",\r\n            \"is_male\": 1,\r\n            \"birth_date\": \"1980-01-01\",\r\n            \"relationship_to_head\": \"father\",\r\n            \"insurance_type\": \"public\"\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"full_name\": \"سارة محمود\",\r\n            \"is_male\": 0,\r\n            \"birth_date\": \"1985-05-20\",\r\n            \"relationship_to_head\": \"wife\",\r\n            \"insurance_type\": \"none\"\r\n        }\r\n    ]\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/update/members/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "update",
+                        "members",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Edit Assign Doctor To Family",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/assign/doctor/edit/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "assign",
+                        "doctor",
+                        "edit",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Edit Medical History",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/medical-history/edit/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "medical-history",
+                        "edit",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Edit Death Record",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/death-records/edit/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "death-records",
+                        "edit",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Edit Housing Info",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/housing-info/edit/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "housing-info",
+                        "edit",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Edit Social Research",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/family/social-research/edit/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "family",
+                        "social-research",
+                        "edit",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "index",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local_url}}/api/families",
+                  "host": [
+                    "{{local_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "families"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Show",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/families/show/1",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "families",
+                    "show",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Member",
+          "item": [
+            {
+              "name": "General Examination",
+              "item": [
+                {
+                  "name": "Store",
+                  "item": [
+                    {
+                      "name": "Store & Update Physical Examination",
+                      "protocolProfileBehavior": {
+                        "disabledSystemHeaders": {}
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"family_member_id\": 1,\r\n    \"family_history\": \"Diabetes and Hypertension in parents.\",\r\n    \"hospitalization\": \"Hospitalized in 2022 for severe pneumonia.\",\r\n    \"lab_tests_results\": \"All previous CBC and Glucose tests were normal.\",\r\n    \"special_habits\": \"Smoker (10 cigarettes/day), No alcohol.\",\r\n    \"previous_operations\": \"Appendectomy in 2015, Tonsillectomy in 2010.\",\r\n    \"current_medication\": \"Metformin 500mg, Panadol when needed.\",\r\n    \"trauma_injuries\": \"Fracture in the right arm due to a fall in 2018.\",\r\n    \"allergy\": \"Penicillin and Dust.\",\r\n    \"adverse_drug_reaction\": \"Nausea when taking some antibiotics.\",\r\n    \"abuse_negligence\": \"No signs of abuse or negligence.\",\r\n    \"psychiatric_history\": \"No history of psychiatric disorders.\"\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/physical-examination/history",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "physical-examination",
+                            "history"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Store & Update Vitals",
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"physical_examination_id\": 1, \r\n    \"blood_pressure\": \"120/80\",\r\n    \"pulse\": 75,\r\n    \"temperature\": 37.2,\r\n    \"respiratory_rate\": 18,\r\n    \"height\": 170,\r\n    \"weight\": 70,\r\n    \"bmi\": 24.2,\r\n    \"general_appearance\": \"Normal\",\r\n    \"pain_assessment\": \"No pain\",\r\n    \"lab_results\": {\r\n        \"Hemoglobin\": \"14 g/dL\",\r\n        \"Blood Group\": \"O+\",\r\n        \"RH\": \"Positive\",\r\n        \"Urine\": \"Negative for protein\",\r\n        \"Stool\": \"Normal\"\r\n    }\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/general-examination/vitals",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "general-examination",
+                            "vitals"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Store & Update Systemic Exam",
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"physical_examination_id\": 1,\r\n    \"skin_complexion\": {\r\n        \"pallor\": \"Yes\",\r\n        \"unexplained_bruises\": \"No\",\r\n        \"hair_distribution\": \"Normal\"\r\n    },\r\n    \"head_neck\": {\r\n        \"jaundice\": \"No\",\r\n        \"cyanosis\": \"No\",\r\n        \"pallor\": \"Yes\"\r\n    },\r\n    \"heart\": {\r\n        \"sounds\": \"S1 & S2 normal\",\r\n        \"murmurs\": \"None\"\r\n    },\r\n    \"chest\": {\r\n        \"expansion\": \"Symmetrical\",\r\n        \"breathing_sounds\": \"Clear\"\r\n    },\r\n    \"abdomen\": {\r\n        \"liver\": \"Not enlarged\",\r\n        \"spleen\": \"Not palpable\"\r\n    },\r\n    \"neurological\": {\r\n        \"motor\": \"Normal power\",\r\n        \"sensory\": \"Intact\"\r\n    },\r\n    \"upper_limb\": {\r\n        \"tremors\": \"No\",\r\n        \"range_of_motion\": \"Full\",\r\n        \"muscle_wasting\": \"None\"\r\n    },\r\n    \"lower_limb\": {\r\n        \"edema\": \"No\",\r\n        \"clubbing\": \"No\",\r\n        \"varicose_veins\": \"None\"\r\n    },\r\n    \"disabilities\": {\r\n        \"type\": \"None\",\r\n        \"possible_cause\": \"N/A\"\r\n    },\r\n    \"deformities\": \"None\"\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/general-examination/systemic-exam",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "general-examination",
+                            "systemic-exam"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Store & Update Final Exam",
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"physical_examination_id\": 1,\r\n    \"eyes\": {\r\n        \"visual_acuity\": {\"r\": \"6/6\", \"l\": \"6/9\", \"comment\": \"Good\"},\r\n        \"cornea\": {\"r\": \"Clear\", \"l\": \"Clear\", \"comment\": \"\"},\r\n        \"movement\": \"Normal\",\r\n        \"pupil\": \"Reactive\"\r\n    },\r\n    \"ent\": {\r\n        \"hearing\": \"Normal\",\r\n        \"nose\": \"Clear\",\r\n        \"throat\": \"Congested\"\r\n    },\r\n    \"risk_factors\": [\"Smoking\", \"Hypertension\", \"Diabetes\"],\r\n    \"nutritional_assessment\": \"Well-balanced diet\",\r\n    \"general_appearance\": \"Alert and cooperative\",\r\n    \"conclusion\": \"Patient is stable, prescribed antibiotics for throat infection.\"\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/general-examination/final-exam",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "general-examination",
+                            "final-exam"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Edit",
+                  "item": [
+                    {
+                      "name": "Edit Physical Examination",
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/physical-examination/edit/1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "physical-examination",
+                            "edit",
+                            "1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Edit vitals",
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/general-examination/vitals/edit/1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "general-examination",
+                            "vitals",
+                            "edit",
+                            "1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Edit Systemic Exam",
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/general-examination/systemic-exam/edit/1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "general-examination",
+                            "systemic-exam",
+                            "edit",
+                            "1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Edit Final Exam",
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/general-examination/final-exam/edit/1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "general-examination",
+                            "final-exam",
+                            "edit",
+                            "1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Show Full Examination",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/doctor/family-members/1/full-examination",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "doctor",
+                        "family-members",
+                        "1",
+                        "full-examination"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Significant Data",
+              "item": [
+                {
+                  "name": "Index Significant Data",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/doctor/family-member/1/significant-data/index",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "doctor",
+                        "family-member",
+                        "1",
+                        "significant-data",
+                        "index"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Store Significant Event",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"record_date\": \"2026-01-28\",\r\n    \"case_description\": \"The patient underwent an emergency appendectomy without complications.\",\r\n    \"action_doctor_name\": \"abed hamdy\"\r\n    // \"action_doctor_name\": \"abdo hamdy\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/doctor/family-member/1/significant-data/store",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "doctor",
+                        "family-member",
+                        "1",
+                        "significant-data",
+                        "store"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Edit Significant Event",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/doctor/family-member/significant-data/edit/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "doctor",
+                        "family-member",
+                        "significant-data",
+                        "edit",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Store Significant Event Copy",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"record_date\": \"2026-01-28\",\r\n    \"case_description\": \"The patient underwent an emergency appendectomy without complications.\",\r\n    \"action_doctor_name\": \"abed hamdy\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/doctor/family-member/significant-data/update/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "doctor",
+                        "family-member",
+                        "significant-data",
+                        "update",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete Significant Event",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"record_date\": \"2026-01-28\",\r\n    \"case_description\": \"The patient underwent an emergency appendectomy without complications.\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/doctor/family-member/significant-data/1",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "doctor",
+                        "family-member",
+                        "significant-data",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Hypertension",
+              "item": [
+                {
+                  "name": "Store",
+                  "item": [
+                    {
+                      "name": "Step 1",
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"family_member_id\": 1,\r\n    \"visit_id\": 1,\r\n    \"date\": \"2026-01-29\",\r\n    \"chief_complaint\": \"Persistent headache and dizziness\",\r\n    \"bp_systolic\": 140,\r\n    \"bp_diastolic\": 90\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/hypertension/store/step-1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "hypertension",
+                            "store",
+                            "step-1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Store & Update Step 2",
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"id\": 1, \r\n    \"risk_factors\": {\r\n        \"smoking\": false,\r\n        \"physical_inactivity\": false,\r\n        \"obese\": true,\r\n        \"family_history\": true,\r\n        \"dyslipidemia\": false\r\n    },\r\n    \"complications_and_target_organ_affection\": {\r\n        \"lvh_hf\": false,\r\n        \"angina_mi\": true,\r\n        \"stroke_tia\": false,\r\n        \"ckd\": false,\r\n        \"retinopathy\": true\r\n    }\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/hypertension/store/step-2",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "hypertension",
+                            "store",
+                            "step-2"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Store & Update Step 3",
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"id\": 1,\r\n    \"workup_6_month\": {\r\n        \"urine_analysis\": \"Normal\",\r\n        \"creatinine_egfr\": \"90 ml/min\"\r\n    },\r\n    \"workup_annual\": {\r\n        \"total_cholesterol\": \"190\",\r\n        \"cbc\": \"Hb 13.5\",\r\n        \"fasting_sugar\": \"105\",\r\n        \"k_na\": \"K: 4.2, Na: 140\",\r\n        \"ecg\": \"Sinus Rhythm\",\r\n        \"tg\": \"150\",\r\n        \"hdl\": \"45\",\r\n        \"ldl\": \"110\"\r\n    }\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/hypertension/store/step-3",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "hypertension",
+                            "store",
+                            "step-3"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Store & Update Step 4",
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"id\": 1,\r\n    \"treatment_plan\": \"Amlodipine 5mg once daily + Valsartan 80mg.\",\r\n    \"health_education\": {\r\n        \"diet_weight_loss\": true,\r\n        \"physical_activity\": true,\r\n        \"low_salt\": true,\r\n        \"quitting_smoking\": false\r\n    }\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/hypertension/store/step-4",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "hypertension",
+                            "store",
+                            "step-4"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Edit",
+                  "item": [
+                    {
+                      "name": "Step 1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/hypertension/edit-step-1/1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "hypertension",
+                            "edit-step-1",
+                            "1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Update Step 1",
+                      "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"date\": \"2026-01-29\",\r\n    \"chief_complaint\": \"Persistent headache and dizziness\",\r\n    \"bp\": {\r\n        \"systolic\": 140,\r\n        \"diastolic\": 90\r\n    }\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/hypertension/update-step-1/1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "hypertension",
+                            "update-step-1",
+                            "1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Step 2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/hypertension/edit-step-2/1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "hypertension",
+                            "edit-step-2",
+                            "1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Step 3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/hypertension/edit-step-3/1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "hypertension",
+                            "edit-step-3",
+                            "1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Step 4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/hypertension/edit-step-4/1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "hypertension",
+                            "edit-step-4",
+                            "1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Show Hypertension",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/doctor/hypertension/1/show",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "doctor",
+                        "hypertension",
+                        "1",
+                        "show"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete Hypertension",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/doctor/hypertension/1/delete",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "doctor",
+                        "hypertension",
+                        "1",
+                        "delete"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Diabetes",
+              "item": [
+                {
+                  "name": "Store",
+                  "item": [
+                    {
+                      "name": "Step 1",
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"family_member_id\": 1,\r\n    \"visit_id\": 2,\r\n    \"date\": \"2026-01-31\",\r\n    \"chief_complaint\": \"يعاني المريض من عطش شديد وزيادة في عدد مرات التبول خلال الأسبوع الماضي.\"\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/diabetes-follow-up/store/step-1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "diabetes-follow-up",
+                            "store",
+                            "step-1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Store & Update Step 2",
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"id\": 1, \r\n    \"risk_factors\": {\r\n        \"smoking\": true,\r\n        \"physical_inactivity\": false,\r\n        \"bmi_obesity\": true,\r\n        \"dyslipidemia\": false,\r\n        \"family_history\": true\r\n    },\r\n    \"complications\": {\r\n        \"ckd\": false,\r\n        \"neuropathy\": true,\r\n        \"retinopathy\": false,\r\n        \"diabetic_foot\": true,\r\n        \"dka_hypoglycemia\": false\r\n    }\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/diabetes-follow-up/store/step-2",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "diabetes-follow-up",
+                            "store",
+                            "step-2"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Store & Update Step 3",
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"id\": 1,\r\n    \"workup_every_visit\": {\r\n        \"fbs\": \"140 mg/dL\",\r\n        \"urine_analysis\": \"Trace protein\"\r\n    },\r\n    \"workup_6_month\": {\r\n        \"hba1c\": \"7.2%\",\r\n        \"creatinine_egfr\": \"1.1 mg/dL\"\r\n    },\r\n    \"workup_annual\": {\r\n        \"total_cholesterol\": \"195\",\r\n        \"fundus_examination\": \"Normal - No retinopathy\",\r\n        \"foot_examination\": \"Intact sensation\",\r\n        \"ecg\": \"Normal Sinus Rhythm\",\r\n        \"urinary_micr\": \"Negative\",\r\n        \"ldl\": \"110\",\r\n        \"hdl\": \"45\",\r\n        \"tg\": \"155\"\r\n    }\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/diabetes-follow-up/store/step-3",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "diabetes-follow-up",
+                            "store",
+                            "step-3"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Store & Update Step 4",
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"id\": 1,\r\n    \"health_education\": {\r\n        \"diet_weight_loss\": true,\r\n        \"physical_activity\": true,\r\n        \"smbg_hypoglycemia\": false,\r\n        \"quitting_smoking\": true\r\n    },\r\n    \"referrals\": \"Referral to ophthalmology for fundus examination.\",\r\n    \"treatment_plan\": \"Metformin 500mg twice daily, follow up in 3 months.\"\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/diabetes-follow-up/store/step-4",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "diabetes-follow-up",
+                            "store",
+                            "step-4"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Edit",
+                  "item": [
+                    {
+                      "name": "Step 1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/diabetes-follow-up/edit-step-1/1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "diabetes-follow-up",
+                            "edit-step-1",
+                            "1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Update Step 1",
+                      "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"date\": \"2026-01-29\",\r\n    \"chief_complaint\": \"يعاني المريض من عطش شديد وزيادة في عدد مرات التبول خلال الأسبوع الماضي.\"\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/diabetes-follow-up/update-step-1/1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "diabetes-follow-up",
+                            "update-step-1",
+                            "1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Step 2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/diabetes-follow-up/edit-step-2/1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "diabetes-follow-up",
+                            "edit-step-2",
+                            "1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Step 3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/diabetes-follow-up/edit-step-3/1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "diabetes-follow-up",
+                            "edit-step-3",
+                            "1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Step 4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://127.0.0.1:8000/api/doctor/diabetes-follow-up/edit-step-4/1",
+                          "protocol": "http",
+                          "host": [
+                            "127",
+                            "0",
+                            "0",
+                            "1"
+                          ],
+                          "port": "8000",
+                          "path": [
+                            "api",
+                            "doctor",
+                            "diabetes-follow-up",
+                            "edit-step-4",
+                            "1"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Show Diabetes",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/doctor/diabetes-follow-up/1/show",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "doctor",
+                        "diabetes-follow-up",
+                        "1",
+                        "show"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete Diabetes",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://127.0.0.1:8000/api/doctor/diabetes-follow-up/1/delete",
+                      "protocol": "http",
+                      "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                      ],
+                      "port": "8000",
+                      "path": [
+                        "api",
+                        "doctor",
+                        "diabetes-follow-up",
+                        "1",
+                        "delete"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Visits Form",
+          "item": [
+            {
+              "name": "store",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "index",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "edit",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "destroy",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "2|fWdytUDa3FB1hWTlf8nyEGjZEdECTnB1zJOPBLS0face1736",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "local_url",
+      "value": ""
+    },
+    {
+      "key": "production_url",
+      "value": ""
+    }
+  ]
+}
