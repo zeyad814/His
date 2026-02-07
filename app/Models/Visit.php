@@ -41,6 +41,7 @@ class Visit extends Model
         return $this->hasOne(DiabetesFollowUp::class);
     }
 
+
     public function growthVisit()
     {
         return $this->hasOne(GrowthVisit::class);
@@ -49,5 +50,10 @@ class Visit extends Model
     public function clinicalExamination()
     {
         return $this->hasOne(ClinicalExamination::class, 'visit_id');
+    }
+
+    public function chronicDiseaseVisit()
+    {
+        return $this->hasOne(ChronicDiseaseVisit::class);
     }
 }

@@ -6,6 +6,7 @@ use App\Models\Visit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\FamilyMember;
+use App\Traits\ApiResponse;
 use App\Traits\HasDoctorContext;
 
 class VisitController extends Controller
@@ -34,46 +35,63 @@ class VisitController extends Controller
 
         $visit = Visit::create($validated);
 
-        return response()->json([
-            'message' => 'Visit created successfully',
-            'data' => $visit
-        ], 201);
+        return ApiResponse::successResponse(
+            'Visit created successfully',
+            201,
+            $visit
+        );
     }
 
     public function index(FamilyMember $familyMember)
     {
         $visits = $familyMember->visits()->with('doctor')->latest('date')->get();
 
-        return response()->json(['data' => $visits]);
+        return ApiResponse::successResponse(
+            'Visits returned successfully',
+            200,
+            $visits
+        );
     }
 
     public function show(FamilyMember $familyMember, Visit $visit)
     {
         if ($visit->family_member_id !== $familyMember->id) {
-            return response()->json(['message' => 'Visit not found for this family member'], 404);
+            return ApiResponse::errorResponse(
+                'Visit not found for this family member',
+                404
+            );
         }
 
-        return response()->json(['data' => $visit->load('doctor')]);
+        return ApiResponse::successResponse(
+            'Visit returned successfully',
+            200,
+            $visit->load('doctor')
+        );
     }
 
     public function edit(FamilyMember $familyMember, Visit $visit)
     {
         if ($visit->family_member_id !== $familyMember->id) {
-            return response()->json([
-                'message' => 'This visit does not belong to the specified family member.'
-            ], 403);
+            return ApiResponse::errorResponse(
+             'This visit does not belong to the specified family member.',
+             403);
         }
 
-        return response()->json([
-            'data' => $visit->load('doctor')
-        ]);
+        return ApiResponse::successResponse(
+            'Visit data returned successfully',
+            200,
+            $visit->load('doctor')
+        );
     }
 
 
     public function update(Request $request, FamilyMember $familyMember, Visit $visit)
     {
         if ($visit->family_member_id !== $familyMember->id) {
-            return response()->json(['message' => 'Visit not found for this family member'], 404);
+            return ApiResponse::errorResponse(
+                'Visit not found for this family member', 
+                404
+            );
         }
 
         $validated = $request->validate([
@@ -88,17 +106,26 @@ class VisitController extends Controller
 
         $visit->update($validated);
 
-        return response()->json(['message' => 'Visit updated successfully', 'data' => $visit]);
+        return ApiResponse::successResponse( 
+            'Visit updated successfully', 
+            200,
+            $visit);
     }
 
     public function destroy(FamilyMember $familyMember, Visit $visit)
     {
         if ($visit->family_member_id !== $familyMember->id) {
-            return response()->json(['message' => 'Visit does not belong to this family member.'], 403);
+            return ApiResponse::errorResponse(
+                'Visit does not belong to this family member.', 
+                403
+            );
         }
 
         $visit->delete();
 
-        return response()->json(['message' => 'Visit deleted successfully.']);
+        return ApiResponse::successResponse(
+            'Visit deleted successfully.',
+            200
+        );
     }
 }
