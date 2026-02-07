@@ -40,4 +40,9 @@ class Visit extends Model
     {
         return $this->hasOne(DiabetesFollowUp::class);
     }
+
+    public function chronicDiseaseVisit()
+    {
+        return $this->hasOne(ChronicDiseaseVisit::class);
+    }
 }

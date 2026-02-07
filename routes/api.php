@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Doctor\ChronicDiseaseController;
+use App\Http\Controllers\Doctor\ChronicDiseaseVisitController;
 use App\Http\Controllers\Doctor\DiabetesFollowUpController;
 use App\Http\Controllers\Doctor\VisitController;
 use App\Http\Controllers\Doctor\FamilyController;
@@ -99,6 +101,13 @@ Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
     Route::get('/family-members/{family_member}/visits/{visit}/edit', [VisitController::class, 'edit']);
     Route::put('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'update']);
     Route::delete('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'destroy']);
+
+    //chronic-disease
+    Route::apiResource('chronic-diseases', ChronicDiseaseController::class);
+
+    //Chronic-disease-visits
+    Route::apiResource('visits.chronic-diseases.disease-visits', ChronicDiseaseVisitController::class);
+
 });
 
 // Admin

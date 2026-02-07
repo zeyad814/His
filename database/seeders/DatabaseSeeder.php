@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             SignificantDataSeeder::class,
             VisitSeeder::class,
             HypertensionFollowUpSeeder::class,
+            ChronicDiseaseSeeder::class,
         ]);
     }
 }

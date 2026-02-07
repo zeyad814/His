@@ -11,17 +11,9 @@ class ChronicDisease extends Model
 
     protected $fillable = [
         'family_member_id',
-        'doctor_id',
         'diagnosis',
         'date_diagnosed',
         'risk_factors',
-        'complain',
-        'exam',
-        'vital_signs',
-        'investigations',
-        'management',
-        'notes',
-        'visit_date',
     ];
 
     public function familyMember()
@@ -29,8 +21,10 @@ class ChronicDisease extends Model
         return $this->belongsTo(FamilyMember::class);
     }
 
-     public function doctor()
+    
+
+    public function diseaseVisits()
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->hasMany(ChronicDiseaseVisit::class);
     }
 }
