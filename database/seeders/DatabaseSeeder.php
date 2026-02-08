@@ -35,6 +35,8 @@ class DatabaseSeeder extends Seeder
             HypertensionFollowUpSeeder::class,
             DiabetesFollowUpSeeder::class,
             ChronicDiseaseSeeder::class,
+            ClinicalExaminationSeeder::class,
+            DevelopmentalMilestoneSeeder::class,
         ]);
     }
 }

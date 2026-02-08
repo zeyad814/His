@@ -56,4 +56,9 @@ class Visit extends Model
     {
         return $this->hasOne(ChronicDiseaseVisit::class);
     }
+
+    public function growthMeasurements()
+    {
+        return $this->hasMany(ChildGrowthMeasurement::class, 'visit_id');
+    }
 }

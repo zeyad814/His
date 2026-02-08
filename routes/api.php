@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Doctor\BirthScreeningController;
+use App\Http\Controllers\Doctor\ChildGrowthController;
+use App\Http\Controllers\Doctor\ChildMilestoneController;
 use App\Http\Controllers\Doctor\ClinicalExaminationController;
 use App\Http\Controllers\Doctor\ChronicDiseaseController;
 use App\Http\Controllers\Doctor\ChronicDiseaseVisitController;
@@ -112,10 +114,27 @@ Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
 
         // Clinical Examination
         Route::prefix('/clinical-examination')->group(function () {
+            Route::get('/{family_member_id}', [ClinicalExaminationController::class, 'index']);
             Route::post('/store', [ClinicalExaminationController::class, 'store']);
             Route::get('/edit/{id}', [ClinicalExaminationController::class, 'edit']);
             Route::put('/update/{id}', [ClinicalExaminationController::class, 'update']);
             Route::delete('/delete/{id}', [ClinicalExaminationController::class, 'destroy']);
+        });
+
+        // Child Milestones
+        Route::prefix('/child-milestones')->group(function () {
+            Route::get('/stages', [ChildMilestoneController::class, 'getMilestoneStages']);
+            Route::get('/questions', [ChildMilestoneController::class, 'getQuestionsByStage']);
+            Route::post('/store', [ChildMilestoneController::class, 'store']);
+            Route::get('/show/{family_member_id}', [ChildMilestoneController::class, 'show']);
+            Route::get('/edit/{family_member_id}', [ChildMilestoneController::class, 'edit']);
+        });
+        
+        // Child Growth
+        Route::prefix('/child-growth')->group(function () {
+            Route::post('/store', [ChildGrowthController::class, 'store']);
+            Route::get('/edit/{visit_id}', [ChildGrowthController::class, 'edit']);
+            Route::get('/history/{family_member_id}', [ChildGrowthController::class, 'history']);
         });
     });
 

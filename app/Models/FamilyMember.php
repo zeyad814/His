@@ -133,4 +133,9 @@ class FamilyMember extends Model
     {
         return $this->hasMany(ClinicalExamination::class, 'family_member_id');
     }
+
+    public function growthMeasurements()
+    {
+        return $this->hasMany(ChildGrowthMeasurement::class, 'family_member_id');
+    }
 }

@@ -20,9 +20,25 @@ class ClinicalExaminationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($family_member_id)
     {
-        //
+        $doctor = $this->getAuthenticatedDoctor();
+        $examinations = ClinicalExamination::where('family_member_id', $family_member_id)
+            ->get();
+
+        $examinations->makeHidden([
+            'family_member_id',
+            'visit_id',
+            'doctor_id',
+            'created_at',
+            'updated_at'
+        ]);
+
+        return ApiResponse::successResponse(
+            'Clinical examinations retrieved successfully',
+            200,
+            $examinations
+        );
     }
 
     /**
@@ -60,7 +76,7 @@ class ClinicalExaminationController extends Controller
             $examination = ClinicalExamination::updateOrCreate(
                 [
                     'family_member_id' => $data['family_member_id'],
-                    'visit_id'         => $data['visit_id']
+                    'visit_id' => $data['visit_id']
                 ],
                 $data
             );
