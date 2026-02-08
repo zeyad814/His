@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Doctor\BirthScreeningController;
+use App\Http\Controllers\Doctor\ChildFollowupController;
 use App\Http\Controllers\Doctor\ChildGrowthController;
 use App\Http\Controllers\Doctor\ChildMilestoneController;
 use App\Http\Controllers\Doctor\ClinicalExaminationController;
@@ -135,6 +136,13 @@ Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
             Route::post('/store', [ChildGrowthController::class, 'store']);
             Route::get('/edit/{visit_id}', [ChildGrowthController::class, 'edit']);
             Route::get('/history/{family_member_id}', [ChildGrowthController::class, 'history']);
+        });
+
+        // Child Follow Up Over 5
+        Route::prefix('/child-follow-up-over-5')->group(function () {
+            Route::post('/store', [ChildFollowupController::class, 'store']);
+            Route::get('/edit/{id}', [ChildFollowupController::class, 'edit']);
+            Route::delete('/delete/{id}', [ChildFollowupController::class, 'destroy']);
         });
     });
 

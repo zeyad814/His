@@ -20,18 +20,20 @@ class VisitSeeder extends Seeder
 
         for ($i = 0; $i < 20; $i++)
         {
-            // أول زيارتين "أمراض مزمنة" والباقي عشوائي لنفس المريض
-            if ($i < 2)
-            {
+            // منطق تحديد نوع الزيارة
+            if ($i < 2) {
                 $currentType = 'أمراض مزمنة';
-            }
-            else
-            {
+            } 
+            elseif ($i === 6) { 
+                // الإدخال رقم 7 (لأن العد يبدأ من 0)
+                $currentType = 'متابعة طفل';
+            } 
+            else {
                 $currentType = $otherVisitTypes[array_rand($otherVisitTypes)];
             }
 
             Visit::create([
-                'family_member_id' => $firstMemberId, // تم تثبيت المريض الأول لكل الزيارات
+                'family_member_id' => $firstMemberId,
                 'doctor_id' => $doctors[array_rand($doctors)],
                 'date' => now()->subDays(rand(0, 30)),
                 'visit_type' => $currentType,

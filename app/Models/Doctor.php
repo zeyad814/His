@@ -146,4 +146,9 @@ class Doctor extends Model
     {
         return $this->hasMany(ClinicalExamination::class, 'doctor_id');
     }
+
+    public function childFollowupsAboveFive()
+    {
+        return $this->hasMany(ChildFollowupAboveFive::class);
+    }
 }
