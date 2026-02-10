@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
             DevelopmentalMilestoneSeeder::class,
             PregnancySeeder::class,
             PregnancyVisitSeeder::class,
+            BirthScreeningSeeder::class,
         ]);
     }
 }

@@ -139,9 +139,52 @@ class BirthScreeningController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($family_member_id)
     {
-        //
+        $doctor = $this->getAuthenticatedDoctor();
+        $screening = BirthScreening::where('family_member_id', $family_member_id)->first();
+        if (!$screening)
+        {
+            return ApiResponse::errorResponse('No screening records found for this member.', 404);
+        }
+
+        // $growthVisits = GrowthVisit::where('birth_screening_id', $screening->id)->paginate(3);
+        $growthVisits = GrowthVisit::where('birth_screening_id', $screening->id)
+            ->latest()
+            ->paginate(3)
+            ->through(function ($visit) {
+                return [
+                    "id" => $visit->id,
+                    'visit_date' => $visit->visit_date,
+                    'age_stage' => $visit->age_stage,
+                    'weight_kg' => $visit->weight_kg,
+                    'height_cm' => $visit->height_cm,
+                    'head_circumference_cm' => $visit->head_circumference_cm,
+                    'use_pacifier' => (bool) $visit->use_pacifier,
+                    'exclusive_breastfeeding' => (bool) $visit->exclusive_breastfeeding,
+                    'supplementary_feeding' => (bool) $visit->supplementary_feeding,
+                    'bottle_feeding' => (bool) $visit->bottle_feeding,
+                    'cup_spoon_feeding' => (bool) $visit->cup_spoon_feeding,
+                    'natural_breastfeeding' => (bool) $visit->natural_breastfeeding,
+                ];
+            });
+        $responseData = [
+            'screening_info' => $screening->makeHidden(['created_at', 'updated_at']), // إخفاء الحقول غير الضرورية
+            'growth_visits' => $growthVisits->items(), // الزيارات الثلاث الحالية
+            'pagination' => [
+                'total' => $growthVisits->total(),
+                'count' => $growthVisits->count(),
+                'per_page' => $growthVisits->perPage(),
+                'current_page' => $growthVisits->currentPage(),
+                'total_pages' => $growthVisits->lastPage(),
+            ]
+        ];
+
+        return ApiResponse::successResponse(
+            'Birth screening and growth visit data retrieved successfully',
+            200,
+            $responseData
+        );
     }
 
     /**

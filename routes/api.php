@@ -8,8 +8,9 @@ use App\Http\Controllers\Doctor\VisitController;
 use App\Http\Controllers\Doctor\FamilyController;
 use App\Http\Controllers\Doctor\PregnancyController;
 use App\Http\Controllers\Doctor\ChildGrowthController;
-use App\Http\Controllers\Doctor\ChildFollowupController;
+use App\Http\Controllers\Doctor\ChildAboveFiveVitalController;
 use App\Http\Controllers\Doctor\BirthScreeningController;
+use App\Http\Controllers\Doctor\ChildAboveFiveClinicalController;
 use App\Http\Controllers\Doctor\ChildMilestoneController;
 use App\Http\Controllers\Doctor\ChronicDiseaseController;
 use App\Http\Controllers\Doctor\SignificantDataController;
@@ -106,6 +107,7 @@ Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
             Route::get("/edit/{family_member_id}", [BirthScreeningController::class, "edit"]);
             Route::patch("/store-special-cases", [BirthScreeningController::class, "storeSpecialCases"]);
             Route::get("/edit-special-cases/{family_member_id}", [BirthScreeningController::class, "editSpecialCases"]);
+            Route::get('/show/{family_member_id}', [BirthScreeningController::class, 'show']);
         });
 
         // Growth Visit
@@ -140,11 +142,20 @@ Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
             Route::get('/history/{family_member_id}', [ChildGrowthController::class, 'history']);
         });
 
-        // Child Follow Up Over 5
-        Route::prefix('/child-follow-up-over-5')->group(function () {
-            Route::post('/store', [ChildFollowupController::class, 'store']);
-            Route::get('/edit/{id}', [ChildFollowupController::class, 'edit']);
-            Route::delete('/delete/{id}', [ChildFollowupController::class, 'destroy']);
+        // Child Above Five Vital Over 5
+        Route::prefix('/child-above-five-vital')->group(function () {
+            Route::get('/{family_member_id}', [ChildAboveFiveVitalController::class, 'index']);
+            Route::post('/store', [ChildAboveFiveVitalController::class, 'store']);
+            Route::get('/edit/{id}', [ChildAboveFiveVitalController::class, 'edit']);
+            Route::delete('/delete/{id}', [ChildAboveFiveVitalController::class, 'destroy']);
+        });
+
+        // Child Above Five Clinical Over 5
+        Route::prefix('/child-above-five-clinical')->group(function () {
+            Route::get('/{family_member_id}', [ChildAboveFiveClinicalController::class, 'index']);
+            Route::post('/store', [ChildAboveFiveClinicalController::class, 'store']);
+            Route::get('/edit/{id}', [ChildAboveFiveClinicalController::class, 'edit']);
+            Route::delete('/delete/{id}', [ChildAboveFiveClinicalController::class, 'destroy']);
         });
     });
 

@@ -24,15 +24,20 @@ class ClinicalExaminationController extends Controller
     {
         $doctor = $this->getAuthenticatedDoctor();
         $examinations = ClinicalExamination::where('family_member_id', $family_member_id)
-            ->get();
-
-        $examinations->makeHidden([
-            'family_member_id',
-            'visit_id',
-            'doctor_id',
-            'created_at',
-            'updated_at'
-        ]);
+            ->with('doctor.user')
+            ->get()
+            ->map(function ($exam) {
+                return [
+                    'id' => $exam->id,
+                    'visit_date' => $exam->visit_date,
+                    'age_stage' => $exam->age_stage,
+                    'clinical_assessment' => $exam->clinical_assessment,
+                    'parental_concern' => $exam->parental_concern,
+                    'health_education' => $exam->health_education,
+                    'notes' => $exam->notes,
+                    'doctor_name' => $exam->doctor->user->name,
+                ];
+            });
 
         return ApiResponse::successResponse(
             'Clinical examinations retrieved successfully',

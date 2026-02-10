@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('child_followups', function (Blueprint $table) {
+        Schema::create('child_above_five_vitals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('family_member_id')->constrained()->onDelete('cascade');
             $table->foreignId('visit_id')->unique()->constrained()->onDelete('cascade');
@@ -21,6 +21,7 @@ return new class extends Migration
             $table->boolean('vaccine_dt')->default(false);
             $table->boolean('vaccine_meningitis')->default(false);
             $table->string('other_vaccines')->nullable();
+            $table->date('vaccine_date')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();
         });
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('child_followups');
+        Schema::dropIfExists('child_above_five_vitals');
     }
 };

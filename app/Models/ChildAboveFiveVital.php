@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ChildFollowup extends Model
+class ChildAboveFiveVital extends Model
 {
     use HasFactory;
 
@@ -18,6 +18,7 @@ class ChildFollowup extends Model
         'vaccine_dt',
         'vaccine_meningitis',
         'other_vaccines',
+        "vaccine_date",
         'notes',
     ];
 
