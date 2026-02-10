@@ -12,18 +12,24 @@ class PregnancyVisit extends Model
     protected $fillable = [
         'pregnancy_id',
         'doctor_id',
-        'date',
+        'visit_id',
         'visit_date',
-        'dental',
-        'vitamins',
+        'next_visit',
         'weight',
-        'complications',
         'blood_pressure',
         'general_exam',
-        'health_education',
-        'next_visit',
-        'obstetric_assessment',
+        'fundal_height',
+        'fetal_lie',
+        'fetal_heart_rate',
+        'fetal_movement',
         'ultrasound',
+        'urine_analysis',
+        'hemoglobin',
+        'blood_glucose',
+        'dental',
+        'vitamins',
+        'health_education',
+        'complications',
     ];
 
     public function pregnancy()
@@ -33,7 +39,12 @@ class PregnancyVisit extends Model
 
     public function doctor()
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsTo(Doctor::class, 'doctor_id');
+    }
+
+    public function visit()
+    {
+        return $this->belongsTo(Visit::class, 'visit_id');
     }
 
 }

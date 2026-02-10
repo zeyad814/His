@@ -1,22 +1,24 @@
 <?php
 
+use App\Models\Visit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Doctor\BirthScreeningController;
-use App\Http\Controllers\Doctor\ChildFollowupController;
-use App\Http\Controllers\Doctor\ChildGrowthController;
-use App\Http\Controllers\Doctor\ChildMilestoneController;
-use App\Http\Controllers\Doctor\ClinicalExaminationController;
-use App\Http\Controllers\Doctor\ChronicDiseaseController;
-use App\Http\Controllers\Doctor\ChronicDiseaseVisitController;
-use App\Http\Controllers\Doctor\DiabetesFollowUpController;
 use App\Http\Controllers\Doctor\VisitController;
 use App\Http\Controllers\Doctor\FamilyController;
-use App\Http\Controllers\Doctor\GeneralExaminationController;
-use App\Http\Controllers\Doctor\HypertensionStepController;
+use App\Http\Controllers\Doctor\PregnancyController;
+use App\Http\Controllers\Doctor\ChildGrowthController;
+use App\Http\Controllers\Doctor\ChildFollowupController;
+use App\Http\Controllers\Doctor\BirthScreeningController;
+use App\Http\Controllers\Doctor\ChildMilestoneController;
+use App\Http\Controllers\Doctor\ChronicDiseaseController;
 use App\Http\Controllers\Doctor\SignificantDataController;
-use App\Models\Visit;
+use App\Http\Controllers\Doctor\DiabetesFollowUpController;
+use App\Http\Controllers\Doctor\HypertensionStepController;
+use App\Http\Controllers\Doctor\GeneralExaminationController;
+use App\Http\Controllers\Doctor\ChronicDiseaseVisitController;
+use App\Http\Controllers\Doctor\ClinicalExaminationController;
+use App\Http\Controllers\Doctor\PregnancyVisitController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -160,6 +162,11 @@ Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
     //Chronic-disease-visits
     Route::apiResource('visits.chronic-diseases.disease-visits', ChronicDiseaseVisitController::class);
 
+    //Pregnancy (Basic info)
+    Route::apiResource('pregnancies', PregnancyController::class);
+    
+    //Pregnancy Visits
+    Route::apiResource('pregnancy_visits', PregnancyVisitController::class);
 });
 
 // Admin

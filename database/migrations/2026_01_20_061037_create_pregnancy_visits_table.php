@@ -15,18 +15,35 @@ return new class extends Migration
             $table->id();
             $table->foreignId('pregnancy_id')->constrained()->cascadeOnDelete();
             $table->foreignId('doctor_id')->constrained()->cascadeOnDelete();
-            $table->date('date')->nullable(); // تاريخ تسجيل الزيارة في السيستم
-            $table->date('visit_date')->nullable();  // تاريخ الزيارة الفعلي
+            $table->foreignId('visit_id')->constrained()->cascadeOnDelete();
+
+            //Date
+            $table->date('visit_date')->nullable(); /// تاريخ الزيارة الفعلي
+            $table->date('next_visit')->nullable();  // موعد الزيارة القادمة
+
+            //الفحص العام
+            $table->decimal('weight', 5, 2)->nullable();
+            $table->string('blood_pressure')->nullable();
+            $table->text('general_exam')->nullable();
+
+            // التقييم التوليدي (Obstetric Assessment)
+            $table->string('fundal_height')->nullable();      // Fundal Level (ارتفاع الرحم)
+            $table->string('fetal_lie')->nullable();          // Fetal Lie (وضع الجنين)
+            $table->string('fetal_heart_rate')->nullable();   // Fetal Heart Sound (نبض الجنين)
+            $table->string('fetal_movement')->nullable();     // Fetal Movement (حركة الجنين)
+            $table->string('ultrasound')->nullable();         // U/S ملاحظات السونار
+
+            // التحاليل في الزيارة (Labs)
+            $table->string('urine_analysis')->nullable();     // زلال / سكر
+            $table->decimal('hemoglobin', 5, 2)->nullable();  // نسبة الهيموجلوبين
+            $table->decimal('blood_glucose', 5, 2)->nullable(); // سكر الدم العشوائي
+
+            // التثقيف والعلاج
             $table->string('dental')->nullable(); // فحص الأسنان أثناء الحمل
             $table->string('vitamins')->nullable();
-            $table->decimal('weight', 5, 2)->nullable();
-            $table->text('complications')->nullable();  // المضاعفات
-            $table->string('blood_pressure')->nullable();
-            $table->text('general_exam')->nullable(); // الفحص العام
             $table->text('health_education')->nullable(); // التثقيف الصحي
-            $table->date('next_visit')->nullable();
-            $table->text('obstetric_assessment')->nullable();  // التقييم التوليدي
-            $table->string('ultrasound')->nullable(); // الموجات فوق الصوتية (U/S)
+            $table->text('complications')->nullable();  // المضاعفات
+
             $table->timestamps();
         });
     }

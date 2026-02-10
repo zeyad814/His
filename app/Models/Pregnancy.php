@@ -10,28 +10,28 @@ class Pregnancy extends Model
     use HasFactory;
 
     protected $fillable = [
-        'family_member_id',
-        'last_menstrual_period',
-        'expected_delivery_date',
-        'pregnancy_status',
-        'previous_cesarean',
-        'gravidity',
-        'parity',
-        'abortions',
-        'living_children',
-        'previous_stillbirths',
-        'blood_type',
-        'rh_factor',
-        'syphilis_test_result',
-        'last_tetanus_date',
-        'tetanus_doses',
-        'tetanus_immunity_status',
-        'consanguinity',
+       'family_member_id',
+       'last_menstrual_period',
+       'expected_delivery_date',
+       'pregnancy_status',
+       'gravidity',
+       'parity',
+       'abortions',
+       'living_children',
+       'previous_stillbirths',
+       'previous_cesarean',
+       'blood_type',
+       'rh_factor',
+       'syphilis_test_result',
+       'last_tetanus_date',
+       'tetanus_doses',
+       'tetanus_immunity_status',
+       'consanguinity',
     ];
 
     public function familyMember()
     {
-        return $this->belongsTo(FamilyMember::class);
+        return $this->belongsTo(FamilyMember::class, 'family_member_id');
     }
 
     public function pregnancyVisits()

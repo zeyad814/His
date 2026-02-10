@@ -14,22 +14,32 @@ return new class extends Migration
         Schema::create('pregnancies', function (Blueprint $table) {
             $table->id();
             $table->foreignId('family_member_id')->constrained()->cascadeOnDelete();
+            //تواريخ اساسية
             $table->date('last_menstrual_period')->nullable();
             $table->date('expected_delivery_date')->nullable(); // موعد الولادة المتوقع
             $table->string('pregnancy_status')->nullable(); // حالة الحمل
-            $table->boolean('previous_cesarean')->nullable(); // ولادة قيصرية سابقة
-            $table->integer('gravidity')->nullable();  // عدد مرات الحمل
-            $table->integer('parity')->nullable();  // عدد الولادات
-            $table->integer('abortions')->nullable(); // عدد الإجهاضات
-            $table->integer('living_children')->nullable(); // عدد الأطفال الأحياء
-            $table->integer('previous_stillbirths')->nullable();  // ولادات ميتة
+
+            // obstetric History التاريخ السابق
+            $table->integer('gravidity')->default(0);  // عدد مرات الحمل
+            $table->integer('parity')->default(0);  // عدد الولادات
+            $table->integer('abortions')->default(0); // عدد الإجهاضات
+            $table->integer('living_children')->default(0);// عدد الأطفال الأحياء
+            $table->integer('previous_stillbirths')->default(0); // ولادات ميتة
+            $table->integer('previous_cesarean')->default(0);// ولادة قيصرية سابقة
+            
+            //بيانات الدم والمناعة
             $table->string('blood_type')->nullable();
             $table->string('rh_factor')->nullable();
             $table->string('syphilis_test_result')->nullable(); // نتيجة الزهري
+
+            //tetanus
             $table->date('last_tetanus_date')->nullable(); // آخر تطعيم تيتانوس
-            $table->integer('tetanus_doses')->nullable(); // عدد الجرعات
+            $table->integer('tetanus_doses')->default(0); // عدد الجرعات
             $table->string('tetanus_immunity_status')->nullable();  // حالة المناعة
-            $table->boolean('consanguinity')->nullable();  // زواج أقارب
+            
+            //other
+            $table->boolean('consanguinity')->default(false);  // زواج أقارب
+
             $table->timestamps();
         });
     }

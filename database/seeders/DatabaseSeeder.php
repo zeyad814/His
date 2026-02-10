@@ -37,6 +37,8 @@ class DatabaseSeeder extends Seeder
             ChronicDiseaseSeeder::class,
             ClinicalExaminationSeeder::class,
             DevelopmentalMilestoneSeeder::class,
+            PregnancySeeder::class,
+            PregnancyVisitSeeder::class,
         ]);
     }
 }
