@@ -2,6 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\ChildGrowthMeasurement;
+use App\Models\ChronicDiseaseVisit;
+use App\Models\ClinicalExamination;
+use App\Models\DiabetesFollowUp;
+use App\Models\Doctor;
+use App\Models\FamilyMember;
+use App\Models\GrowthVisit;
+use App\Models\HypertensionFollowUp;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

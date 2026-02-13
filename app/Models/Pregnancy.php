@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\FamilyMember;
+use App\Models\PostnatalCare;
+use App\Models\PregnancyVisit;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -37,5 +40,10 @@ class Pregnancy extends Model
     public function pregnancyVisits()
     {
         return $this->hasMany(PregnancyVisit::class);
+    }
+
+    public function postnatalCare()
+    {
+        return $this->hasOne(PostnatalCare::class);
     }
 }

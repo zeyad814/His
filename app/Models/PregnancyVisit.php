@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Doctor;
+use App\Models\Pregnancy;
+use App\Models\Visit;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

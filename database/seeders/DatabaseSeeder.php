@@ -4,6 +4,20 @@ namespace Database\Seeders;
 
 use App\Models\Doctor;
 use App\Models\User;
+use Database\Seeders\AdminSeeder;
+use Database\Seeders\BirthScreeningSeeder;
+use Database\Seeders\ChronicDiseaseSeeder;
+use Database\Seeders\ClinicalExaminationSeeder;
+use Database\Seeders\DevelopmentalMilestoneSeeder;
+use Database\Seeders\DiabetesFollowUpSeeder;
+use Database\Seeders\FamilyFullProcessSeeder;
+use Database\Seeders\HypertensionFollowUpSeeder;
+use Database\Seeders\MedicalExaminationSeeder;
+use Database\Seeders\PostnatalCareSeeder;
+use Database\Seeders\PregnancySeeder;
+use Database\Seeders\PregnancyVisitSeeder;
+use Database\Seeders\SignificantDataSeeder;
+use Database\Seeders\VisitSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -40,6 +54,7 @@ class DatabaseSeeder extends Seeder
             PregnancySeeder::class,
             PregnancyVisitSeeder::class,
             BirthScreeningSeeder::class,
+            PostnatalCareSeeder::class,
         ]);
     }
 }

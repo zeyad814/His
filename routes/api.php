@@ -19,6 +19,7 @@ use App\Http\Controllers\Doctor\HypertensionStepController;
 use App\Http\Controllers\Doctor\GeneralExaminationController;
 use App\Http\Controllers\Doctor\ChronicDiseaseVisitController;
 use App\Http\Controllers\Doctor\ClinicalExaminationController;
+use App\Http\Controllers\Doctor\PostnatalCareController;
 use App\Http\Controllers\Doctor\PregnancyVisitController;
 
 Route::get('/user', function (Request $request) {
@@ -178,6 +179,9 @@ Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
     
     //Pregnancy Visits
     Route::apiResource('pregnancy_visits', PregnancyVisitController::class);
+
+    //Postnatal care
+    Route::apiResource('postnatal-care', PostnatalCareController::class);
 });
 
 // Admin

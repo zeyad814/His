@@ -2,6 +2,28 @@
 
 namespace App\Models;
 
+use App\Models\ChronicDisease;
+use App\Models\ClinicalExamination;
+use App\Models\Consent;
+use App\Models\DiabetesFollowUp;
+use App\Models\DrugCompatibility;
+use App\Models\Family;
+use App\Models\FamilyInjection;
+use App\Models\FeedbackReferral;
+use App\Models\GeriatricAssessmentMaster;
+use App\Models\HealthUnit;
+use App\Models\HypertensionFollowUp;
+use App\Models\LabRequest;
+use App\Models\MedicalConsent;
+use App\Models\MedicalProcedure;
+use App\Models\PostnatalCare;
+use App\Models\PregnancyVisit;
+use App\Models\PreProcedureChecklist;
+use App\Models\RadiologicalRequest;
+use App\Models\Referral;
+use App\Models\SignificantData;
+use App\Models\SurgeryUterus;
+use App\Models\Visit;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -150,5 +172,10 @@ class Doctor extends Model
     public function childFollowupsAboveFive()
     {
         return $this->hasMany(ChildFollowupAboveFive::class);
+    }
+
+    public function postnatalCares()
+    {
+        return $this->hasMany(PostnatalCare::class, 'doctor_id');
     }
 }
