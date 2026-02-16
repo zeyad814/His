@@ -25,10 +25,6 @@ class LoginController extends Controller
 
         if (!$user || !Hash::check($data['password'], $user->password))
         {
-            // return response()->json([
-            //     'status' => 'error',
-            //     'message' => 'Invalid credentials'
-            // ], 401);
             return ApiResponse::errorResponse('Invalid credentials', 401);
         }
 

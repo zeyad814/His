@@ -171,11 +171,16 @@ class Doctor extends Model
 
     public function childFollowupsAboveFive()
     {
-        return $this->hasMany(ChildFollowupAboveFive::class);
+        return $this->hasMany(ChildAboveFiveClinical::class);
     }
 
     public function postnatalCares()
     {
         return $this->hasMany(PostnatalCare::class, 'doctor_id');
+    }
+
+    public function obesityRecords()
+    {
+        return $this->hasMany(ObesityRecord::class, 'doctor_id');
     }
 }

@@ -70,13 +70,18 @@ class Visit extends Model
         return $this->hasMany(ChildGrowthMeasurement::class, 'visit_id');
     }
 
-    public function childFollowup()
-    {
-        return $this->hasOne(ChildFollowup::class, 'visit_id');
-    }
+    // public function childFollowup()
+    // {
+    //     return $this->hasOne(ChildFollowup::class, 'visit_id');
+    // }
 
     public function childFollowupAboveFive()
     {
-        return $this->hasOne(ChildFollowupAboveFive::class);
+        return $this->hasOne(ChildAboveFiveClinical::class);
+    }
+
+    public function obesityRecord()
+    {
+        return $this->hasOne(ObesityRecord::class, 'visit_id');
     }
 }

@@ -33,15 +33,7 @@ class FamilyController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        if ($user->userable_type !== \App\Models\Doctor::class)
-        {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Unauthorized access. Your account type does not have the required permissions.'
-            ], 403);
-        }
-
+        $user = $this->getAuthenticatedDoctor();
         $families = Family::with("headOfFamily")->paginate();
         if ($families->isEmpty())
         {
@@ -62,14 +54,7 @@ class FamilyController extends Controller
      */
     public function store(FamilyStoreRequest $request)
     {
-        if (Auth::user()->userable_type !== \App\Models\Doctor::class)
-        {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Unauthorized access. Your account type does not have the required permissions.'
-            ], 403);
-        }
-
+        $user = $this->getAuthenticatedDoctor();
         $data = $request->validated();
         // return response()->json([
         //     'status' => 'success',
@@ -90,14 +75,6 @@ class FamilyController extends Controller
     {
         $data = $request->validated()['members'];
         $user = $this->getAuthenticatedDoctor();
-        // $user = Auth::user();
-        if (Auth::user()->userable_type !== \App\Models\Doctor::class)
-        {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Unauthorized access. Your account type does not have the required permissions.'
-            ], 403);
-        }
 
         // $request->merge(['family_id' => $family_id]);
         $family = Family::find($family_id);

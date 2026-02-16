@@ -4,6 +4,7 @@ use App\Models\Visit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Doctor\VisitController;
 use App\Http\Controllers\Doctor\FamilyController;
 use App\Http\Controllers\Doctor\PregnancyController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\Doctor\HypertensionStepController;
 use App\Http\Controllers\Doctor\GeneralExaminationController;
 use App\Http\Controllers\Doctor\ChronicDiseaseVisitController;
 use App\Http\Controllers\Doctor\ClinicalExaminationController;
+use App\Http\Controllers\Doctor\ObesityRecordController;
 use App\Http\Controllers\Doctor\PostnatalCareController;
 use App\Http\Controllers\Doctor\PregnancyVisitController;
 
@@ -29,161 +31,176 @@ Route::get('/user', function (Request $request) {
 Route::post('/login', [LoginController::class, 'login']);
 
 // Doctor
-Route::middleware(['auth:sanctum', 'doctor'])->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
+    
+    // Doctor
+    Route::middleware('doctor')->group(function () {
+        // Family
+        Route::get('/families', [FamilyController::class, 'index']);
+        Route::post('/family/store', [FamilyController::class, 'store']);
+        Route::post('/family/store/member/{family_id}', [FamilyController::class, 'storeMembers']);
+        Route::patch('/family/assign/doctor/{family_id}', [FamilyController::class, 'assignDoctors']);
+        Route::post('/family/store/medical/history/{family_id}', [FamilyController::class, 'storeMedicalHistory']);
+        Route::post('/family/store/death/record/{family_id}', [FamilyController::class, 'storeDeathRecords']);
+        Route::post('/family/store/housing/info/{family_id}', [FamilyController::class, 'storeHousingInfo']);
+        Route::post('/family/store/social/research/{family_id}', [FamilyController::class, 'storeSocialResearch']);
+        Route::get('/families/show/{family_id}', [FamilyController::class, 'show']);
+        Route::get('/family/edit/{family_id}', [FamilyController::class, 'edit']);
+        Route::put('/family/update/{family_id}', [FamilyController::class, 'update']);
+        Route::get('/family/edit/members/{family_id}', [FamilyController::class, 'editMembers']);
+        Route::put('/family/update/members/{family_id}', [FamilyController::class, 'updateMembers']);
+        Route::get('/family/assign/doctor/edit/{family_id}', [FamilyController::class, 'editAssignDoctors']);
+        Route::get('/family/medical-history/edit/{family_id}', [FamilyController::class, 'editMedicalHistory']);
+        Route::put('/family/medical-history/update/{family_id}', [FamilyController::class, 'updateMedicalHistory']);
+        Route::get('/family/death-records/edit/{family_id}', [FamilyController::class, 'editDeathRecords']);
+        Route::get('/family/housing-info/edit/{family_id}', [FamilyController::class, 'editHousingInfo']);
+        Route::get('/family/social-research/edit/{family_id}', [FamilyController::class, 'editSocialResearch']);
 
-    // Family
-    Route::get('/families', [FamilyController::class, 'index']);
-    Route::post('/family/store', [FamilyController::class, 'store']);
-    Route::post('/family/store/member/{family_id}', [FamilyController::class, 'storeMembers']);
-    Route::patch('/family/assign/doctor/{family_id}', [FamilyController::class, 'assignDoctors']);
-    Route::post('/family/store/medical/history/{family_id}', [FamilyController::class, 'storeMedicalHistory']);
-    Route::post('/family/store/death/record/{family_id}', [FamilyController::class, 'storeDeathRecords']);
-    Route::post('/family/store/housing/info/{family_id}', [FamilyController::class, 'storeHousingInfo']);
-    Route::post('/family/store/social/research/{family_id}', [FamilyController::class, 'storeSocialResearch']);
-    Route::get('/families/show/{family_id}', [FamilyController::class, 'show']);
-    Route::get('/family/edit/{family_id}', [FamilyController::class, 'edit']);
-    Route::put('/family/update/{family_id}', [FamilyController::class, 'update']);
-    Route::get('/family/edit/members/{family_id}', [FamilyController::class, 'editMembers']);
-    Route::put('/family/update/members/{family_id}', [FamilyController::class, 'updateMembers']);
-    Route::get('/family/assign/doctor/edit/{family_id}', [FamilyController::class, 'editAssignDoctors']);
-    Route::get('/family/medical-history/edit/{family_id}', [FamilyController::class, 'editMedicalHistory']);
-    Route::put('/family/medical-history/update/{family_id}', [FamilyController::class, 'updateMedicalHistory']);
-    Route::get('/family/death-records/edit/{family_id}', [FamilyController::class, 'editDeathRecords']);
-    Route::get('/family/housing-info/edit/{family_id}', [FamilyController::class, 'editHousingInfo']);
-    Route::get('/family/social-research/edit/{family_id}', [FamilyController::class, 'editSocialResearch']);
+        // Doctor Examination
+        Route::prefix('doctor')->group(function () {
+            // General Examination
+            Route::post('/physical-examination/history', [GeneralExaminationController::class, 'store']);
+            Route::post('/general-examination/vitals', [GeneralExaminationController::class, 'storeVitals']);
+            Route::patch('/general-examination/systemic-exam', [GeneralExaminationController::class, 'storeSystemicExamination']);
+            Route::patch('/general-examination/final-exam', [GeneralExaminationController::class, 'storeFinalAssessment']);
+            Route::get('/family-members/{family_member_id}/full-examination', [GeneralExaminationController::class, 'show']);
+            Route::get('/physical-examination/edit/{family_member_id}', [GeneralExaminationController::class, 'edit']);
+            Route::get('/general-examination/vitals/edit/{physical_examination_id}', [GeneralExaminationController::class, 'editVitals']);
+            Route::get('/general-examination/systemic-exam/edit/{physical_examination_id}', [GeneralExaminationController::class, 'editSystemic']);
+            Route::get('/general-examination/final-exam/edit/{physical_examination_id}', [GeneralExaminationController::class, 'editFinalAssessment']);
 
-    // Doctor Examination
-    Route::prefix('doctor')->group(function () {
-        // General Examination
-        Route::post('/physical-examination/history', [GeneralExaminationController::class, 'store']);
-        Route::post('/general-examination/vitals', [GeneralExaminationController::class, 'storeVitals']);
-        Route::patch('/general-examination/systemic-exam', [GeneralExaminationController::class, 'storeSystemicExamination']);
-        Route::patch('/general-examination/final-exam', [GeneralExaminationController::class, 'storeFinalAssessment']);
-        Route::get('/family-members/{family_member_id}/full-examination', [GeneralExaminationController::class, 'show']);
-        Route::get('/physical-examination/edit/{family_member_id}', [GeneralExaminationController::class, 'edit']);
-        Route::get('/general-examination/vitals/edit/{physical_examination_id}', [GeneralExaminationController::class, 'editVitals']);
-        Route::get('/general-examination/systemic-exam/edit/{physical_examination_id}', [GeneralExaminationController::class, 'editSystemic']);
-        Route::get('/general-examination/final-exam/edit/{physical_examination_id}', [GeneralExaminationController::class, 'editFinalAssessment']);
+            // Significant Data
+            Route::get('/family-member/{family_member_id}/significant-data/index', [SignificantDataController::class, 'index']);
+            Route::post('/family-member/{family_member_id}/significant-data/store', [SignificantDataController::class, 'store']);
+            Route::get('/family-member/significant-data/edit/{id}', [SignificantDataController::class, 'edit']);
+            Route::put('/family-member/significant-data/update/{id}', [SignificantDataController::class, 'update']);
+            Route::delete('/family-member/significant-data/{id}', [SignificantDataController::class, 'destroy']);
 
-        // Significant Data
-        Route::get('/family-member/{family_member_id}/significant-data/index', [SignificantDataController::class, 'index']);
-        Route::post('/family-member/{family_member_id}/significant-data/store', [SignificantDataController::class, 'store']);
-        Route::get('/family-member/significant-data/edit/{id}', [SignificantDataController::class, 'edit']);
-        Route::put('/family-member/significant-data/update/{id}', [SignificantDataController::class, 'update']);
-        Route::delete('/family-member/significant-data/{id}', [SignificantDataController::class, 'destroy']);
+            // Hypertension Follow Up
+            Route::prefix('/hypertension')->group(function () {
+                Route::post('/store/step-1', [HypertensionStepController::class, 'storeStep1']);
+                Route::patch('/store/step-2', [HypertensionStepController::class, 'storeStep2']);
+                Route::patch('/store/step-3', [HypertensionStepController::class, 'storeStep3']);
+                Route::patch('/store/step-4', [HypertensionStepController::class, 'storeStep4']);
+                Route::get('/{id}/show', [HypertensionStepController::class, 'show']);
+                Route::get('/edit-step-1/{id}', [HypertensionStepController::class, 'editStep1']);
+                Route::patch('/update-step-1/{id}', [HypertensionStepController::class, 'updateStep1']);
+                Route::get('/edit-step-2/{id}', [HypertensionStepController::class, 'editStep2']);
+                Route::get('/edit-step-3/{id}', [HypertensionStepController::class, 'editStep3']);
+                Route::get('/edit-step-4/{id}', [HypertensionStepController::class, 'editStep4']);
+                Route::delete('/{id}/delete', [HypertensionStepController::class, 'destroy']);
+            });
 
-        // Hypertension Follow Up
-        Route::prefix('/hypertension')->group(function () {
-            Route::post('/store/step-1', [HypertensionStepController::class, 'storeStep1']);
-            Route::patch('/store/step-2', [HypertensionStepController::class, 'storeStep2']);
-            Route::patch('/store/step-3', [HypertensionStepController::class, 'storeStep3']);
-            Route::patch('/store/step-4', [HypertensionStepController::class, 'storeStep4']);
-            Route::get('/{id}/show', [HypertensionStepController::class, 'show']);
-            Route::get('/edit-step-1/{id}', [HypertensionStepController::class, 'editStep1']);
-            Route::patch('/update-step-1/{id}', [HypertensionStepController::class, 'updateStep1']);
-            Route::get('/edit-step-2/{id}', [HypertensionStepController::class, 'editStep2']);
-            Route::get('/edit-step-3/{id}', [HypertensionStepController::class, 'editStep3']);
-            Route::get('/edit-step-4/{id}', [HypertensionStepController::class, 'editStep4']);
-            Route::delete('/{id}/delete', [HypertensionStepController::class, 'destroy']);
+            // Diabetes Follow Up
+            Route::prefix('/diabetes-follow-up')->group(function () {
+                Route::post('/store/step-1', [DiabetesFollowUpController::class, 'storeStep1']);
+                Route::patch('/store/step-2', [DiabetesFollowUpController::class, 'storeStep2']);
+                Route::patch('/store/step-3', [DiabetesFollowUpController::class, 'storeStep3']);
+                Route::patch('/store/step-4', [DiabetesFollowUpController::class, 'storeStep4']);
+                Route::get('/{id}/show', [DiabetesFollowUpController::class, 'show']);
+                Route::get('/edit-step-1/{id}', [DiabetesFollowUpController::class, 'editStep1']);
+                Route::patch('/update-step-1/{id}', [DiabetesFollowUpController::class, 'updateStep1']);
+                Route::get('/edit-step-2/{id}', [DiabetesFollowUpController::class, 'editStep2']);
+                Route::get('/edit-step-3/{id}', [DiabetesFollowUpController::class, 'editStep3']);
+                Route::get('/edit-step-4/{id}', [DiabetesFollowUpController::class, 'editStep4']);
+                Route::delete('/{id}/delete', [DiabetesFollowUpController::class, 'destroy']);
+            });
+
+            // Birth Screening
+            Route::prefix('/birth-screening')->group(function () {
+                Route::post("/store", [BirthScreeningController::class, "store"]);
+                Route::get("/edit/{family_member_id}", [BirthScreeningController::class, "edit"]);
+                Route::patch("/store-special-cases", [BirthScreeningController::class, "storeSpecialCases"]);
+                Route::get("/edit-special-cases/{family_member_id}", [BirthScreeningController::class, "editSpecialCases"]);
+                Route::get('/show/{family_member_id}', [BirthScreeningController::class, 'show']);
+            });
+
+            // Growth Visit
+            Route::prefix('/growth-visit')->group(function () {
+                Route::post('/store', [BirthScreeningController::class, 'storeGrowthVisit']);
+                Route::get('/edit/{id}', [BirthScreeningController::class, 'editGrowthVisit']);
+                Route::put('/update/{id}', [BirthScreeningController::class, 'updateGrowthVisit']);
+            });
+
+            // Clinical Examination
+            Route::prefix('/clinical-examination')->group(function () {
+                Route::get('/{family_member_id}', [ClinicalExaminationController::class, 'index']);
+                Route::post('/store', [ClinicalExaminationController::class, 'store']);
+                Route::get('/edit/{id}', [ClinicalExaminationController::class, 'edit']);
+                Route::put('/update/{id}', [ClinicalExaminationController::class, 'update']);
+                Route::delete('/delete/{id}', [ClinicalExaminationController::class, 'destroy']);
+            });
+
+            // Child Milestones
+            Route::prefix('/child-milestones')->group(function () {
+                Route::get('/stages', [ChildMilestoneController::class, 'getMilestoneStages']);
+                Route::get('/questions', [ChildMilestoneController::class, 'getQuestionsByStage']);
+                Route::post('/store', [ChildMilestoneController::class, 'store']);
+                Route::get('/show/{family_member_id}', [ChildMilestoneController::class, 'show']);
+                Route::get('/edit/{family_member_id}', [ChildMilestoneController::class, 'edit']);
+            });
+            
+            // Child Growth
+            Route::prefix('/child-growth')->group(function () {
+                Route::post('/store', [ChildGrowthController::class, 'store']);
+                Route::get('/edit/{visit_id}', [ChildGrowthController::class, 'edit']);
+                Route::get('/history/{family_member_id}', [ChildGrowthController::class, 'history']);
+            });
+
+            // Child Above Five Vital Over 5
+            Route::prefix('/child-above-five-vital')->group(function () {
+                Route::get('/{family_member_id}', [ChildAboveFiveVitalController::class, 'index']);
+                Route::post('/store', [ChildAboveFiveVitalController::class, 'store']);
+                Route::get('/edit/{id}', [ChildAboveFiveVitalController::class, 'edit']);
+                Route::delete('/delete/{id}', [ChildAboveFiveVitalController::class, 'destroy']);
+            });
+
+            // Child Above Five Clinical Over 5
+            Route::prefix('/child-above-five-clinical')->group(function () {
+                Route::get('/{family_member_id}', [ChildAboveFiveClinicalController::class, 'index']);
+                Route::post('/store', [ChildAboveFiveClinicalController::class, 'store']);
+                Route::get('/edit/{id}', [ChildAboveFiveClinicalController::class, 'edit']);
+                Route::delete('/delete/{id}', [ChildAboveFiveClinicalController::class, 'destroy']);
+            });
+
+            // Obesity Records
+            Route::prefix('/obesity-records')->group(function () {
+                Route::get('/{family_member_id}', [ObesityRecordController::class, 'index']);
+                Route::post('/store', [ObesityRecordController::class, 'store']);
+                Route::get('/edit/{id}', [ObesityRecordController::class, 'edit']);
+                Route::delete('/delete/{id}', [ObesityRecordController::class, 'destroy']);
+            });
         });
 
-        // Diabetes Follow Up
-        Route::prefix('/diabetes-follow-up')->group(function () {
-            Route::post('/store/step-1', [DiabetesFollowUpController::class, 'storeStep1']);
-            Route::patch('/store/step-2', [DiabetesFollowUpController::class, 'storeStep2']);
-            Route::patch('/store/step-3', [DiabetesFollowUpController::class, 'storeStep3']);
-            Route::patch('/store/step-4', [DiabetesFollowUpController::class, 'storeStep4']);
-            Route::get('/{id}/show', [DiabetesFollowUpController::class, 'show']);
-            Route::get('/edit-step-1/{id}', [DiabetesFollowUpController::class, 'editStep1']);
-            Route::patch('/update-step-1/{id}', [DiabetesFollowUpController::class, 'updateStep1']);
-            Route::get('/edit-step-2/{id}', [DiabetesFollowUpController::class, 'editStep2']);
-            Route::get('/edit-step-3/{id}', [DiabetesFollowUpController::class, 'editStep3']);
-            Route::get('/edit-step-4/{id}', [DiabetesFollowUpController::class, 'editStep4']);
-            Route::delete('/{id}/delete', [DiabetesFollowUpController::class, 'destroy']);
-        });
+        // Visits
+        Route::post('/visits', [VisitController::class, 'store']);
+        Route::get('/family-members/{family_member}/visits', [VisitController::class, 'index']);
+        Route::get('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'show']);
+        Route::get('/family-members/{family_member}/visits/{visit}/edit', [VisitController::class, 'edit']);
+        Route::put('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'update']);
+        Route::delete('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'destroy']);
 
-        // Birth Screening
-        Route::prefix('/birth-screening')->group(function () {
-            Route::post("/store", [BirthScreeningController::class, "store"]);
-            Route::get("/edit/{family_member_id}", [BirthScreeningController::class, "edit"]);
-            Route::patch("/store-special-cases", [BirthScreeningController::class, "storeSpecialCases"]);
-            Route::get("/edit-special-cases/{family_member_id}", [BirthScreeningController::class, "editSpecialCases"]);
-            Route::get('/show/{family_member_id}', [BirthScreeningController::class, 'show']);
-        });
+        //chronic-disease
+        Route::apiResource('chronic-diseases', ChronicDiseaseController::class);
 
-        // Growth Visit
-        Route::prefix('/growth-visit')->group(function () {
-            Route::post('/store', [BirthScreeningController::class, 'storeGrowthVisit']);
-            Route::get('/edit/{id}', [BirthScreeningController::class, 'editGrowthVisit']);
-            Route::put('/update/{id}', [BirthScreeningController::class, 'updateGrowthVisit']);
-        });
+        //Chronic-disease-visits
+        Route::apiResource('visits.chronic-diseases.disease-visits', ChronicDiseaseVisitController::class);
 
-        // Clinical Examination
-        Route::prefix('/clinical-examination')->group(function () {
-            Route::get('/{family_member_id}', [ClinicalExaminationController::class, 'index']);
-            Route::post('/store', [ClinicalExaminationController::class, 'store']);
-            Route::get('/edit/{id}', [ClinicalExaminationController::class, 'edit']);
-            Route::put('/update/{id}', [ClinicalExaminationController::class, 'update']);
-            Route::delete('/delete/{id}', [ClinicalExaminationController::class, 'destroy']);
-        });
-
-        // Child Milestones
-        Route::prefix('/child-milestones')->group(function () {
-            Route::get('/stages', [ChildMilestoneController::class, 'getMilestoneStages']);
-            Route::get('/questions', [ChildMilestoneController::class, 'getQuestionsByStage']);
-            Route::post('/store', [ChildMilestoneController::class, 'store']);
-            Route::get('/show/{family_member_id}', [ChildMilestoneController::class, 'show']);
-            Route::get('/edit/{family_member_id}', [ChildMilestoneController::class, 'edit']);
-        });
+        //Pregnancy (Basic info)
+        Route::apiResource('pregnancies', PregnancyController::class);
         
-        // Child Growth
-        Route::prefix('/child-growth')->group(function () {
-            Route::post('/store', [ChildGrowthController::class, 'store']);
-            Route::get('/edit/{visit_id}', [ChildGrowthController::class, 'edit']);
-            Route::get('/history/{family_member_id}', [ChildGrowthController::class, 'history']);
-        });
+        //Pregnancy Visits
+        Route::apiResource('pregnancy_visits', PregnancyVisitController::class);
 
-        // Child Above Five Vital Over 5
-        Route::prefix('/child-above-five-vital')->group(function () {
-            Route::get('/{family_member_id}', [ChildAboveFiveVitalController::class, 'index']);
-            Route::post('/store', [ChildAboveFiveVitalController::class, 'store']);
-            Route::get('/edit/{id}', [ChildAboveFiveVitalController::class, 'edit']);
-            Route::delete('/delete/{id}', [ChildAboveFiveVitalController::class, 'destroy']);
-        });
-
-        // Child Above Five Clinical Over 5
-        Route::prefix('/child-above-five-clinical')->group(function () {
-            Route::get('/{family_member_id}', [ChildAboveFiveClinicalController::class, 'index']);
-            Route::post('/store', [ChildAboveFiveClinicalController::class, 'store']);
-            Route::get('/edit/{id}', [ChildAboveFiveClinicalController::class, 'edit']);
-            Route::delete('/delete/{id}', [ChildAboveFiveClinicalController::class, 'destroy']);
-        });
+        //Postnatal care
+        Route::apiResource('postnatal-care', PostnatalCareController::class);
+    });
+    
+    // Admin
+    Route::middleware('admin')->group(function () {
     });
 
-    // Visits
-    Route::post('/visits', [VisitController::class, 'store']);
-    Route::get('/family-members/{family_member}/visits', [VisitController::class, 'index']);
-    Route::get('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'show']);
-    Route::get('/family-members/{family_member}/visits/{visit}/edit', [VisitController::class, 'edit']);
-    Route::put('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'update']);
-    Route::delete('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'destroy']);
-
-    //chronic-disease
-    Route::apiResource('chronic-diseases', ChronicDiseaseController::class);
-
-    //Chronic-disease-visits
-    Route::apiResource('visits.chronic-diseases.disease-visits', ChronicDiseaseVisitController::class);
-
-    //Pregnancy (Basic info)
-    Route::apiResource('pregnancies', PregnancyController::class);
-    
-    //Pregnancy Visits
-    Route::apiResource('pregnancy_visits', PregnancyVisitController::class);
-
-    //Postnatal care
-    Route::apiResource('postnatal-care', PostnatalCareController::class);
+    // Logout
+    Route::post('/logout', [LogoutController::class, 'logout']);
 });
 
-// Admin
-Route::middleware(['auth:sanctum', 'admin'])->group(function () {
-});

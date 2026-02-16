@@ -139,13 +139,18 @@ class FamilyMember extends Model
         return $this->hasMany(ChildGrowthMeasurement::class, 'family_member_id');
     }
 
-    public function childFollowups()
-    {
-        return $this->hasMany(ChildFollowup::class, 'family_member_id');
-    }
+    // public function childFollowups()
+    // {
+    //     return $this->hasMany(ChildFollowup::class, 'family_member_id');
+    // }
 
     public function childFollowupsAboveFive()
     {
-        return $this->hasMany(ChildFollowupAboveFive::class);
+        return $this->hasMany(ChildAboveFiveClinical::class);
+    }
+
+    public function obesityRecords()
+    {
+        return $this->hasMany(ObesityRecord::class, 'family_member_id');
     }
 }
