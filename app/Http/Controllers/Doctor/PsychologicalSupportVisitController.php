@@ -26,6 +26,14 @@ class PsychologicalSupportVisitController extends Controller
             ->latest()
             ->paginate(5);
         
+        if ($visits->isEmpty())
+        {
+            return $this->successResponse(
+                'No visits found for this family member',
+                200
+            );
+        }
+        
         return PsychologicalSupportVisitResource::collection($visits)
             ->additional([
                 'success' => true,
