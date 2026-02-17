@@ -23,6 +23,7 @@ use App\Http\Controllers\Doctor\ClinicalExaminationController;
 use App\Http\Controllers\Doctor\ObesityRecordController;
 use App\Http\Controllers\Doctor\PostnatalCareController;
 use App\Http\Controllers\Doctor\PregnancyVisitController;
+use App\Http\Controllers\Doctor\PsychologicalSupportVisitController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -169,6 +170,15 @@ Route::middleware('auth:sanctum')->group(function () {
                 Route::post('/store', [ObesityRecordController::class, 'store']);
                 Route::get('/edit/{id}', [ObesityRecordController::class, 'edit']);
                 Route::delete('/delete/{id}', [ObesityRecordController::class, 'destroy']);
+            });
+
+            // Psychological Support Visit
+            Route::prefix('/psychological-support-visit')->group(function () {
+                Route::get('/{family_member_id}', [PsychologicalSupportVisitController::class, 'index']);
+                Route::post('/store', [PsychologicalSupportVisitController::class, 'store']);
+                Route::get('/edit/{id}', [PsychologicalSupportVisitController::class, 'edit'])->name('doctor.psychological-support.edit');
+                Route::put('/update/{id}', [PsychologicalSupportVisitController::class, 'update']);
+                Route::delete('/delete/{id}', [PsychologicalSupportVisitController::class, 'destroy']);
             });
         });
 

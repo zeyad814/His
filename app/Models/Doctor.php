@@ -183,4 +183,9 @@ class Doctor extends Model
     {
         return $this->hasMany(ObesityRecord::class, 'doctor_id');
     }
+
+    public function psychologicalSupportVisits()
+    {
+        return $this->hasMany(PsychologicalSupportVisit::class, 'doctor_id');
+    }
 }
