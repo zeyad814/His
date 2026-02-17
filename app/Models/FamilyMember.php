@@ -153,4 +153,9 @@ class FamilyMember extends Model
     {
         return $this->hasMany(ObesityRecord::class, 'family_member_id');
     }
+
+    public function psychologicalSupportVisits()
+    {
+        return $this->hasMany(PsychologicalSupportVisit::class, 'family_member_id');
+    }
 }
