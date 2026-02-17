@@ -29,6 +29,7 @@ class ChronicDiseaseController extends Controller
             200,
             $diseases
         );
+        
     }
 
     /**

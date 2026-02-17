@@ -56,45 +56,6 @@ class BirthScreeningController extends Controller
     public function storeGrowthVisit(StoreGrowthVisitRequest $request)
     {
         $data = $request->validated();
-        $doctor = $this->getAuthenticatedDoctor();
-        $age = $data['age_stage'];
-        if (in_array($age, ['under_2_months', '2', '4', '6']))
-        {
-            unset(
-                $data['natural_breastfeeding'],
-                $data['other_foods'],
-                $data['hemoglobin_level']
-            );
-        }
-        elseif ($age == '9')
-        {
-            unset(
-                $data['exclusive_breastfeeding'],
-                $data['supplementary_feeding'],
-                $data['bottle_feeding'],
-                $data['cup_spoon_feeding'],
-                $data['hemoglobin_level']
-            );
-        }
-        elseif (in_array($age, ['12', '18', '24']))
-        {
-            unset(
-                $data['exclusive_breastfeeding'],
-                $data['supplementary_feeding'],
-                $data['bottle_feeding'],
-                $data['cup_spoon_feeding']
-            );
-        }
-        elseif (in_array($age, ['36', '48', '60']))
-        {
-            unset(
-                $data['exclusive_breastfeeding'],
-                $data['supplementary_feeding'],
-                $data['bottle_feeding'],
-                $data['cup_spoon_feeding'],
-                $data['natural_breastfeeding']
-            );
-        }
 
         DB::beginTransaction();
         try
