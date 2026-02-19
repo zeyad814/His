@@ -158,4 +158,9 @@ class FamilyMember extends Model
     {
         return $this->hasMany(PsychologicalSupportVisit::class, 'family_member_id');
     }
+
+    public function familyPlannings()
+    {
+        return $this->hasMany(FamilyPlanning::class, 'family_member_id');
+    }
 }

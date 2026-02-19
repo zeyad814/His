@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Visit;
+use App\Http\Controllers\Doctor\FamilyPlanningController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
@@ -20,6 +20,7 @@ use App\Http\Controllers\Doctor\HypertensionStepController;
 use App\Http\Controllers\Doctor\GeneralExaminationController;
 use App\Http\Controllers\Doctor\ChronicDiseaseVisitController;
 use App\Http\Controllers\Doctor\ClinicalExaminationController;
+use App\Http\Controllers\Doctor\FamilyPlanningFollowUpController;
 use App\Http\Controllers\Doctor\ObesityRecordController;
 use App\Http\Controllers\Doctor\PostnatalCareController;
 use App\Http\Controllers\Doctor\PregnancyVisitController;
@@ -204,6 +205,13 @@ Route::middleware('auth:sanctum')->group(function () {
 
         //Postnatal care
         Route::apiResource('postnatal-care', PostnatalCareController::class);
+
+        //Family planning
+        Route::apiResource('family-planning', FamilyPlanningController::class);
+
+        //Follow Ups
+        //nested 
+        Route::apiResource('family-planning.follow-ups', FamilyPlanningFollowUpController::class);
     });
     
     // Admin
