@@ -1,8 +1,13 @@
 <?php
 
+use App\Traits\ApiResponse;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -18,5 +23,34 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        // 1. Handling 404 (Resource Not Found)
+    $exceptions->render(function (NotFoundHttpException $e, Request $request) {
+        if ($request->is('api/*')) {
+            return ApiResponse::errorResponse(
+                'The requested resource was not found.', 
+                404
+            );
+        }
+    });
+
+    // 2. Handling Validation Errors
+    $exceptions->render(function (ValidationException $e, Request $request) {
+        if ($request->is('api/*')) {
+            return ApiResponse::errorResponse(
+                'The given data was invalid.',
+                422,
+                $e->errors() // نرسل تفاصيل الأخطاء في خانة الـ errors أو الـ data
+            );
+        }
+    });
+
+    // 3. Handling Unauthorized Access (Expired or missing token)
+    $exceptions->render(function (AuthenticationException $e, Request $request) {
+        if ($request->is('api/*')) {
+            return ApiResponse::errorResponse(
+                'Unauthenticated. Please log in to access this resource.',
+                401
+            );
+        }
+    });
     })->create();

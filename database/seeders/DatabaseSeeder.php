@@ -55,6 +55,8 @@ class DatabaseSeeder extends Seeder
             PregnancyVisitSeeder::class,
             BirthScreeningSeeder::class,
             PostnatalCareSeeder::class,
+            FamilyPlanningSeeder::class,
+            FamilyPlanningFollowUpSeeder::class,
         ]);
     }
 }

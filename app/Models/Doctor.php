@@ -183,4 +183,17 @@ class Doctor extends Model
     {
         return $this->hasMany(ObesityRecord::class, 'doctor_id');
     }
+
+    public function familyPlannings()
+    {
+        return $this->hasMany(FamilyPlanning::class, 'doctor_id');
+    }
+
+    public function familyPlanningFollowUps()
+    {
+        return $this->hasMany(FamilyPlanningFollowUp::class, 'doctor_id');
+    }
 }
+
+
+
