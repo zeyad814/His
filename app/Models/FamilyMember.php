@@ -163,4 +163,9 @@ class FamilyMember extends Model
     {
         return $this->hasMany(FamilyPlanning::class, 'family_member_id');
     }
+
+    public function cvRiskAssessments()
+    {
+        return $this->hasMany(CvRiskAssessment::class, 'family_member_id');
+    }
 }

@@ -199,7 +199,9 @@ class Doctor extends Model
     {
         return $this->hasMany(FamilyPlanningFollowUp::class, 'doctor_id');
     }
+
+    public function cvRiskAssessments()
+    {
+        return $this->hasMany(CvRiskAssessment::class, 'doctor_id');
+    }
 }
-
-
-

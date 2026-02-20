@@ -20,6 +20,7 @@ use App\Http\Controllers\Doctor\HypertensionStepController;
 use App\Http\Controllers\Doctor\GeneralExaminationController;
 use App\Http\Controllers\Doctor\ChronicDiseaseVisitController;
 use App\Http\Controllers\Doctor\ClinicalExaminationController;
+use App\Http\Controllers\Doctor\CvRiskAssessmentController;
 use App\Http\Controllers\Doctor\FamilyPlanningFollowUpController;
 use App\Http\Controllers\Doctor\ObesityRecordController;
 use App\Http\Controllers\Doctor\PostnatalCareController;
@@ -180,6 +181,28 @@ Route::middleware('auth:sanctum')->group(function () {
                 Route::get('/edit/{id}', [PsychologicalSupportVisitController::class, 'edit'])->name('doctor.psychological-support.edit');
                 Route::put('/update/{id}', [PsychologicalSupportVisitController::class, 'update']);
                 Route::delete('/delete/{id}', [PsychologicalSupportVisitController::class, 'destroy']);
+            });
+
+            // Cardiovascular Risk Assessment 
+            Route::prefix('/cv-risk-assessments')->as('doctor.cv-risk.')->group(function () {
+                
+                // 1. القائمة والعرض والحذف (General)
+                Route::get('/{family_member_id}', [CvRiskAssessmentController::class, 'index'])->name('index');
+                Route::get('/show/{id}', [CvRiskAssessmentController::class, 'show'])->name('show');
+                Route::delete('/delete/{id}', [CvRiskAssessmentController::class, 'destroy'])->name('destroy');
+
+                // 2. المرحلة الأولى (Step 1)
+                Route::post('/store-step1', [CvRiskAssessmentController::class, 'storeStep1'])->name('storeStep1');
+                Route::get('/edit-step1/{id}', [CvRiskAssessmentController::class, 'editStep1'])->name('editStep1');
+                Route::put('/update-step1/{id}', [CvRiskAssessmentController::class, 'updateStep1'])->name('updateStep1');
+                
+                // 3. المرحلة الثانية (Step 2)
+                Route::put('/store-step2/{id}', [CvRiskAssessmentController::class, 'storeStep2'])->name('storeStep2');
+                Route::get('/edit-step2/{id}', [CvRiskAssessmentController::class, 'editStep2'])->name('editStep2');
+                
+                // 4. المرحلة الثالثة (Step 3)
+                Route::put('/store-step3/{id}', [CvRiskAssessmentController::class, 'storeStep3'])->name('storeStep3');
+                Route::get('/edit-step3/{id}', [CvRiskAssessmentController::class, 'editStep3'])->name('editStep3');
             });
         });
 
