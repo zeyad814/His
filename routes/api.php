@@ -185,8 +185,16 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::apiResource('chronic-diseases', ChronicDiseaseController::class);
 
         //Chronic-disease-visits
-        Route::apiResource('chronic-disease.disease-visits', ChronicDiseaseVisitController::class);
-
+        Route::prefix('/chronic-disease-visits')->group(function () {
+            Route::get('/disease/{chronic_disease_id}', [ChronicDiseaseVisitController::class, 'index']);
+            Route::prefix('/visit/{visit}/disease/{chronicDisease}')->group(function () {
+                Route::post('/store', [ChronicDiseaseVisitController::class, 'store']);
+                Route::get('/show/{diseaseVisit}', [ChronicDiseaseVisitController::class, 'show']);
+                Route::put('/update/{diseaseVisit}', [ChronicDiseaseVisitController::class, 'update']);
+                Route::delete('/delete/{diseaseVisit}', [ChronicDiseaseVisitController::class, 'destroy']);
+            });
+        });
+        
         //Pregnancy (Basic info)
         Route::apiResource('pregnancies', PregnancyController::class);
         

@@ -21,14 +21,13 @@ class ChronicDiseaseVisitController extends Controller
      */
    public function index($chronic_disease_id)
     {
-
-        $diseaseVisits = ChronicDisease::where("id", $chronic_disease_id)
+        $diseaseVisits = ChronicDiseaseVisit::where("chronic_disease_id", $chronic_disease_id)
            ->get();
 
         return ApiResponse::successResponse(
             'Chronic disease visits returned successfully',
             200,
-            ChronicDiseaseVisitResource::collection($diseaseVisits) // استخدام الريسورس
+            ChronicDiseaseVisitResource::collection($diseaseVisits)
         );
     }
 
