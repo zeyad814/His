@@ -1,29 +1,29 @@
 <?php
 
-use App\Http\Controllers\Doctor\FamilyPlanningController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\Doctor\VisitController;
-use App\Http\Controllers\Doctor\FamilyController;
-use App\Http\Controllers\Doctor\PregnancyController;
-use App\Http\Controllers\Doctor\ChildGrowthController;
-use App\Http\Controllers\Doctor\ChildAboveFiveVitalController;
 use App\Http\Controllers\Doctor\BirthScreeningController;
 use App\Http\Controllers\Doctor\ChildAboveFiveClinicalController;
+use App\Http\Controllers\Doctor\ChildAboveFiveVitalController;
+use App\Http\Controllers\Doctor\ChildGrowthController;
 use App\Http\Controllers\Doctor\ChildMilestoneController;
 use App\Http\Controllers\Doctor\ChronicDiseaseController;
-use App\Http\Controllers\Doctor\SignificantDataController;
-use App\Http\Controllers\Doctor\DiabetesFollowUpController;
-use App\Http\Controllers\Doctor\HypertensionStepController;
-use App\Http\Controllers\Doctor\GeneralExaminationController;
 use App\Http\Controllers\Doctor\ChronicDiseaseVisitController;
 use App\Http\Controllers\Doctor\ClinicalExaminationController;
+use App\Http\Controllers\Doctor\DiabetesFollowUpController;
+use App\Http\Controllers\Doctor\FamilyController;
+use App\Http\Controllers\Doctor\FamilyPlanningController;
 use App\Http\Controllers\Doctor\FamilyPlanningFollowUpController;
+use App\Http\Controllers\Doctor\GeneralExaminationController;
+use App\Http\Controllers\Doctor\HypertensionStepController;
 use App\Http\Controllers\Doctor\ObesityRecordController;
 use App\Http\Controllers\Doctor\PostnatalCareController;
+use App\Http\Controllers\Doctor\PregnancyController;
 use App\Http\Controllers\Doctor\PregnancyVisitController;
+use App\Http\Controllers\Doctor\SignificantDataController;
+use App\Http\Controllers\Doctor\VisitController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -185,7 +185,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::apiResource('chronic-diseases', ChronicDiseaseController::class);
 
         //Chronic-disease-visits
-        Route::apiResource('visits.chronic-diseases.disease-visits', ChronicDiseaseVisitController::class);
+        Route::apiResource('chronic-disease.disease-visits', ChronicDiseaseVisitController::class);
 
         //Pregnancy (Basic info)
         Route::apiResource('pregnancies', PregnancyController::class);

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('diagnosis'); // التشخيص
             $table->text('risk_factors')->nullable(); // عوامل الخطورة
             $table->date('date_diagnosed')->nullable(); // تاريخ التشخيص
+            $table->softDeletes();
 
 
             $table->timestamps();
