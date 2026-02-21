@@ -22,13 +22,17 @@ class StoreChronicDiseaseVisitRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'complain' => 'required|string',
-            'exam' => 'nullable|string',
-            'vital_signs' => 'nullable|string',
+            'visit_id'       => [
+                'required',
+                'exists:visits,id',
+            ],
+            'complain'       => 'required|string',
+            'exam'           => 'required|string',
+            'vital_signs'    => 'nullable|string',
             'investigations' => 'nullable|string',
-            'management' => 'nullable|string',
-            'visit_date' => 'required|date',
-            'notes' => 'nullable|string'
+            'management'     => 'nullable|string',
+            'notes'          => 'nullable|string',
+            'visit_date'     => 'required|date',
         ];
     }
 }

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->text('management')->nullable();  // الخطة العلاجية
             $table->text('notes')->nullable();  // ملاحظات
             $table->date('visit_date'); // تاريخ الزيارة
+            $table->softDeletes();
             $table->timestamps();
         });
     }

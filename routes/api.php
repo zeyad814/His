@@ -33,7 +33,7 @@ Route::post('/login', [LoginController::class, 'login']);
 
 // Doctor
 Route::middleware('auth:sanctum')->group(function () {
-    
+
     // Doctor
     Route::middleware('doctor')->group(function () {
         // Family
@@ -140,7 +140,7 @@ Route::middleware('auth:sanctum')->group(function () {
                 Route::get('/show/{family_member_id}', [ChildMilestoneController::class, 'show']);
                 Route::get('/edit/{family_member_id}', [ChildMilestoneController::class, 'edit']);
             });
-            
+
             // Child Growth
             Route::prefix('/child-growth')->group(function () {
                 Route::post('/store', [ChildGrowthController::class, 'store']);
@@ -171,44 +171,42 @@ Route::middleware('auth:sanctum')->group(function () {
                 Route::get('/edit/{id}', [ObesityRecordController::class, 'edit']);
                 Route::delete('/delete/{id}', [ObesityRecordController::class, 'destroy']);
             });
+
+            // Visits
+            Route::post('/visits', [VisitController::class, 'store']);
+            Route::get('/family-members/{family_member}/visits', [VisitController::class, 'index']);
+            Route::get('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'show']);
+            Route::get('/family-members/{family_member}/visits/{visit}/edit', [VisitController::class, 'edit']);
+            Route::put('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'update']);
+            Route::delete('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'destroy']);
+
+            //chronic-disease
+            Route::apiResource('chronic-diseases', ChronicDiseaseController::class);
+
+            //Chronic-disease-visits
+            Route::apiResource('chronic-disease.disease-visits', ChronicDiseaseVisitController::class);
+
+            //Pregnancy (Basic info)
+            Route::apiResource('pregnancies', PregnancyController::class);
+
+            //Pregnancy Visits
+            Route::apiResource('pregnancy_visits', PregnancyVisitController::class);
+
+            //Postnatal care
+            Route::apiResource('postnatal-care', PostnatalCareController::class);
+
+            //Family planning
+            Route::apiResource('family-planning', FamilyPlanningController::class);
+
+            //Follow Ups
+            //nested 
+            Route::apiResource('family-planning.follow-ups', FamilyPlanningFollowUpController::class);
         });
-
-        // Visits
-        Route::post('/visits', [VisitController::class, 'store']);
-        Route::get('/family-members/{family_member}/visits', [VisitController::class, 'index']);
-        Route::get('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'show']);
-        Route::get('/family-members/{family_member}/visits/{visit}/edit', [VisitController::class, 'edit']);
-        Route::put('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'update']);
-        Route::delete('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'destroy']);
-
-        //chronic-disease
-        Route::apiResource('chronic-diseases', ChronicDiseaseController::class);
-
-        //Chronic-disease-visits
-        Route::apiResource('chronic-disease.disease-visits', ChronicDiseaseVisitController::class);
-
-        //Pregnancy (Basic info)
-        Route::apiResource('pregnancies', PregnancyController::class);
-        
-        //Pregnancy Visits
-        Route::apiResource('pregnancy_visits', PregnancyVisitController::class);
-
-        //Postnatal care
-        Route::apiResource('postnatal-care', PostnatalCareController::class);
-
-        //Family planning
-        Route::apiResource('family-planning', FamilyPlanningController::class);
-
-        //Follow Ups
-        //nested 
-        Route::apiResource('family-planning.follow-ups', FamilyPlanningFollowUpController::class);
     });
-    
+
     // Admin
-    Route::middleware('admin')->group(function () {
-    });
+    Route::middleware('admin')->group(function () {});
 
     // Logout
     Route::post('/logout', [LogoutController::class, 'logout']);
 });
-

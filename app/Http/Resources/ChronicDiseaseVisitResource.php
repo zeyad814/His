@@ -15,10 +15,18 @@ class ChronicDiseaseVisitResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-          'id' => $this->id,
+        'id' => $this->id,
+
         'doctor_id' => $this->doctor_id,
+        'doctor_name' => $this->doctor->user->name ?? 'N/A',
+
         'visit_id' => $this->visit_id,
+        'visit_type' => $this->visit->visit_type ?? 'N/A',
+
         'chronic_disease_id' => $this->chronic_disease_id,
+        'chronic_disease_name' => $this->chronicDisease->diagnosis ?? 'N/A',
+        
+
         'complain' => $this->complain,
         'exam' => $this->exam,
         'vital_signs' => $this->vital_signs,
