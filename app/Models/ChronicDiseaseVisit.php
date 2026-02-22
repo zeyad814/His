@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ChronicDiseaseVisit extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'chronic_disease_id',
@@ -24,16 +26,16 @@ class ChronicDiseaseVisit extends Model
 
      public function doctor()
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsTo(Doctor::class, 'doctor_id');
     }
 
      public function visit()
     {
-        return $this->belongsTo(Visit::class);
+        return $this->belongsTo(Visit::class, 'visit_id');
     }
 
      public function chronicDisease()
     {
-        return $this->belongsTo(ChronicDisease::class);
+        return $this->belongsTo(ChronicDisease::class, 'chronic_disease_id');
     }
 }

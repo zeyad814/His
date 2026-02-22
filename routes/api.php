@@ -1,31 +1,32 @@
 <?php
 
-use App\Http\Controllers\Doctor\FamilyPlanningController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\Doctor\VisitController;
-use App\Http\Controllers\Doctor\FamilyController;
-use App\Http\Controllers\Doctor\PregnancyController;
-use App\Http\Controllers\Doctor\ChildGrowthController;
-use App\Http\Controllers\Doctor\ChildAboveFiveVitalController;
 use App\Http\Controllers\Doctor\BirthScreeningController;
 use App\Http\Controllers\Doctor\ChildAboveFiveClinicalController;
+use App\Http\Controllers\Doctor\ChildAboveFiveVitalController;
+use App\Http\Controllers\Doctor\ChildGrowthController;
 use App\Http\Controllers\Doctor\ChildMilestoneController;
 use App\Http\Controllers\Doctor\ChronicDiseaseController;
-use App\Http\Controllers\Doctor\SignificantDataController;
-use App\Http\Controllers\Doctor\DiabetesFollowUpController;
-use App\Http\Controllers\Doctor\HypertensionStepController;
-use App\Http\Controllers\Doctor\GeneralExaminationController;
 use App\Http\Controllers\Doctor\ChronicDiseaseVisitController;
 use App\Http\Controllers\Doctor\ClinicalExaminationController;
 use App\Http\Controllers\Doctor\CvRiskAssessmentController;
+use App\Http\Controllers\Doctor\DiabetesFollowUpController;
+use App\Http\Controllers\Doctor\FamilyController;
+use App\Http\Controllers\Doctor\FamilyPlanningController;
 use App\Http\Controllers\Doctor\FamilyPlanningFollowUpController;
+use App\Http\Controllers\Doctor\GeneralExaminationController;
+use App\Http\Controllers\Doctor\HypertensionStepController;
 use App\Http\Controllers\Doctor\ObesityRecordController;
 use App\Http\Controllers\Doctor\PostnatalCareController;
+use App\Http\Controllers\Doctor\PregnancyController;
 use App\Http\Controllers\Doctor\PregnancyVisitController;
 use App\Http\Controllers\Doctor\PsychologicalSupportVisitController;
+use App\Http\Controllers\Doctor\SignificantDataController;
+use App\Http\Controllers\Doctor\VisitController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -35,7 +36,7 @@ Route::post('/login', [LoginController::class, 'login']);
 
 // Doctor
 Route::middleware('auth:sanctum')->group(function () {
-    
+
     // Doctor
     Route::middleware('doctor')->group(function () {
         // Family
@@ -142,7 +143,7 @@ Route::middleware('auth:sanctum')->group(function () {
                 Route::get('/show/{family_member_id}', [ChildMilestoneController::class, 'show']);
                 Route::get('/edit/{family_member_id}', [ChildMilestoneController::class, 'edit']);
             });
-            
+
             // Child Growth
             Route::prefix('/child-growth')->group(function () {
                 Route::post('/store', [ChildGrowthController::class, 'store']);
@@ -204,44 +205,42 @@ Route::middleware('auth:sanctum')->group(function () {
                 Route::put('/store-step3/{id}', [CvRiskAssessmentController::class, 'storeStep3'])->name('storeStep3');
                 Route::get('/edit-step3/{id}', [CvRiskAssessmentController::class, 'editStep3'])->name('editStep3');
             });
+
+            // Visits
+            Route::post('/visits', [VisitController::class, 'store']);
+            Route::get('/family-members/{family_member}/visits', [VisitController::class, 'index']);
+            Route::get('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'show']);
+            Route::get('/family-members/{family_member}/visits/{visit}/edit', [VisitController::class, 'edit']);
+            Route::put('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'update']);
+            Route::delete('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'destroy']);
+
+            //chronic-disease
+            Route::apiResource('chronic-diseases', ChronicDiseaseController::class);
+
+            //Chronic-disease-visits
+            Route::apiResource('chronic-disease.disease-visits', ChronicDiseaseVisitController::class);
+
+            //Pregnancy (Basic info)
+            Route::apiResource('pregnancies', PregnancyController::class);
+
+            //Pregnancy Visits
+            Route::apiResource('pregnancy_visits', PregnancyVisitController::class);
+
+            //Postnatal care
+            Route::apiResource('postnatal-care', PostnatalCareController::class);
+
+            //Family planning
+            Route::apiResource('family-planning', FamilyPlanningController::class);
+
+            //Follow Ups
+            //nested 
+            Route::apiResource('family-planning.follow-ups', FamilyPlanningFollowUpController::class);
         });
-
-        // Visits
-        Route::post('/visits', [VisitController::class, 'store']);
-        Route::get('/family-members/{family_member}/visits', [VisitController::class, 'index']);
-        Route::get('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'show']);
-        Route::get('/family-members/{family_member}/visits/{visit}/edit', [VisitController::class, 'edit']);
-        Route::put('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'update']);
-        Route::delete('/family-members/{family_member}/visits/{visit}', [VisitController::class, 'destroy']);
-
-        //chronic-disease
-        Route::apiResource('chronic-diseases', ChronicDiseaseController::class);
-
-        //Chronic-disease-visits
-        Route::apiResource('visits.chronic-diseases.disease-visits', ChronicDiseaseVisitController::class);
-
-        //Pregnancy (Basic info)
-        Route::apiResource('pregnancies', PregnancyController::class);
-        
-        //Pregnancy Visits
-        Route::apiResource('pregnancy_visits', PregnancyVisitController::class);
-
-        //Postnatal care
-        Route::apiResource('postnatal-care', PostnatalCareController::class);
-
-        //Family planning
-        Route::apiResource('family-planning', FamilyPlanningController::class);
-
-        //Follow Ups
-        //nested 
-        Route::apiResource('family-planning.follow-ups', FamilyPlanningFollowUpController::class);
     });
-    
+
     // Admin
-    Route::middleware('admin')->group(function () {
-    });
+    Route::middleware('admin')->group(function () {});
 
     // Logout
     Route::post('/logout', [LogoutController::class, 'logout']);
 });
-

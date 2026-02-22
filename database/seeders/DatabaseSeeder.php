@@ -49,6 +49,7 @@ class DatabaseSeeder extends Seeder
             HypertensionFollowUpSeeder::class,
             DiabetesFollowUpSeeder::class,
             ChronicDiseaseSeeder::class,
+            ChronicDiseaseVisitSeeder::class,
             ClinicalExaminationSeeder::class,
             DevelopmentalMilestoneSeeder::class,
             PregnancySeeder::class,

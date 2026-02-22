@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Doctor;
 
 use App\Traits\ApiResponse;
-use Illuminate\Http\Request;
 use App\Models\ChronicDisease;
 use App\Http\Controllers\Controller;
-use Illuminate\Validation\Rule;
+use App\Http\Requests\StoreChronicDiseaseRequest;
+use App\Http\Requests\UpdateChronicDiseaseRequest;
+use App\Http\Resources\ChronicDiseaseResource;
 
 class ChronicDiseaseController extends Controller
 {
@@ -17,17 +18,11 @@ class ChronicDiseaseController extends Controller
     public function index()
     {
         $diseases = ChronicDisease::with(['familyMember'])->get();
-        if ($diseases->isEmpty()) {
-            return ApiResponse::errorResponse(
-                "No chronic diseases found",
-                404
-            );
-        }
 
         return ApiResponse::successResponse(
             "The diseases returned successfully",
             200,
-            $diseases
+            ChronicDiseaseResource::collection($diseases)
         );
         
     }
@@ -35,81 +30,41 @@ class ChronicDiseaseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreChronicDiseaseRequest $request)
     {
-        $validated = $request->validate([
-            'family_member_id' => 'required|exists:family_members,id',
-            'diagnosis' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique('chronic_diseases')
-                    ->where('family_member_id', $request->family_member_id)
-            ],
-            'date_diagnosed' => 'nullable|date',
-            'risk_factors' => 'nullable|string',
-        ]);
+        $disease = ChronicDisease::create($request->validated());
 
-        $disease = ChronicDisease::create($validated);
         return ApiResponse::successResponse(
             "Chronic disease created successfully",
             201,
-            $disease
+            new ChronicDiseaseResource($disease)
         );
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(ChronicDisease $chronicDisease)
     {
-        $disease = ChronicDisease::with('familyMember')->find($id);
-
-        if (!$disease) {
-            return ApiResponse::errorResponse(
-                'Chronic disease not found',
-                404
-            );
-        }
+        
         return ApiResponse::successResponse(
             'Chronic disease returned successfully',
             200,
-            $disease
+            new ChronicDiseaseResource($chronicDisease->load('familyMember'))
         );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateChronicDiseaseRequest $request, ChronicDisease $chronicDisease)
     {
-        $disease = ChronicDisease::find($id);
-
-        if (!$disease) {
-            return ApiResponse::errorResponse(
-                'Chronic disease not found',
-                404
-            );
-        }
-
-        $validated = $request->validate([
-            'diagnosis' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique('chronic_diseases')->where('family_member_id', $disease->family_member_id)
-                    ->ignore($disease->id),
-            ],
-            'date_diagnosed' => 'nullable|date',
-            'risk_factors' => 'nullable|string',
-        ]);
-
-        $disease->update($validated);
+        $chronicDisease->update($request->validated());
 
         return ApiResponse::successResponse(
-            'Chronic disease update successfully',
+            'Chronic disease updated successfully',
             200,
-            $disease
+            new ChronicDiseaseResource($chronicDisease->load('familyMember'))
         );
     }
 

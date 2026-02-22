@@ -9,7 +9,7 @@ use App\Http\Resources\PregnancyResource;
 use App\Models\Pregnancy;
 use App\Models\PregnancyVisit;
 use App\Traits\ApiResponse;
-use Illuminate\Http\Request;
+
 
 class PregnancyController extends Controller
 {

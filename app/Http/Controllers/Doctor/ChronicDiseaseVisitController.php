@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Doctor;
 
-use App\Traits\ApiResponse;
-use Illuminate\Http\Request;
-use App\Models\ChronicDisease;
-use App\Traits\HasDoctorContext;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreChronicDiseaseVisitRequest;
+use App\Http\Requests\UpdateChronicDiseaseVisitRequest;
+use App\Http\Resources\ChronicDiseaseVisitResource;
+use App\Models\ChronicDisease;
 use App\Models\ChronicDiseaseVisit;
 use App\Models\Visit;
+use App\Traits\ApiResponse;
+use App\Traits\HasDoctorContext;
+
 
 class ChronicDiseaseVisitController extends Controller
 {
@@ -16,158 +19,83 @@ class ChronicDiseaseVisitController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Visit $visit, ChronicDisease $chronicDisease)
+    public function index(ChronicDisease $chronic_disease)
     {
-        // نتأكد إن المرض المزمن تابع للزيارة
-        if (!$chronicDisease->diseaseVisits()->where('visit_id', $visit->id)->exists()) {
-            return ApiResponse::errorResponse(
-                'This chronic disease does not belong to this visit',
-                403
-            );
-        }
-        $diseaseVisits = $chronicDisease->diseaseVisits()
-            ->where('visit_id', $visit->id)
+
+        $visits = $chronic_disease->diseaseVisits()
+            ->with(['doctor.user', 'visit', 'chronicDisease'])
             ->latest('visit_date')->get();
 
         return ApiResponse::successResponse(
-            'Chronic disease visits returned successfully',
+            'Disease visits returned successfully',
             200,
-            $diseaseVisits
+            ChronicDiseaseVisitResource::collection($visits)
         );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request, Visit $visit, ChronicDisease $chronicDisease)
+    public function store(StoreChronicDiseaseVisitRequest $request, ChronicDisease $chronic_disease)
     {
-        $validated = $request->validate([
-            'complain' => 'required|string',
-            'exam' => 'nullable|string',
-            'vital_signs' => 'nullable|string',
-            'investigations' => 'nullable|string',
-            'management' => 'nullable|string',
-            'visit_date' => 'required|date',
-            'notes' => 'nullable|string'
-        ]);
+        $doctor = $this->getAuthenticatedDoctor();
 
-        //  prevent duplicate disease in same visit
-        $exists = $chronicDisease->diseaseVisits()
-            ->where('visit_id', $visit->id)
-            ->exists();
+        $validated = $request->validated();
 
-        if ($exists) {
-            return ApiResponse::errorResponse(
-                'This chronic disease already exists in this visit',
-                409
-            );
+        $visit = Visit::findOrFail($validated['visit_id']);
+        if ($visit->visit_type !== 'أمراض مزمنة') {
+            return ApiResponse::errorResponse('This visit does not belong to Chronic diseases', 422);
         }
 
-
-        $doctor = $this->getAuthenticatedDoctor();
         $validated['doctor_id'] = $doctor->id;
-        $validated['visit_id'] = $visit->id;
+        $validated['chronic_disease_id'] = $chronic_disease->id;
 
-
-        $diseaseVisit = $chronicDisease->diseaseVisits()->create($validated);
+        $diseaseVisit = ChronicDiseaseVisit::create($validated);
 
         return ApiResponse::successResponse(
             'Disease visit created successfully',
             201,
-            $diseaseVisit
+            new ChronicDiseaseVisitResource($diseaseVisit->load(['doctor.user', 'visit', 'chronicDisease']))
         );
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Visit $visit, ChronicDisease $chronicDisease, ChronicDiseaseVisit $diseaseVisit)
+    public function show(ChronicDisease $chronic_disease, ChronicDiseaseVisit $disease_visit)
     {
-        // نتأكد إن السجل تابع لنفس الزيارة
-        if ($diseaseVisit->visit_id !== $visit->id) {
-            return ApiResponse::errorResponse(
-                'This disease visit does not belong to this visit',
-                403
-            );
+        if ($disease_visit->chronic_disease_id !== $chronic_disease->id) {
+            return ApiResponse::errorResponse('This visit does not belong to Chronic diseases', 403);
         }
 
-        // نتأكد إن السجل تابع لنفس المرض المزمن
-        if ($diseaseVisit->chronic_disease_id !== $chronicDisease->id) {
-            return ApiResponse::errorResponse(
-                'This disease visit does not belong to this chronic disease',
-                403
-            );
-        }
+
+        $disease_visit->load(['doctor.user', 'visit', 'chronicDisease']);
 
         return ApiResponse::successResponse(
             'Disease visit returned successfully',
             200,
-            $diseaseVisit
+            new ChronicDiseaseVisitResource($disease_visit)
         );
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Visit $visit, ChronicDisease $chronicDisease, ChronicDiseaseVisit $diseaseVisit)
+    public function update(UpdateChronicDiseaseVisitRequest $request, ChronicDisease $chronic_disease, ChronicDiseaseVisit $disease_visit)
     {
-        if ($diseaseVisit->visit_id !== $visit->id) {
-            return ApiResponse::errorResponse(
-                'This disease visit does not belong to this visit',
-                403
-            );
+        $this->getAuthenticatedDoctor();
+
+        if ($disease_visit->chronic_disease_id !== $chronic_disease->id) {
+            return ApiResponse::errorResponse('This visit does not belong to Chronic diseases', 403);
         }
-
-        if ($diseaseVisit->chronic_disease_id !== $chronicDisease->id) {
-            return ApiResponse::errorResponse(
-                'This disease visit does not belong to this chronic disease',
-                403
-            );
-        }
-
-        $validated = $request->validate([
-            'complain' => 'nullable|string',
-            'exam' => 'nullable|string',
-            'vital_signs' => 'nullable|string',
-            'investigations' => 'nullable|string',
-            'management' => 'nullable|string',
-            'visit_date' => 'nullable|date',
-            'notes' => 'nullable|string',
-        ]);
-
-        $diseaseVisit->update($validated);
+        $disease_visit->update($request->validated());
 
         return ApiResponse::successResponse(
             'Disease visit updated successfully',
             200,
-            $diseaseVisit
+            new ChronicDiseaseVisitResource($disease_visit->load(['doctor.user', 'visit', 'chronicDisease']))
         );
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Visit $visit, ChronicDisease $chronicDisease, ChronicDiseaseVisit $diseaseVisit)
+    public function destroy(ChronicDisease $chronic_disease, ChronicDiseaseVisit $disease_visit)
     {
-        if ($diseaseVisit->visit_id !== $visit->id) {
-            return ApiResponse::errorResponse(
-                'This disease visit does not belong to this visit',
-                403
-            );
+        $this->getAuthenticatedDoctor();
+        if ($disease_visit->chronic_disease_id !== $chronic_disease->id) {
+            return ApiResponse::errorResponse('This visit does not belong to Chronic diseases', 403);
         }
 
-        if ($diseaseVisit->chronic_disease_id !== $chronicDisease->id) {
-            return ApiResponse::errorResponse(
-                'This disease visit does not belong to this chronic disease',
-                403
-            );
-        }
-
-        $diseaseVisit->delete();
-
-        return ApiResponse::successResponse(
-            'Disease visit deleted successfully',
-            200
-        );
+        $disease_visit->delete();
+        return ApiResponse::successResponse('Disease visit deleted successfully', 200);
     }
 }
