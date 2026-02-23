@@ -3476,6 +3476,270 @@
                   "response": []
                 }
               ]
+            },
+            {
+              "name": "Verbal Orders",
+              "item": [
+                {
+                  "name": "Index",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/verbal-orders/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "verbal-orders",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Store",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"family_member_id\": 1,\r\n    \"instructions\": \"إعطاء حقنة أدرينالين 1 مجم وريد فوراً، مع مراقبة ضغط الدم كل 15 دقيقة\",\r\n    \"order_date_time\": \"2026-02-22 21:30:00\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/verbal-orders/store",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "verbal-orders",
+                        "store"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Confirm",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/verbal-orders/1/confirm",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "verbal-orders",
+                        "1",
+                        "confirm"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Show",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/verbal-orders/show/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "verbal-orders",
+                        "show",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Edit",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/verbal-orders/edit/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "verbal-orders",
+                        "edit",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"instructions\": \"إعطاء حقنة أدرينالين 1 مجم وريد فوراً، مع مراقبة ضغط الدم كل 15 دقيقة\",\r\n    \"order_date_time\": \"2026-02-22 21:30:00\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/verbal-orders/update/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "verbal-orders",
+                        "update",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/verbal-orders/delete/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "verbal-orders",
+                        "delete",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
             }
           ]
         },
@@ -3779,7 +4043,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "",
+                  "raw": "{\r\n    \"family_member_id\": 1,\r\n    \"diagnosis\": \"Asthma\",\r\n    \"date_diagnosed\": \"2026-02-20\",\r\n    \"risk_factors\": \"Dust, Smoking\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3818,14 +4082,14 @@
                   "formdata": []
                 },
                 "url": {
-                  "raw": "{{url}}/api/chronic-diseases/5",
+                  "raw": "{{url}}/api/chronic-diseases/3",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
                     "chronic-diseases",
-                    "5"
+                    "3"
                   ]
                 }
               },
@@ -3844,7 +4108,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n  \"diagnosis\": \"Hypertension\",\r\n  \"date_diagnosed\": \"2025-06-10\",\r\n  \"risk_factors\": \"High salt diet, Smoking\"\r\n}",
+                  "raw": "{\r\n    \"diagnosis\": \"Diabetes\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3852,14 +4116,14 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/api/chronic-diseases/4",
+                  "raw": "{{url}}/api/chronic-diseases/3",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
                     "chronic-diseases",
-                    "4"
+                    "3"
                   ]
                 }
               },
@@ -3877,14 +4141,14 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/chronic-diseases/4",
+                  "raw": "{{url}}/api/chronic-diseases/3",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
                     "chronic-diseases",
-                    "4"
+                    "3"
                   ]
                 }
               },
@@ -3907,16 +4171,15 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/visits/1/chronic-diseases/2/disease-visits",
+                  "raw": "{{url}}/api/doctor/chronic-disease/1/disease-visits",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
-                    "visits",
+                    "doctor",
+                    "chronic-disease",
                     "1",
-                    "chronic-diseases",
-                    "2",
                     "disease-visits"
                   ]
                 }
@@ -3936,7 +4199,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n  \r\n  \"complain\": \"Persistent headache\",\r\n  \"exam\": \"Blood pressure measured\",\r\n  \"vital_signs\": \"BP 160/100\",\r\n  \"investigations\": \"Blood pressure monitoring\",\r\n  \"management\": \"Lifestyle modification + medication\",\r\n  \"visit_date\": \"2026-02-01\",\r\n  \"notes\": \"Needs close follow-up\"\r\n}\r\n",
+                  "raw": "{\r\n    \"visit_id\": 2,\r\n    \"complain\": \"المريض يشكو من نهجان مستمر\",\r\n    \"exam\": \"ضربات القلب سريعة والضغط 140/90\",\r\n    \"vital_signs\": \"P: 100, BP: 140/90\",\r\n    \"investigations\": \"طلب رسم قلب جديد\",\r\n    \"management\": \"زيادة جرعة دواء الضغط\",\r\n    \"notes\": \"يحتاج مراجعة بعد أسبوع\",\r\n    \"visit_date\": \"2026-02-21\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3944,15 +4207,14 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/api/visits/1/chronic-diseases/2/disease-visits",
+                  "raw": "{{url}}/api/doctor/chronic-disease/2/disease-visits",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
-                    "visits",
-                    "1",
-                    "chronic-diseases",
+                    "doctor",
+                    "chronic-disease",
                     "2",
                     "disease-visits"
                   ]
@@ -3972,18 +4234,17 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/visits/1/chronic-diseases/1/disease-visits/1",
+                  "raw": "{{url}}/api/doctor/chronic-disease/2/disease-visits/3",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
-                    "visits",
-                    "1",
-                    "chronic-diseases",
-                    "1",
+                    "doctor",
+                    "chronic-disease",
+                    "2",
                     "disease-visits",
-                    "1"
+                    "3"
                   ]
                 }
               },
@@ -4010,24 +4271,17 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/api/visits/3/chronic-diseases/1/disease-visits/1?",
+                  "raw": "{{url}}/api/doctor/chronic-disease/2/disease-visits/3",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
-                    "visits",
-                    "3",
-                    "chronic-diseases",
-                    "1",
+                    "doctor",
+                    "chronic-disease",
+                    "2",
                     "disease-visits",
-                    "1"
-                  ],
-                  "query": [
-                    {
-                      "key": "",
-                      "value": null
-                    }
+                    "3"
                   ]
                 }
               },
@@ -4045,24 +4299,17 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/visits/1/chronic-diseases/2/disease-visits/2?",
+                  "raw": "{{url}}/api/doctor/chronic-disease/2/disease-visits/2",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
-                    "visits",
-                    "1",
-                    "chronic-diseases",
+                    "doctor",
+                    "chronic-disease",
                     "2",
                     "disease-visits",
                     "2"
-                  ],
-                  "query": [
-                    {
-                      "key": "",
-                      "value": null
-                    }
                   ]
                 }
               },

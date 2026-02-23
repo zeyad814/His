@@ -41,4 +41,9 @@ class Nurse extends Model
     {
         return $this->hasMany(EmergencyForm::class);
     }
+
+    public function verbalOrdersRecorded()
+    {
+        return $this->hasMany(VerbalOrder::class, 'recorded_by_nurse_id');
+    }
 }

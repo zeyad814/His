@@ -168,4 +168,9 @@ class FamilyMember extends Model
     {
         return $this->hasMany(CvRiskAssessment::class, 'family_member_id');
     }
+
+    public function verbalOrders()
+    {
+        return $this->hasMany(VerbalOrder::class);
+    }
 }

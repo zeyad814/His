@@ -21,6 +21,7 @@ class ChronicDiseaseVisitController extends Controller
      */
     public function index(ChronicDisease $chronic_disease)
     {
+        $this->getAuthenticatedDoctor();
 
         $visits = $chronic_disease->diseaseVisits()
             ->with(['doctor.user', 'visit', 'chronicDisease'])

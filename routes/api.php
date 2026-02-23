@@ -23,6 +23,7 @@ use App\Http\Controllers\Doctor\PregnancyController;
 use App\Http\Controllers\Doctor\PregnancyVisitController;
 use App\Http\Controllers\Doctor\PsychologicalSupportVisitController;
 use App\Http\Controllers\Doctor\SignificantDataController;
+use App\Http\Controllers\Doctor\VerbalOrderController;
 use App\Http\Controllers\Doctor\VisitController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -182,6 +183,17 @@ Route::middleware('auth:sanctum')->group(function () {
                 Route::get('/edit/{id}', [PsychologicalSupportVisitController::class, 'edit'])->name('doctor.psychological-support.edit');
                 Route::put('/update/{id}', [PsychologicalSupportVisitController::class, 'update']);
                 Route::delete('/delete/{id}', [PsychologicalSupportVisitController::class, 'destroy']);
+            });
+
+            // Verbal Orders
+            Route::prefix('/verbal-orders')->as('doctor.verbal-orders.')->group(function () {
+                Route::get('/{family_member_id}', [VerbalOrderController::class, 'index'])->name('index');
+                Route::get('/show/{id}', [VerbalOrderController::class, 'show'])->name('show');
+                Route::post('/store', [VerbalOrderController::class, 'store'])->name('store');
+                Route::get('/edit/{id}', [VerbalOrderController::class, 'edit'])->name('edit');
+                Route::put('/update/{id}', [VerbalOrderController::class, 'update'])->name('update');
+                Route::patch('/{id}/confirm', [VerbalOrderController::class, 'confirm'])->name('confirm');
+                Route::delete('/delete/{id}', [VerbalOrderController::class, 'destroy'])->name('destroy');
             });
 
             // Cardiovascular Risk Assessment 

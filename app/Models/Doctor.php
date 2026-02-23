@@ -204,4 +204,14 @@ class Doctor extends Model
     {
         return $this->hasMany(CvRiskAssessment::class, 'doctor_id');
     }
+
+    public function verbalOrdersOrdered()
+    {
+        return $this->hasMany(VerbalOrder::class, 'ordered_by_doctor_id');
+    }
+
+    public function verbalOrdersConfirmed()
+    {
+        return $this->hasMany(VerbalOrder::class, 'confirmed_by_doctor_id');
+    }
 }
