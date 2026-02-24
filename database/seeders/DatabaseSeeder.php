@@ -60,6 +60,10 @@ class DatabaseSeeder extends Seeder
             FamilyPlanningSeeder::class,
             FamilyPlanningFollowUpSeeder::class,
             CvRiskAssessmentSeeder::class,
+            HealthAdministrationSeeder::class,
+            HealthUnitSeeder::class,
+            NurseSeeder::class,
+            SurgeryUterusSeeder::class,
         ]);
     }
 }

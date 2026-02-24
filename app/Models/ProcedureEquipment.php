@@ -9,14 +9,16 @@ class ProcedureEquipment extends Model
 {
     use HasFactory;
 
+    protected $table = 'procedure_equipments';
+
     protected $fillable = [
         'surgery_uterus_id',
-        'equipment_name',
-        'available',
+        'name',
+        'status',
     ];
 
     public function surgeryUterus()
     {
-        return $this->belongsTo(SurgeryUterus::class);
+        return $this->belongsTo(SurgeryUterus::class, 'surgery_uterus_id');
     }
 }

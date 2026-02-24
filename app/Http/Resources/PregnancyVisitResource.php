@@ -22,7 +22,7 @@ class PregnancyVisitResource extends JsonResource
                 ? $this->pregnancy->familyMember->full_name
                 : 'غير مسجل',
 
-            'doctor_name'      => $this->doctor ? $this->doctor->name : 'غير مسجل',
+            'doctor_name'      => $this->doctor->user->name ?? 'N/A',
 
             'main_visit_info' => [
                 'visit_id'   => $this->visit_id,

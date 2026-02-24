@@ -54,4 +54,9 @@ class FamilyPlanning extends Model
     {
         return $this->hasMany(FamilyPlanningFollowUp::class, 'family_planning_id');
     }
+
+    public function surgeries()
+    {
+        return $this->hasMany(SurgeryUterus::class, 'family_planning_id');
+    }
 }
