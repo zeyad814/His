@@ -25,6 +25,7 @@ use App\Http\Controllers\Doctor\PsychologicalSupportVisitController;
 use App\Http\Controllers\Doctor\RadiologicalRequestController;
 use App\Http\Controllers\Doctor\RadiologyReportController;
 use App\Http\Controllers\Doctor\SignificantDataController;
+use App\Http\Controllers\Doctor\SurgeryUterusController;
 use App\Http\Controllers\Doctor\VerbalOrderController;
 use App\Http\Controllers\Doctor\VisitController;
 use Illuminate\Http\Request;
@@ -268,6 +269,8 @@ Route::middleware('auth:sanctum')->group(function () {
             //Follow Ups
             //nested 
             Route::apiResource('family-planning.follow-ups', FamilyPlanningFollowUpController::class);
+
+            Route::apiResource('surgery-uterus', SurgeryUterusController::class);
         });
     });
 

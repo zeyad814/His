@@ -74,10 +74,10 @@ class FamilyMember extends Model
         return $this->hasMany(Pregnancy::class);
     }
 
-    public function surgeyUterus()
-    {
-        return $this->hasMany(SurgeryUterus::class);
-    }
+    // public function surgeyUterus()
+    // {
+    //     return $this->hasMany(SurgeryUterus::class);
+    // }
 
     public function familyInjections()
     {
