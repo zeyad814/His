@@ -3740,6 +3740,364 @@
                   "response": []
                 }
               ]
+            },
+            {
+              "name": "Radiological Request",
+              "item": [
+                {
+                  "name": "Index",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/radiological-requests/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "radiological-requests",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Store",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"family_member_id\": 1,\r\n    \"required_xray\": \"سونار\",\r\n    \"body_part\": \"البطن والحوض\",\r\n    \"diagnoses_reason\": \"آلام حادة في الجانب الأيمن واشتباه في التهاب الزائدة الدودية\",\r\n    \"priority\": \"مستعجل\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/radiological-requests/store",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "radiological-requests",
+                        "store"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Show",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"family_member_id\": 1,\r\n    \"required_xray\": \"سونار\",\r\n    \"body_part\": \"البطن والحوض\",\r\n    \"diagnoses_reason\": \"آلام حادة في الجانب الأيمن واشتباه في التهاب الزائدة الدودية\",\r\n    \"priority\": \"مستعجل\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/radiological-requests/show/2",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "radiological-requests",
+                        "show",
+                        "2"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Edit",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"family_member_id\": 1,\r\n    \"required_xray\": \"سونار\",\r\n    \"body_part\": \"البطن والحوض\",\r\n    \"diagnoses_reason\": \"آلام حادة في الجانب الأيمن واشتباه في التهاب الزائدة الدودية\",\r\n    \"priority\": \"مستعجل\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/radiological-requests/edit/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "radiological-requests",
+                        "edit",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"required_xray\": \"سونار\",\r\n    \"body_part\": \"البطن والحوض\",\r\n    \"diagnoses_reason\": \"آلام حادة في الجانب الأيمن واشتباه في التهاب الزائدة الدودية\",\r\n    \"priority\": \"مستعجل\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/radiological-requests/update/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "radiological-requests",
+                        "update",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"required_xray\": \"سونار\",\r\n    \"body_part\": \"البطن والحوض\",\r\n    \"diagnoses_reason\": \"آلام حادة في الجانب الأيمن واشتباه في التهاب الزائدة الدودية\",\r\n    \"priority\": \"مستعجل\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/radiological-requests/delete/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "radiological-requests",
+                        "delete",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Radiology Reports",
+              "item": [
+                {
+                  "name": "Store",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"radiological_request_id\": 1,\r\n    \"findings_text\": \"The X-ray shows a minor hairline fracture in the left radius. No displacement noted. Soft tissue swelling is present.\",\r\n    \"radiation_dose\": \"0.01 mSv\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/radiology-reports/store",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "radiology-reports",
+                        "store"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Show",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"radiological_request_id\": 1,\r\n    \"findings_text\": \"The X-ray shows a minor hairline fracture in the left radius. No displacement noted. Soft tissue swelling is present.\",\r\n    \"radiation_dose\": \"0.01 mSv\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/radiology-reports/show/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "radiology-reports",
+                        "show",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Edit",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{url}}/api/doctor/radiology-reports/edit/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "radiology-reports",
+                        "edit",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"findings_text\": \"Updated findings: The fracture is healing well, inflammation has significantly decreased compared to the previous scan.\",\r\n    \"radiation_dose\": \"0.012 mSv\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/radiology-reports/update/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "radiology-reports",
+                        "update",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
             }
           ]
         },
@@ -3778,17 +4136,13 @@
                   }
                 },
                 "url": {
-                  "raw": "http://127.0.0.1:8000/api/visits",
-                  "protocol": "http",
+                  "raw": "{{url}}/api/doctor/visits",
                   "host": [
-                    "127",
-                    "0",
-                    "0",
-                    "1"
+                    "{{url}}"
                   ],
-                  "port": "8000",
                   "path": [
                     "api",
+                    "doctor",
                     "visits"
                   ]
                 }
@@ -3814,17 +4168,13 @@
                   "formdata": []
                 },
                 "url": {
-                  "raw": "http://127.0.0.1:8000/api/family-members/1/visits",
-                  "protocol": "http",
+                  "raw": "{{url}}/api/doctor/family-members/1/visits",
                   "host": [
-                    "127",
-                    "0",
-                    "0",
-                    "1"
+                    "{{url}}"
                   ],
-                  "port": "8000",
                   "path": [
                     "api",
+                    "doctor",
                     "family-members",
                     "1",
                     "visits"
@@ -3845,17 +4195,13 @@
                   }
                 ],
                 "url": {
-                  "raw": "http://127.0.0.1:8000/api/family-members/1/visits/9?a",
-                  "protocol": "http",
+                  "raw": "{{url}}/api/doctor/family-members/1/visits/9?a",
                   "host": [
-                    "127",
-                    "0",
-                    "0",
-                    "1"
+                    "{{url}}"
                   ],
-                  "port": "8000",
                   "path": [
                     "api",
+                    "doctor",
                     "family-members",
                     "1",
                     "visits",
@@ -3895,17 +4241,13 @@
                   }
                 },
                 "url": {
-                  "raw": "http://127.0.0.1:8000/api/family-members/1/visits/8/edit",
-                  "protocol": "http",
+                  "raw": "{{url}}/api/doctor/family-members/1/visits/8/edit",
                   "host": [
-                    "127",
-                    "0",
-                    "0",
-                    "1"
+                    "{{url}}"
                   ],
-                  "port": "8000",
                   "path": [
                     "api",
+                    "doctor",
                     "family-members",
                     "1",
                     "visits",
@@ -3937,17 +4279,13 @@
                   }
                 },
                 "url": {
-                  "raw": "http://127.0.0.1:8000/api/family-members/2/visits/8",
-                  "protocol": "http",
+                  "raw": "{{url}}/api/doctor/family-members/2/visits/8",
                   "host": [
-                    "127",
-                    "0",
-                    "0",
-                    "1"
+                    "{{url}}"
                   ],
-                  "port": "8000",
                   "path": [
                     "api",
+                    "doctor",
                     "family-members",
                     "2",
                     "visits",
@@ -3969,17 +4307,13 @@
                   }
                 ],
                 "url": {
-                  "raw": "http://127.0.0.1:8000/api/family-members/2/visits/9",
-                  "protocol": "http",
+                  "raw": "{{url}}/api/doctor/family-members/2/visits/9",
                   "host": [
-                    "127",
-                    "0",
-                    "0",
-                    "1"
+                    "{{url}}"
                   ],
-                  "port": "8000",
                   "path": [
                     "api",
+                    "doctor",
                     "family-members",
                     "2",
                     "visits",
@@ -4013,12 +4347,13 @@
                   "formdata": []
                 },
                 "url": {
-                  "raw": "{{url}}/api/chronic-diseases",
+                  "raw": "{{url}}/api/doctor/chronic-diseases",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "chronic-diseases"
                   ]
                 }
@@ -4051,12 +4386,13 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/api/chronic-diseases",
+                  "raw": "{{url}}/api/doctor/chronic-diseases",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "chronic-diseases"
                   ]
                 }
@@ -4078,16 +4414,17 @@
                   }
                 ],
                 "body": {
-                  "mode": "formdata",
-                  "formdata": []
+                  "mode": "raw",
+                  "raw": ""
                 },
                 "url": {
-                  "raw": "{{url}}/api/chronic-diseases/3",
+                  "raw": "{{url}}/api/doctor/chronic-diseases/3",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "chronic-diseases",
                     "3"
                   ]
@@ -4116,12 +4453,13 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/api/chronic-diseases/3",
+                  "raw": "{{url}}/api/doctor/chronic-diseases/3",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "chronic-diseases",
                     "3"
                   ]
@@ -4141,12 +4479,13 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/chronic-diseases/3",
+                  "raw": "{{url}}/api/doctor/chronic-diseases/3",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "chronic-diseases",
                     "3"
                   ]
@@ -4332,12 +4671,13 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/pregnancies",
+                  "raw": "{{url}}/api/doctor/pregnancies",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "pregnancies"
                   ]
                 }
@@ -4365,12 +4705,13 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/api/pregnancies",
+                  "raw": "{{url}}/api/doctor/pregnancies",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "pregnancies"
                   ]
                 }
@@ -4396,12 +4737,13 @@
                   "raw": ""
                 },
                 "url": {
-                  "raw": "{{url}}/api/pregnancies/1",
+                  "raw": "{{url}}/api/doctor/pregnancies/1",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "pregnancies",
                     "1"
                   ]
@@ -4430,12 +4772,13 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/api/pregnancies/1",
+                  "raw": "{{url}}/api/doctor/pregnancies/1",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "pregnancies",
                     "1"
                   ]
@@ -4455,12 +4798,13 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/pregnancies/1",
+                  "raw": "{{url}}/api/doctor/pregnancies/1",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "pregnancies",
                     "1"
                   ]
@@ -4490,12 +4834,13 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/pregnancy_visits",
+                  "raw": "{{url}}/api/doctor/pregnancy_visits",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "pregnancy_visits"
                   ]
                 }
@@ -4523,12 +4868,13 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/api/pregnancy_visits",
+                  "raw": "{{url}}/api/doctor/pregnancy_visits",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "pregnancy_visits"
                   ]
                 }
@@ -4547,12 +4893,13 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/pregnancy_visits/2",
+                  "raw": "{{url}}/api/doctor/pregnancy_visits/2",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "pregnancy_visits",
                     "2"
                   ]
@@ -4581,12 +4928,13 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/api/pregnancy_visits/1",
+                  "raw": "{{url}}/api/doctor/pregnancy_visits/1",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "pregnancy_visits",
                     "1"
                   ]
@@ -4606,12 +4954,13 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/pregnancy_visits/1",
+                  "raw": "{{url}}/api/doctor/pregnancy_visits/1",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "pregnancy_visits",
                     "1"
                   ]
@@ -4669,12 +5018,13 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/api/postnatal-care",
+                  "raw": "{{url}}/api/doctor/postnatal-care",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "postnatal-care"
                   ]
                 }
@@ -4693,12 +5043,13 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/postnatal-care/1",
+                  "raw": "{{url}}/api/doctor/postnatal-care/1",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "postnatal-care",
                     "1"
                   ]
@@ -4727,12 +5078,13 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/api/postnatal-care/1",
+                  "raw": "{{url}}/api/doctor/postnatal-care/1",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "postnatal-care",
                     "1"
                   ]
@@ -4752,12 +5104,13 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/postnatal-care/2",
+                  "raw": "{{url}}/api/doctor/postnatal-care/2",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "postnatal-care",
                     "2"
                   ]
@@ -4935,12 +5288,13 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/family-planning",
+                  "raw": "{{url}}/api/doctor/family-planning",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "family-planning"
                   ]
                 }
@@ -4968,12 +5322,13 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/api/family-planning",
+                  "raw": "{{url}}/api/doctor/family-planning",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "family-planning"
                   ]
                 }
@@ -4992,14 +5347,15 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/family-planning/2",
+                  "raw": "{{url}}/api/doctor/family-planning/1",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "family-planning",
-                    "2"
+                    "1"
                   ]
                 }
               },
@@ -5026,12 +5382,13 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/api/family-planning/1",
+                  "raw": "{{url}}/api/doctor/family-planning/1",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "family-planning",
                     "1"
                   ]
@@ -5051,12 +5408,13 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/family-planning/1",
+                  "raw": "{{url}}/api/doctor/family-planning/1",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "api",
+                    "doctor",
                     "family-planning",
                     "1"
                   ]
@@ -5215,6 +5573,157 @@
                     "2",
                     "follow-ups",
                     "2"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Surgery Uterus",
+          "item": [
+            {
+              "name": "index",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/doctor/surgery-uterus",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "doctor",
+                    "surgery-uterus"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "store",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"family_planning_id\": 1,\r\n    \"nurse_id\": 1,\r\n    \"diagnosis\": \"حالة متابعة روتينية لتركيب لولب نحاسي\",\r\n    \"patient_age\": 28,\r\n    \"procedure_type\": \"IUD_insertion\",\r\n    \"patient_identity_verified\": true,\r\n    \"informed_consent_signed\": true,\r\n    \"site_side\": \"Uterus\",\r\n    \"procedure_site_marked\": false,\r\n    \"equipment_sterilization_verified\": true,\r\n    \"supplies_availability_verified\": true,\r\n    \"pregnancy_test_done\": false,\r\n    \"hemoglobin_test_done\": true,\r\n    \"final_team_verification\": true,\r\n    \"procedure_date\": \"2024-05-25\",\r\n    \"procedure_time\": \"11:00:00\",\r\n    \"equipments\": [\r\n        {\r\n            \"name\": \"جهاز السونار المهبلي\",\r\n            \"status\": \"جاهز للاستخدام\"\r\n        },\r\n        {\r\n            \"name\": \"مقص معقم\",\r\n            \"status\": \"تم التعقيم\"\r\n        },\r\n        {\r\n            \"name\": \"ماسك عنق الرحم\",\r\n            \"status\": \"تم التعقيم\"\r\n        }\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/doctor/surgery-uterus",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "doctor",
+                    "surgery-uterus"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/doctor/surgery-uterus/1",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "doctor",
+                    "surgery-uterus",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"diagnosis\": \"تم تعديل التشخيص بعد الفحص الدقيق\",\r\n    \"patient_age\": 3,\r\n    \"procedure_type\": \"IUD_removal\",\r\n    \"equipments\": [\r\n        {\r\n            \"name\": \"مقص معقم (معدل)\",\r\n            \"status\": \"مستخدم\"\r\n        },\r\n        {\r\n            \"name\": \"جهاز جديد\",\r\n            \"status\": \"جاهز\"\r\n        }\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/doctor/surgery-uterus/2",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "doctor",
+                    "surgery-uterus",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/doctor/surgery-uterus/3",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "doctor",
+                    "surgery-uterus",
+                    "3"
                   ]
                 }
               },

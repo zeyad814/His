@@ -14,16 +14,16 @@ class RadiologyReport extends Model
         'doctor_id',
         'findings_text',
         'radiation_dose',
-        'report_date_time',
+        // 'report_file',
     ];
+    
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
 
     public function radiologicalRequest()
     {
         return $this->belongsTo(RadiologicalRequest::class);
-    }
-
-    public function doctor()
-    {
-        return $this->belongsTo(Doctor::class);
     }
 }

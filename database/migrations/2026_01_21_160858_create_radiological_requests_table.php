@@ -15,11 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('family_member_id')->constrained()->cascadeOnDelete();
             $table->foreignId('doctor_id')->constrained()->cascadeOnDelete();
-            $table->string('required_xray', 100); // نوع الأشعة المطلوبة (X-ray, CT, MRI...)
+            $table->enum('required_xray', ['أشعة عادية', 'سونار'])->default('أشعة عادية');
             $table->string('body_part', 100)->nullable(); // الجزء المصور من الجسم
             $table->text('diagnoses_reason')->nullable(); // سبب طلب الأشعة / الاشتباه التشخيصي
-            $table->enum('priority', ['normal', 'urgent'])->default('normal'); // أولوية الطلب
-            $table->dateTime('request_date_time'); // تاريخ ووقت طلب الأشعة
+            $table->enum('priority', ['عادي', 'مستعجل'])->default('عادي'); // أولوية الطلب
             
             $table->timestamps();
         });

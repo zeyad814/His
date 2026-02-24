@@ -60,6 +60,7 @@ class DatabaseSeeder extends Seeder
             FamilyPlanningSeeder::class,
             FamilyPlanningFollowUpSeeder::class,
             CvRiskAssessmentSeeder::class,
+            VerbalOrderSeeder::class,
         ]);
     }
 }

@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('radiology_reports', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('radiological_request_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('radiological_request_id')->unique()->constrained('radiological_requests')->cascadeOnDelete();
             $table->foreignId('doctor_id')->constrained()->cascadeOnDelete(); // الطبيب الذي كتب تقرير الأشعة
             $table->text('findings_text')->nullable(); // نتائج الأشعة / وصف الملاحظات
             $table->string('radiation_dose', 50)->nullable(); // جرعة الإشعاع
-            $table->dateTime('report_date_time'); // تاريخ ووقت كتابة التقرير
-            
+            // $table->string('report_file')->nullable();
             $table->timestamps();
         });
     }

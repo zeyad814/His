@@ -16,7 +16,6 @@ class RadiologicalRequest extends Model
         'body_part',
         'diagnoses_reason',
         'priority',
-        'request_date_time',
     ];
 
     public function familyMember()

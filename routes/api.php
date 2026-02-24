@@ -22,6 +22,8 @@ use App\Http\Controllers\Doctor\PostnatalCareController;
 use App\Http\Controllers\Doctor\PregnancyController;
 use App\Http\Controllers\Doctor\PregnancyVisitController;
 use App\Http\Controllers\Doctor\PsychologicalSupportVisitController;
+use App\Http\Controllers\Doctor\RadiologicalRequestController;
+use App\Http\Controllers\Doctor\RadiologyReportController;
 use App\Http\Controllers\Doctor\SignificantDataController;
 use App\Http\Controllers\Doctor\VerbalOrderController;
 use App\Http\Controllers\Doctor\VisitController;
@@ -194,6 +196,25 @@ Route::middleware('auth:sanctum')->group(function () {
                 Route::put('/update/{id}', [VerbalOrderController::class, 'update'])->name('update');
                 Route::patch('/{id}/confirm', [VerbalOrderController::class, 'confirm'])->name('confirm');
                 Route::delete('/delete/{id}', [VerbalOrderController::class, 'destroy'])->name('destroy');
+            });
+
+            // Radiological Request
+            Route::prefix('/radiological-requests')->as('doctor.radiological-requests.')->group(function () {
+                Route::get('/{family_member_id}', [RadiologicalRequestController::class, 'index'])->name('index');
+                Route::post('/store', [RadiologicalRequestController::class, 'store'])->name('store');
+                Route::get('/show/{id}', [RadiologicalRequestController::class, 'show'])->name('show');
+                Route::get('/edit/{id}', [RadiologicalRequestController::class, 'edit'])->name('edit');
+                Route::put('/update/{id}', [RadiologicalRequestController::class, 'update'])->name('update');
+                Route::delete('/delete/{id}', [RadiologicalRequestController::class, 'destroy'])->name('destroy');
+            });
+
+            // Radiology Reports
+            Route::prefix('/radiology-reports')->as('doctor.radiology-reports.')->group(function () {
+                Route::post('/store', [RadiologyReportController::class, 'store'])->name('store');
+                Route::get('/show/{id}', [RadiologyReportController::class, 'show'])->name('show');
+                Route::get('/edit/{id}', [RadiologyReportController::class, 'edit'])->name('edit');
+                Route::put('/update/{id}', [RadiologyReportController::class, 'update'])->name('update');
+                // Route::delete('/delete/{id}', [RadiologyReportController::class, 'destroy'])->name('destroy');
             });
 
             // Cardiovascular Risk Assessment 
