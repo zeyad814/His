@@ -13,6 +13,7 @@ use App\Http\Controllers\Doctor\ClinicalExaminationController;
 use App\Http\Controllers\Doctor\CvRiskAssessmentController;
 use App\Http\Controllers\Doctor\DiabetesFollowUpController;
 use App\Http\Controllers\Doctor\FamilyController;
+use App\Http\Controllers\Doctor\FamilyInjectionController;
 use App\Http\Controllers\Doctor\FamilyPlanningController;
 use App\Http\Controllers\Doctor\FamilyPlanningFollowUpController;
 use App\Http\Controllers\Doctor\FeedbackReferralController;
@@ -292,6 +293,8 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::apiResource('family-planning.follow-ups', FamilyPlanningFollowUpController::class);
 
             Route::apiResource('surgery-uterus', SurgeryUterusController::class);
+
+            Route::apiResource('family-injections', FamilyInjectionController::class);
         });
     });
 

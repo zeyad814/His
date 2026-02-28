@@ -13,16 +13,20 @@ return new class extends Migration
     {
         Schema::create('family_injections', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('family_member_id')->constrained()->cascadeOnDelete(); 
-
-            $table->foreignId('doctor_id')->constrained()->cascadeOnDelete(); 
+            $table->foreignId('family_member_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('doctor_id')->constrained()->cascadeOnDelete();
 
             $table->string('procedure_name', 150); // اسم الإجراء / الحقنة
-            $table->string('phone', 20)->nullable(); 
+            $table->string('phone', 20)->nullable();
+
+            $table->boolean('is_agreed')->default(false); // الإقرار بالموافقة
+            $table->string('signature_path')->nullable(); // صورة الإقرار الممضي
 
             $table->date('visit_date')->nullable(); // تاريخ الزيارة
             $table->time('visit_time')->nullable(); // وقت الزيارة
+            $table->softDeletes();
             $table->timestamps();
+        
         });
     }
 

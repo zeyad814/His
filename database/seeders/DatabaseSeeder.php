@@ -68,6 +68,7 @@ class DatabaseSeeder extends Seeder
             HealthUnitSeeder::class,
             NurseSeeder::class,
             SurgeryUterusSeeder::class,
+            FamilyInjectionSeeder::class,
         ]);
     }
 }
