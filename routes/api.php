@@ -15,6 +15,7 @@ use App\Http\Controllers\Doctor\DiabetesFollowUpController;
 use App\Http\Controllers\Doctor\FamilyController;
 use App\Http\Controllers\Doctor\FamilyPlanningController;
 use App\Http\Controllers\Doctor\FamilyPlanningFollowUpController;
+use App\Http\Controllers\Doctor\FeedbackReferralController;
 use App\Http\Controllers\Doctor\GeneralExaminationController;
 use App\Http\Controllers\Doctor\HypertensionStepController;
 use App\Http\Controllers\Doctor\ObesityRecordController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\Doctor\PregnancyVisitController;
 use App\Http\Controllers\Doctor\PsychologicalSupportVisitController;
 use App\Http\Controllers\Doctor\RadiologicalRequestController;
 use App\Http\Controllers\Doctor\RadiologyReportController;
+use App\Http\Controllers\Doctor\ReferralController;
 use App\Http\Controllers\Doctor\SignificantDataController;
 use App\Http\Controllers\Doctor\SurgeryUterusController;
 use App\Http\Controllers\Doctor\VerbalOrderController;
@@ -216,6 +218,25 @@ Route::middleware('auth:sanctum')->group(function () {
                 Route::get('/edit/{id}', [RadiologyReportController::class, 'edit'])->name('edit');
                 Route::put('/update/{id}', [RadiologyReportController::class, 'update'])->name('update');
                 // Route::delete('/delete/{id}', [RadiologyReportController::class, 'destroy'])->name('destroy');
+            });
+
+            // Referral 
+            Route::prefix('/referrals')->as('doctor.referrals.')->group(function () {
+                Route::get('/{family_member_id}', [ReferralController::class, 'index'])->name('index');
+                Route::post('/store', [ReferralController::class, 'store'])->name('store');
+                Route::get('/show/{id}', [ReferralController::class, 'show'])->name('show');
+                Route::get('/edit/{id}', [ReferralController::class, 'edit'])->name('edit');
+                Route::put('/update/{id}', [ReferralController::class, 'update'])->name('update');
+                Route::delete('/delete/{id}', [ReferralController::class, 'destroy'])->name('destroy');
+            });
+
+            // Feedback Referral
+            Route::prefix('/feedback-referrals')->as('doctor.feedback-referrals.')->group(function () {
+                Route::post('/store', [FeedbackReferralController::class, 'store'])->name('store');
+                Route::get('/show/{id}', [FeedbackReferralController::class, 'show'])->name('show');
+                Route::get('/edit/{id}', [FeedbackReferralController::class, 'edit'])->name('edit');
+                Route::put('/update/{id}', [FeedbackReferralController::class, 'update'])->name('update');
+                Route::delete('/delete/{id}', [FeedbackReferralController::class, 'destroy'])->name('destroy');
             });
 
             // Cardiovascular Risk Assessment 

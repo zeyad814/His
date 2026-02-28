@@ -4098,6 +4098,388 @@
                   "response": []
                 }
               ]
+            },
+            {
+              "name": "Referral",
+              "item": [
+                {
+                  "name": "Index",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/referrals/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "referrals",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Store",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"family_member_id\": 1,\r\n    \"referral_number\": \"REF-2024-0001\",\r\n    \"referred_to_entity\": \"General Central Hospital\",\r\n    \"specialty\": \"Cardiology\",\r\n    \"transport_method\": \"Ambulance\",\r\n    \"reason_for_referral\": \"Persistent chest pain and high blood pressure\",\r\n    \"urgency_type\": \"urgent\",\r\n    \"bp\": \"140/90\",\r\n    \"pulse\": 85,\r\n    \"temp\": 37.5,\r\n    \"rr\": 18,\r\n    \"relevant_history\": \"Patient has a family history of hypertension.\",\r\n    \"exam_findings\": \"Slight swelling in lower limbs.\",\r\n    \"relevant_investigations\": \"ECG done yesterday, blood sugar is normal.\",\r\n    \"provisional_diagnosis\": \"Possible Angina\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/referrals/store",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "referrals",
+                        "store"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Show",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"family_member_id\": 1,\r\n    \"referral_number\": \"REF-2024-0001\",\r\n    \"referred_to_entity\": \"General Central Hospital\",\r\n    \"specialty\": \"Cardiology\",\r\n    \"transport_method\": \"Ambulance\",\r\n    \"reason_for_referral\": \"Persistent chest pain and high blood pressure\",\r\n    \"urgency_type\": \"urgent\",\r\n    \"bp\": \"140/90\",\r\n    \"pulse\": 85,\r\n    \"temp\": 37.5,\r\n    \"rr\": 18,\r\n    \"relevant_history\": \"Patient has a family history of hypertension.\",\r\n    \"exam_findings\": \"Slight swelling in lower limbs.\",\r\n    \"relevant_investigations\": \"ECG done yesterday, blood sugar is normal.\",\r\n    \"provisional_diagnosis\": \"Possible Angina\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/referrals/show/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "referrals",
+                        "show",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Edit",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"family_member_id\": 1,\r\n    \"referral_number\": \"REF-2024-0001\",\r\n    \"referred_to_entity\": \"General Central Hospital\",\r\n    \"specialty\": \"Cardiology\",\r\n    \"transport_method\": \"Ambulance\",\r\n    \"reason_for_referral\": \"Persistent chest pain and high blood pressure\",\r\n    \"urgency_type\": \"urgent\",\r\n    \"bp\": \"140/90\",\r\n    \"pulse\": 85,\r\n    \"temp\": 37.5,\r\n    \"rr\": 18,\r\n    \"relevant_history\": \"Patient has a family history of hypertension.\",\r\n    \"exam_findings\": \"Slight swelling in lower limbs.\",\r\n    \"relevant_investigations\": \"ECG done yesterday, blood sugar is normal.\",\r\n    \"provisional_diagnosis\": \"Possible Angina\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/referrals/edit/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "referrals",
+                        "edit",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    // \"family_member_id\": 1,\r\n    \"referral_number\": \"REF-2024-0001\",\r\n    \"referred_to_entity\": \"General Central Hospital\",\r\n    \"specialty\": \"Cardiology\",\r\n    \"transport_method\": \"Ambulance\",\r\n    \"reason_for_referral\": \"Persistent chest pain and high blood pressure\",\r\n    \"urgency_type\": \"urgent\",\r\n    \"bp\": \"140/90\",\r\n    \"pulse\": 85,\r\n    \"temp\": 37.5,\r\n    \"rr\": 18,\r\n    \"relevant_history\": \"Patient has a family history of hypertension.\",\r\n    \"exam_findings\": \"Slight swelling in lower limbs.\",\r\n    \"relevant_investigations\": \"ECG done yesterday, blood sugar is normal.\",\r\n    \"provisional_diagnosis\": \"Possible Angina\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/referrals/update/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "referrals",
+                        "update",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    // \"family_member_id\": 1,\r\n    \"referral_number\": \"REF-2024-0001\",\r\n    \"referred_to_entity\": \"General Central Hospital\",\r\n    \"specialty\": \"Cardiology\",\r\n    \"transport_method\": \"Ambulance\",\r\n    \"reason_for_referral\": \"Persistent chest pain and high blood pressure\",\r\n    \"urgency_type\": \"urgent\",\r\n    \"bp\": \"140/90\",\r\n    \"pulse\": 85,\r\n    \"temp\": 37.5,\r\n    \"rr\": 18,\r\n    \"relevant_history\": \"Patient has a family history of hypertension.\",\r\n    \"exam_findings\": \"Slight swelling in lower limbs.\",\r\n    \"relevant_investigations\": \"ECG done yesterday, blood sugar is normal.\",\r\n    \"provisional_diagnosis\": \"Possible Angina\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/referrals/delete/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "referrals",
+                        "delete",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Feedback Referral",
+              "item": [
+                {
+                  "name": "Store",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"referral_id\": 1,\r\n    \"arrival_at\": \"2026-02-28 10:30:00\",\r\n    \"specialist_findings\": \"Patient was examined upon arrival. Chest sounds are clear but persistent dry cough noted.\",\r\n    \"hospital_investigations\": \"X-Ray Chest (PA view), CBC, and PCR test.\",\r\n    \"final_diagnosis\": \"Mild Viral Bronchitis\",\r\n    \"current_medications\": \"Azithromycin 500mg once daily, Cough Syrup 10ml twice daily.\",\r\n    \"admission_ward\": \"Not Admitted (Outpatient)\",\r\n    \"surgery_type\": null,\r\n    \"other_interventions\": \"Nebulizer session with Salbutamol in the ER.\",\r\n    \"recommendations\": \"Complete the course of antibiotics and rest at home.\",\r\n    \"revisit_date\": \"2026-03-05\",\r\n    \"sick_leave_days\": 3,\r\n    \"follow_up_instructions\": \"Return to the clinic if breathing difficulty increases or fever exceeds 39°C.\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/feedback-referrals/store",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "feedback-referrals",
+                        "store"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Show",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"referral_id\": 1,\r\n    \"arrival_at\": \"2026-02-28 10:30:00\",\r\n    \"specialist_findings\": \"Patient was examined upon arrival. Chest sounds are clear but persistent dry cough noted.\",\r\n    \"hospital_investigations\": \"X-Ray Chest (PA view), CBC, and PCR test.\",\r\n    \"final_diagnosis\": \"Mild Viral Bronchitis\",\r\n    \"current_medications\": \"Azithromycin 500mg once daily, Cough Syrup 10ml twice daily.\",\r\n    \"admission_ward\": \"Not Admitted (Outpatient)\",\r\n    \"surgery_type\": null,\r\n    \"other_interventions\": \"Nebulizer session with Salbutamol in the ER.\",\r\n    \"recommendations\": \"Complete the course of antibiotics and rest at home.\",\r\n    \"revisit_date\": \"2026-03-05\",\r\n    \"sick_leave_days\": 3,\r\n    \"follow_up_instructions\": \"Return to the clinic if breathing difficulty increases or fever exceeds 39°C.\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/feedback-referrals/show/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "feedback-referrals",
+                        "show",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Edit",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"referral_id\": 1,\r\n    \"arrival_at\": \"2026-02-28 10:30:00\",\r\n    \"specialist_findings\": \"Patient was examined upon arrival. Chest sounds are clear but persistent dry cough noted.\",\r\n    \"hospital_investigations\": \"X-Ray Chest (PA view), CBC, and PCR test.\",\r\n    \"final_diagnosis\": \"Mild Viral Bronchitis\",\r\n    \"current_medications\": \"Azithromycin 500mg once daily, Cough Syrup 10ml twice daily.\",\r\n    \"admission_ward\": \"Not Admitted (Outpatient)\",\r\n    \"surgery_type\": null,\r\n    \"other_interventions\": \"Nebulizer session with Salbutamol in the ER.\",\r\n    \"recommendations\": \"Complete the course of antibiotics and rest at home.\",\r\n    \"revisit_date\": \"2026-03-05\",\r\n    \"sick_leave_days\": 3,\r\n    \"follow_up_instructions\": \"Return to the clinic if breathing difficulty increases or fever exceeds 39°C.\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/feedback-referrals/edit/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "feedback-referrals",
+                        "edit",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"referral_id\": 1,\r\n    \"arrival_at\": \"2026-02-28 14:30:00\",\r\n    \"specialist_findings\": \"Stable condition, blood pressure normalized.\",\r\n    \"hospital_investigations\": \"CBC, ECG, and Chest X-ray performed.\",\r\n    \"final_diagnosis\": \"Hypertension Stage 1\",\r\n    \"current_medications\": \"Lisinopril 10mg daily.\",\r\n    \"admission_ward\": null,\r\n    \"surgery_type\": null,\r\n    \"other_interventions\": \"IV fluids administered on arrival.\",\r\n    \"recommendations\": \"Reduce salt intake and monitor BP daily.\",\r\n    \"revisit_date\": \"2026-03-10\",\r\n    \"sick_leave_days\": 2,\r\n    \"follow_up_instructions\": \"Return if headache or dizziness persists.\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/feedback-referrals/update/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "feedback-referrals",
+                        "update",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
             }
           ]
         },

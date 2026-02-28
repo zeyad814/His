@@ -15,16 +15,24 @@ return new class extends Migration
             $table->id();
             $table->foreignId('family_member_id')->constrained()->cascadeOnDelete(); 
             $table->foreignId('doctor_id')->constrained()->cascadeOnDelete(); 
-            $table->date('referral_date')->nullable(); // تاريخ الإحالة     
-            $table->string('transport_method')->nullable(); // وسيلة النقل (إسعاف - سيارة - أخرى)    
-            $table->string('target_facility')->nullable(); // الجهة / المنشأة المُحال إليها
-            $table->text('reason_for_referral')->nullable(); // سبب الإحالة
-            $table->string('specialty')->nullable(); // التخصص المطلوب
-            $table->string('type_of_referral')->nullable(); // نوع الإحالة (عاجلة - عادية - متابعة)
-            $table->text('relevant_history')->nullable(); // التاريخ المرضي المرتبط بالحالة
-            $table->string('referral_serial_no')->nullable(); // الرقم المسلسل للإحالة
-            $table->text('exam_findings')->nullable(); // نتائج الفحص
-            $table->string('provisional_diag')->nullable();  // التشخيص المبدئي
+            $table->string('referral_number')->unique(); // رقم الإحالة في السجل
+            $table->string('referred_to_entity')->nullable(); // الجهة المحول إليها
+            $table->string('specialty')->nullable(); // التخصص
+            $table->string('transport_method')->nullable(); // وسيلة الانتقال (إسعاف/بمعرفته)
+            
+            $table->text('reason_for_referral')->nullable();
+            $table->enum('urgency_type', ['emergency', 'urgent', 'non_urgent'])->default('non_urgent');
+            
+            // العلامات الحيوية
+            $table->string('bp')->nullable(); // Blood Pressure
+            $table->integer('pulse')->nullable();
+            $table->decimal('temp', 4, 1)->nullable();
+            $table->integer('rr')->nullable(); // Respiratory Rate
+            
+            $table->text('relevant_history')->nullable();
+            $table->text('exam_findings')->nullable();
+            $table->text('relevant_investigations')->nullable();
+            $table->text('provisional_diagnosis')->nullable();
             $table->timestamps();
         });
     }

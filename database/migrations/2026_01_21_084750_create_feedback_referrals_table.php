@@ -15,18 +15,22 @@ return new class extends Migration
             $table->id();
             $table->foreignId('referral_id')->constrained()->cascadeOnDelete();
             $table->foreignId('doctor_id')->constrained()->cascadeOnDelete();
-            $table->text('other_interventions')->nullable(); // تدخلات طبية أخرى تمت
-            $table->date('revisit_date')->nullable(); // تاريخ إعادة الزيارة
-            $table->dateTime('arrival_date_time')->nullable(); // تاريخ ووقت وصول المريض
-            $table->string('sick_leave')->nullable(); // إجازة مرضية (نعم / لا / المدة)
-            $table->text('exam_findings')->nullable(); // نتائج الفحص
-            $table->text('follow_up_instructions')->nullable(); // تعليمات المتابعة
-            $table->text('investigations')->nullable(); // الفحوصات / التحاليل
-            $table->string('final_diagnoses')->nullable(); // التشخيص النهائي
-            $table->text('current_medications')->nullable(); // الأدوية الحالية
-            $table->string('admission_ward')->nullable(); // القسم / الجناح المحجوز به
-            $table->string('surgery_type')->nullable(); // نوع الجراحة (إن وجدت)
             
+            $table->dateTime('arrival_at')->nullable(); // تاريخ ووقت الوصول
+            $table->text('specialist_findings')->nullable();
+            $table->text('hospital_investigations')->nullable();
+            $table->text('final_diagnosis')->nullable();
+            $table->text('current_medications')->nullable();
+            
+            // التدخلات (Interventions)
+            $table->string('admission_ward')->nullable(); // رقم العنبر إذا وجد
+            $table->string('surgery_type')->nullable(); // نوع العملية
+            $table->text('other_interventions')->nullable();
+            
+            $table->text('recommendations')->nullable();
+            $table->date('revisit_date')->nullable(); // تاريخ المراجعة
+            $table->integer('sick_leave_days')->nullable(); // مدة الإجازة
+            $table->text('follow_up_instructions')->nullable();            
             $table->timestamps();
         });
     }

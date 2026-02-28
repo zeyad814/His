@@ -10,18 +10,22 @@ class Referral extends Model
     use HasFactory;
 
     protected $fillable = [
-        'family_member_id',
-        'doctor_id',
-        'referral_date',
-        'transport_method',
-        'target_facility',
-        'reason_for_referral',
-        'specialty',
-        'type_of_referral',
-        'relevant_history',
-        'referral_serial_no',
-        'exam_findings',
-        'provisional_diag',
+        "family_member_id",
+        "doctor_id",
+        "referral_number",
+        "referred_to_entity",
+        "specialty",
+        "transport_method",
+        "reason_for_referral",
+        "urgency_type",
+        "bp",
+        "pulse",
+        "temp",
+        "rr",
+        "relevant_history",
+        "exam_findings",
+        "relevant_investigations",
+        "provisional_diagnosis",
     ];
 
     public function familyMember()

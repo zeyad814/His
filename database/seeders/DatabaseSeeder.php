@@ -62,6 +62,7 @@ class DatabaseSeeder extends Seeder
             CvRiskAssessmentSeeder::class,
             RadiologySeeder::class,
             VerbalOrderSeeder::class,
+            ReferralWithFeedbackSeeder::class,
 
             HealthAdministrationSeeder::class,
             HealthUnitSeeder::class,
