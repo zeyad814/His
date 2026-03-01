@@ -84,4 +84,9 @@ class Visit extends Model
     {
         return $this->hasOne(ObesityRecord::class, 'visit_id');
     }
+
+    public function physioAssessment()
+    {
+        return $this->hasOne(PhysiotherapyAssessment::class, 'visit_id');
+    }
 }

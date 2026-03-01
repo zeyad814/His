@@ -4480,6 +4480,190 @@
                   "response": []
                 }
               ]
+            },
+            {
+              "name": "Physiotherapy Assessments",
+              "item": [
+                {
+                  "name": "Index",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/physiotherapy-assessments/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "physiotherapy-assessments",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Store",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"family_member_id\": 1,\r\n    \"visit_id\": 8,\r\n    \"assessment_date\": \"2026-03-01\",\r\n    \"case_type\": \"مجاني\",\r\n    \"occupation\": \"مهندس برمجة\",\r\n    \"referral_source\": \"مستشفى العام\",\r\n\r\n    \"medical_history_notes\": \"إصابة قديمة في أسفل الظهر ناتجة عن حادث سيارة\",\r\n    \"has_diabetes\": false,\r\n    \"has_hypertension\": true,\r\n    \"has_cardiac_disorder\": false,\r\n    \"has_renal_disorder\": false,\r\n    \"has_hepatic_disorder\": false,\r\n\r\n    \"chief_complaint\": \"ألم شديد في الفقرات القطنية يمتد للرجل اليسرى\",\r\n    \"present_since\": \"منذ أسبوعين\",\r\n    \"onset\": \"gradual\",\r\n    \"course\": \"progressive\",\r\n    \"is_remittent\": false,\r\n    \"pain_duration\": \"مستمر طوال اليوم\",\r\n    \"pain_status\": \"worsening\",\r\n\r\n    \"inv_x_ray\": true,\r\n    \"inv_ct\": false,\r\n    \"inv_mri\": true,\r\n    \"inv_emg\": false,\r\n    \"inv_lab\": false,\r\n    \"investigation_details\": \"وجود ضغط على العصب في الفقرة الرابعة والخامسة\",\r\n\r\n    \"gait_assessment\": \"عرج خفيف في المشية\",\r\n    \"manual_muscle_test\": \"ضعف في عضلات السمانة اليسرى\",\r\n    \"special_tests\": \"اختبار SLR إيجابي عند 45 درجة\",\r\n    \"neurological_examination\": \"تنميل في مسار العصب L5\",\r\n\r\n    \"diagnosis\": \"انزلاق غضروفي قطني ضاغط على جذور الأعصاب\",\r\n\r\n    \"goal_relief_pain\": true,\r\n    \"goal_reduce_swelling\": false,\r\n    \"goal_improve_rom\": true,\r\n    \"goal_improve_strength\": true,\r\n    \"goal_improve_gait\": true,\r\n    \"other_goals\": \"العودة لممارسة التمارين الرياضية\",\r\n\r\n    \"modality_us\": true,\r\n    \"modality_ir\": true,\r\n    \"modality_tens\": true,\r\n    \"modality_faradic\": false,\r\n    \"modality_laser\": false,\r\n    \"manual_therapy_exercises\": \"تمارين ماكنزي وتمارين تقوية عضلات الجذع\",\r\n    \"follow_up_schedule\": \"3 جلسات أسبوعياً لمدة شهر\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/physiotherapy-assessments/store",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "physiotherapy-assessments",
+                        "store"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Show",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"family_member_id\": 1,\r\n    \"visit_id\": 8,\r\n    \"assessment_date\": \"2026-03-01\",\r\n    \"case_type\": \"مجاني\",\r\n    \"occupation\": \"مهندس برمجة\",\r\n    \"referral_source\": \"مستشفى العام\",\r\n\r\n    \"medical_history_notes\": \"إصابة قديمة في أسفل الظهر ناتجة عن حادث سيارة\",\r\n    \"has_diabetes\": false,\r\n    \"has_hypertension\": true,\r\n    \"has_cardiac_disorder\": false,\r\n    \"has_renal_disorder\": false,\r\n    \"has_hepatic_disorder\": false,\r\n\r\n    \"chief_complaint\": \"ألم شديد في الفقرات القطنية يمتد للرجل اليسرى\",\r\n    \"present_since\": \"منذ أسبوعين\",\r\n    \"onset\": \"gradual\",\r\n    \"course\": \"progressive\",\r\n    \"is_remittent\": false,\r\n    \"pain_duration\": \"مستمر طوال اليوم\",\r\n    \"pain_status\": \"worsening\",\r\n\r\n    \"inv_x_ray\": true,\r\n    \"inv_ct\": false,\r\n    \"inv_mri\": true,\r\n    \"inv_emg\": false,\r\n    \"inv_lab\": false,\r\n    \"investigation_details\": \"وجود ضغط على العصب في الفقرة الرابعة والخامسة\",\r\n\r\n    \"gait_assessment\": \"عرج خفيف في المشية\",\r\n    \"manual_muscle_test\": \"ضعف في عضلات السمانة اليسرى\",\r\n    \"special_tests\": \"اختبار SLR إيجابي عند 45 درجة\",\r\n    \"neurological_examination\": \"تنميل في مسار العصب L5\",\r\n\r\n    \"diagnosis\": \"انزلاق غضروفي قطني ضاغط على جذور الأعصاب\",\r\n\r\n    \"goal_relief_pain\": true,\r\n    \"goal_reduce_swelling\": false,\r\n    \"goal_improve_rom\": true,\r\n    \"goal_improve_strength\": true,\r\n    \"goal_improve_gait\": true,\r\n    \"other_goals\": \"العودة لممارسة التمارين الرياضية\",\r\n\r\n    \"modality_us\": true,\r\n    \"modality_ir\": true,\r\n    \"modality_tens\": true,\r\n    \"modality_faradic\": false,\r\n    \"modality_laser\": false,\r\n    \"manual_therapy_exercises\": \"تمارين ماكنزي وتمارين تقوية عضلات الجذع\",\r\n    \"follow_up_schedule\": \"3 جلسات أسبوعياً لمدة شهر\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/physiotherapy-assessments/show/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "physiotherapy-assessments",
+                        "show",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"assessment_date\": \"2026-03-05\",\r\n    \"case_type\": \"Economic\",\r\n    \"occupation\": \"Software Engineer\",\r\n    \"referral_source\": \"General Hospital\",\r\n\r\n    \"medical_history_notes\": \"Patient reports better sleep quality.\",\r\n    \"has_diabetes\": false,\r\n    \"has_hypertension\": true,\r\n    \"has_cardiac_disorder\": false,\r\n    \"has_renal_disorder\": false,\r\n    \"has_hepatic_disorder\": false,\r\n\r\n    \"chief_complaint\": \"Persistent mild numbness in the left foot.\",\r\n    \"present_since\": \"3 weeks ago\",\r\n    \"onset\": \"gradual\",\r\n    \"course\": \"regressive\",\r\n    \"is_remittent\": true,\r\n    \"pain_duration\": \"Intermittent\",\r\n    \"pain_status\": \"improving\",\r\n\r\n    \"inv_x_ray\": true,\r\n    \"inv_ct\": false,\r\n    \"inv_mri\": true,\r\n    \"inv_emg\": true,\r\n    \"inv_lab\": false,\r\n    \"investigation_details\": \"Latest EMG shows improved nerve conduction.\",\r\n\r\n    \"gait_assessment\": \"Gait is more stable, less limping.\",\r\n    \"manual_muscle_test\": \"Grade 4+ in dorsiflexion.\",\r\n    \"special_tests\": \"SLR test positive at 60 degrees (improved).\",\r\n    \"neurological_examination\": \"Sensation returning to L5 dermatome.\",\r\n\r\n    \"diagnosis\": \"Recovering Lumbar Disc Herniation.\",\r\n\r\n    \"goal_relief_pain\": true,\r\n    \"goal_reduce_swelling\": false,\r\n    \"goal_improve_rom\": true,\r\n    \"goal_improve_strength\": true,\r\n    \"goal_improve_gait\": true,\r\n    \"other_goals\": \"Full return to gym activities.\",\r\n\r\n    \"modality_us\": true,\r\n    \"modality_ir\": false,\r\n    \"modality_tens\": false,\r\n    \"modality_faradic\": false,\r\n    \"modality_laser\": true,\r\n    \"manual_therapy_exercises\": \"Advanced core stabilization and stretching.\",\r\n    \"follow_up_schedule\": \"Once a week for follow-up.\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/physiotherapy-assessments/update/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "physiotherapy-assessments",
+                        "update",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"assessment_date\": \"2026-03-05\",\r\n    \"case_type\": \"Economic\",\r\n    \"occupation\": \"Software Engineer\",\r\n    \"referral_source\": \"General Hospital\",\r\n\r\n    \"medical_history_notes\": \"Patient reports better sleep quality.\",\r\n    \"has_diabetes\": false,\r\n    \"has_hypertension\": true,\r\n    \"has_cardiac_disorder\": false,\r\n    \"has_renal_disorder\": false,\r\n    \"has_hepatic_disorder\": false,\r\n\r\n    \"chief_complaint\": \"Persistent mild numbness in the left foot.\",\r\n    \"present_since\": \"3 weeks ago\",\r\n    \"onset\": \"gradual\",\r\n    \"course\": \"regressive\",\r\n    \"is_remittent\": true,\r\n    \"pain_duration\": \"Intermittent\",\r\n    \"pain_status\": \"improving\",\r\n\r\n    \"inv_x_ray\": true,\r\n    \"inv_ct\": false,\r\n    \"inv_mri\": true,\r\n    \"inv_emg\": true,\r\n    \"inv_lab\": false,\r\n    \"investigation_details\": \"Latest EMG shows improved nerve conduction.\",\r\n\r\n    \"gait_assessment\": \"Gait is more stable, less limping.\",\r\n    \"manual_muscle_test\": \"Grade 4+ in dorsiflexion.\",\r\n    \"special_tests\": \"SLR test positive at 60 degrees (improved).\",\r\n    \"neurological_examination\": \"Sensation returning to L5 dermatome.\",\r\n\r\n    \"diagnosis\": \"Recovering Lumbar Disc Herniation.\",\r\n\r\n    \"goal_relief_pain\": true,\r\n    \"goal_reduce_swelling\": false,\r\n    \"goal_improve_rom\": true,\r\n    \"goal_improve_strength\": true,\r\n    \"goal_improve_gait\": true,\r\n    \"other_goals\": \"Full return to gym activities.\",\r\n\r\n    \"modality_us\": true,\r\n    \"modality_ir\": false,\r\n    \"modality_tens\": false,\r\n    \"modality_faradic\": false,\r\n    \"modality_laser\": true,\r\n    \"manual_therapy_exercises\": \"Advanced core stabilization and stretching.\",\r\n    \"follow_up_schedule\": \"Once a week for follow-up.\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/doctor/physiotherapy-assessments/delete/2",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "doctor",
+                        "physiotherapy-assessments",
+                        "delete",
+                        "2"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
             }
           ]
         },
@@ -6106,6 +6290,157 @@
                     "doctor",
                     "surgery-uterus",
                     "3"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Family Injection",
+          "item": [
+            {
+              "name": "index",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/doctor/family-injections",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "doctor",
+                    "family-injections"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "store",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"family_member_id\": 2,\r\n    \"procedure_name\": \"Depo-Provera (Contraceptive Injection)\",\r\n    \"phone\": \"01234567890\",\r\n    \"is_agreed\": true,\r\n    \"visit_date\": \"2026-02-28\",\r\n    \"visit_time\": \"14:30\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/doctor/family-injections",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "doctor",
+                    "family-injections"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/doctor/family-injections/2",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "doctor",
+                    "family-injections",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"procedure_name\": \"Nexplanon Implant (Updated)\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/doctor/family-injections/2",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "doctor",
+                    "family-injections",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/doctor/family-injections/2",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "doctor",
+                    "family-injections",
+                    "2"
                   ]
                 }
               },

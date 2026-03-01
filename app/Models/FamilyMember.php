@@ -173,4 +173,9 @@ class FamilyMember extends Model
     {
         return $this->hasMany(VerbalOrder::class);
     }
+
+    public function physiotherapyAssessments()
+    {
+        return $this->hasMany(PhysiotherapyAssessment::class, 'family_member_id');
+    }
 }

@@ -214,4 +214,9 @@ class Doctor extends Model
     {
         return $this->hasMany(VerbalOrder::class, 'confirmed_by_doctor_id');
     }
+
+    public function physioAssessments()
+    {
+        return $this->hasMany(PhysiotherapyAssessment::class, 'doctor_id');
+    }
 }

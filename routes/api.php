@@ -20,6 +20,7 @@ use App\Http\Controllers\Doctor\FeedbackReferralController;
 use App\Http\Controllers\Doctor\GeneralExaminationController;
 use App\Http\Controllers\Doctor\HypertensionStepController;
 use App\Http\Controllers\Doctor\ObesityRecordController;
+use App\Http\Controllers\Doctor\PhysiotherapyAssessmentController;
 use App\Http\Controllers\Doctor\PostnatalCareController;
 use App\Http\Controllers\Doctor\PregnancyController;
 use App\Http\Controllers\Doctor\PregnancyVisitController;
@@ -238,6 +239,15 @@ Route::middleware('auth:sanctum')->group(function () {
                 Route::get('/edit/{id}', [FeedbackReferralController::class, 'edit'])->name('edit');
                 Route::put('/update/{id}', [FeedbackReferralController::class, 'update'])->name('update');
                 Route::delete('/delete/{id}', [FeedbackReferralController::class, 'destroy'])->name('destroy');
+            });
+
+            // Physiotherapy Assessments
+            Route::prefix('/physiotherapy-assessments')->as('doctor.physiotherapy-assessments.')->group(function () {
+                Route::get('/{family_member_id}', [PhysiotherapyAssessmentController::class, 'index'])->name('index');                
+                Route::post('/store', [PhysiotherapyAssessmentController::class, 'store'])->name('store');
+                Route::get('/show/{id}', [PhysiotherapyAssessmentController::class, 'show'])->name('show');
+                Route::put('/update/{id}', [PhysiotherapyAssessmentController::class, 'update'])->name('update');
+                Route::delete('/delete/{id}', [PhysiotherapyAssessmentController::class, 'destroy'])->name('destroy');
             });
 
             // Cardiovascular Risk Assessment 
