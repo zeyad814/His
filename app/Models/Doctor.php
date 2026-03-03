@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Models\ChronicDisease;
 use App\Models\ClinicalExamination;
-use App\Models\Consent;
 use App\Models\DiabetesFollowUp;
 use App\Models\DrugCompatibility;
 use App\Models\Family;
@@ -99,10 +98,7 @@ class Doctor extends Model
         return $this->hasMany(FamilyInjection::class);
     }
 
-    public function consents()
-    {
-        return $this->hasMany(Consent::class);
-    }
+
 
     public function geriatricAssessments()
     {
@@ -218,5 +214,10 @@ class Doctor extends Model
     public function physioAssessments()
     {
         return $this->hasMany(PhysiotherapyAssessment::class, 'doctor_id');
+    }
+
+    public function premaritalScreenings()
+    {
+        return $this->hasMany(PremaritalScreening::class);
     }
 }

@@ -24,6 +24,7 @@ use App\Http\Controllers\Doctor\PhysiotherapyAssessmentController;
 use App\Http\Controllers\Doctor\PostnatalCareController;
 use App\Http\Controllers\Doctor\PregnancyController;
 use App\Http\Controllers\Doctor\PregnancyVisitController;
+use App\Http\Controllers\Doctor\PremaritalScreeningController;
 use App\Http\Controllers\Doctor\PsychologicalSupportVisitController;
 use App\Http\Controllers\Doctor\RadiologicalRequestController;
 use App\Http\Controllers\Doctor\RadiologyReportController;
@@ -305,6 +306,8 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::apiResource('surgery-uterus', SurgeryUterusController::class);
 
             Route::apiResource('family-injections', FamilyInjectionController::class);
+
+            Route::apiResource('premarital-screenings', PremaritalScreeningController::class);
         });
     });
 

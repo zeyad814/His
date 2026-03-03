@@ -84,9 +84,9 @@ class FamilyMember extends Model
         return $this->hasMany(FamilyInjection::class);
     }
 
-    public function groom()
+    public function premaritalScreenings()
     {
-        return $this->hasOne(Groom::class);
+        return $this->hasMany(PremaritalScreening::class);
     }
 
     public function geriatricAssessments()

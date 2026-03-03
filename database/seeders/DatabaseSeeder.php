@@ -69,6 +69,7 @@ class DatabaseSeeder extends Seeder
             NurseSeeder::class,
             SurgeryUterusSeeder::class,
             FamilyInjectionSeeder::class,
+            PremaritalScreeningSeeder::class,
         ]);
     }
 }
