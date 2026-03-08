@@ -89,4 +89,10 @@ class Visit extends Model
     {
         return $this->hasOne(PhysiotherapyAssessment::class, 'visit_id');
     }
+
+    // كل النتائج الحرجة التي ظهرت خلال هذه الزيارة
+    public function criticalResults()
+    {
+        return $this->hasMany(CriticalResult::class, 'visit_id');
+    }
 }

@@ -25,10 +25,11 @@ use App\Models\SurgeryUterus;
 use App\Models\Visit;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Doctor extends Model
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
         // 'family_id',
@@ -219,5 +220,35 @@ class Doctor extends Model
     public function premaritalScreenings()
     {
         return $this->hasMany(PremaritalScreening::class);
+    }
+
+    // النتائج الحرجة (الأولى) اللي الدكتور ده بلّغ عنها
+    public function reportedCriticalResults()
+    {
+        return $this->hasMany(CriticalResult::class, 'notifier_id');
+    }
+
+    // النتائج الحرجة (الأولى) اللي الدكتور ده استلمها في القسم
+    public function receivedCriticalResults()
+    {
+        return $this->hasMany(CriticalResult::class, 'recipient_id');
+    }
+
+    // النتائج الحرجة (الثانية/التأكيدية) اللي الدكتور ده بلّغ عنها
+    public function reportedSecondCriticalResults()
+    {
+        return $this->hasMany(CriticalResult::class, 'second_notifier_id');
+    }
+
+    // النتائج الحرجة (الثانية/التأكيدية) اللي الدكتور ده استلمها
+    public function receivedSecondCriticalResults()
+    {
+        return $this->hasMany(CriticalResult::class, 'second_recipient_id');
+    }
+
+    // الحالات اللي الدكتور ده كان هو "الطبيب المعالج" ووقع على الإجراء النهائي
+    public function finalizedCriticalResults()
+    {
+        return $this->hasMany(CriticalResult::class, 'doctor_id');
     }
 }

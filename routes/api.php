@@ -10,6 +10,7 @@ use App\Http\Controllers\Doctor\ChildMilestoneController;
 use App\Http\Controllers\Doctor\ChronicDiseaseController;
 use App\Http\Controllers\Doctor\ChronicDiseaseVisitController;
 use App\Http\Controllers\Doctor\ClinicalExaminationController;
+use App\Http\Controllers\Doctor\CriticalResultController;
 use App\Http\Controllers\Doctor\CvRiskAssessmentController;
 use App\Http\Controllers\Doctor\DiabetesFollowUpController;
 use App\Http\Controllers\Doctor\FamilyController;
@@ -249,6 +250,25 @@ Route::middleware('auth:sanctum')->group(function () {
                 Route::get('/show/{id}', [PhysiotherapyAssessmentController::class, 'show'])->name('show');
                 Route::put('/update/{id}', [PhysiotherapyAssessmentController::class, 'update'])->name('update');
                 Route::delete('/delete/{id}', [PhysiotherapyAssessmentController::class, 'destroy'])->name('destroy');
+            });
+
+            // Critical Results
+            Route::prefix('/critical-results')->as('doctor.critical-results.')->group(function () {
+                // جلب قائمة الأطباء المتاحين للاستلام (Dropdown)
+                Route::get('/receiving-doctors', [CriticalResultController::class, 'getReceivingDoctors'])->name('receiving-doctors');
+
+                // العمليات الأساسية (CRUD)
+                Route::get('/', [CriticalResultController::class, 'index'])->name('index'); 
+                Route::post('/store', [CriticalResultController::class, 'store'])->name('store');
+                Route::patch('/respond/{id}', [CriticalResultController::class, 'respondToResult']);
+                Route::patch('/re-test/{id}', [CriticalResultController::class, 'reTestResult'])->name('critical-results.re-test');
+                Route::get('/show/{id}', [CriticalResultController::class, 'show'])->name('show');
+                Route::put('/update/{id}', [CriticalResultController::class, 'update'])->name('update');
+                Route::delete('/delete/{id}', [CriticalResultController::class, 'destroy'])->name('destroy');
+
+                // الإشعارات (Notifications)
+                Route::get('/notifications', [CriticalResultController::class, 'getMyNotifications'])->name('notifications.index');
+                Route::patch('/notifications/{id}/mark-as-read', [CriticalResultController::class, 'markAsRead'])->name('notifications.read');
             });
 
             // Cardiovascular Risk Assessment 

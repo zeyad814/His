@@ -63,6 +63,7 @@ class DatabaseSeeder extends Seeder
             RadiologySeeder::class,
             VerbalOrderSeeder::class,
             ReferralWithFeedbackSeeder::class,
+            PhysiotherapyAssessmentSeeder::class,
 
             HealthAdministrationSeeder::class,
             HealthUnitSeeder::class,

@@ -178,4 +178,10 @@ class FamilyMember extends Model
     {
         return $this->hasMany(PhysiotherapyAssessment::class, 'family_member_id');
     }
+
+    // الحالات الحرجة التي تم التواصل فيها مع فرد العائلة هذا
+    public function criticalResults()
+    {
+        return $this->hasMany(CriticalResult::class, 'family_member_id');
+    }
 }
