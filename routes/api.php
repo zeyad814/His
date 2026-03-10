@@ -35,6 +35,7 @@ use App\Http\Controllers\Doctor\SignificantDataController;
 use App\Http\Controllers\Doctor\SurgeryUterusController;
 use App\Http\Controllers\Doctor\VerbalOrderController;
 use App\Http\Controllers\Doctor\VisitController;
+use App\Http\Controllers\OutpatientNursingAssessmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,9 +45,12 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/login', [LoginController::class, 'login']);
+ Route::apiResource('outpatient-nursing-assessments', OutpatientNursingAssessmentController::class);
 
 // Doctor
 Route::middleware('auth:sanctum')->group(function () {
+
+ Route::apiResource('outpatient-nursing-assessments', OutpatientNursingAssessmentController::class);
 
     // Doctor
     Route::middleware('doctor')->group(function () {
@@ -71,6 +75,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/family/housing-info/edit/{family_id}', [FamilyController::class, 'editHousingInfo']);
         Route::get('/family/social-research/edit/{family_id}', [FamilyController::class, 'editSocialResearch']);
 
+       
         // Doctor Examination
         Route::prefix('doctor')->group(function () {
             // General Examination

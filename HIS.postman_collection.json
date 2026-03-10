@@ -1,10 +1,9 @@
 {
   "info": {
-    "_postman_id": "e35c4ad0-275d-4de7-8880-d6bc141ab134",
+    "_postman_id": "dd233605-5d54-42b7-8a79-8e2858b9b1d1",
     "name": "HIS",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "43985827",
-    "_collection_link": "https://go.postman.co/collection/43985827-e35c4ad0-275d-4de7-8880-d6bc141ab134?source=collection_link"
+    "_exporter_id": "43804063"
   },
   "item": [
     {
@@ -2376,7 +2375,7 @@
                       }
                     },
                     "url": {
-                      "raw": "{{url}}/api/doctor/clinical-examination/update\\1",
+                      "raw": "{{url}}/api/doctor/clinical-examination/update/1",
                       "host": [
                         "{{url}}"
                       ],
@@ -2412,7 +2411,7 @@
                       }
                     },
                     "url": {
-                      "raw": "{{url}}/api/doctor/clinical-examination/delete\\1",
+                      "raw": "{{url}}/api/doctor/clinical-examination/delete/1",
                       "host": [
                         "{{url}}"
                       ],
@@ -7110,6 +7109,163 @@
               "response": []
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "Outpatient Nursing",
+      "item": [
+        {
+          "name": "index",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/api/outpatient-nursing-assessments",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "outpatient-nursing-assessments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "store",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"family_member_id\": 1,\r\n    \"weight\": 80.5,\r\n    \"height\": 175,\r\n    \"blood_pressure\": \"120/80\",\r\n    \"pulse\": 75,\r\n    \"respiratory_rate\": 18,\r\n    \"temperature\": 37.2,\r\n    \"spo2\": 98,\r\n    \"is_smoking\": false,\r\n    \"has_allergy\": true,\r\n    \"allergy_details\": \"Penicillin\",\r\n    \"pain_score\": 4,\r\n    \"pain_location\": \"Lower back\",\r\n    \"needs_detailed_fall_assessment\": true,\r\n    \"scale_type\": \"morse\",\r\n    \"m_history_falling\": 25,\r\n    \"m_secondary_diagnosis\": 15,\r\n    \"m_ambulatory_aid\": 0,\r\n    \"m_iv_therapy\": 20,\r\n    \"m_gait_transferring\": 10,\r\n    \"m_mental_status\": 0,\r\n    \"nursing_notes\": \"Patient is stable but requires assistance when walking.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/outpatient-nursing-assessments",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "outpatient-nursing-assessments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{url}}/api/outpatient-nursing-assessments",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "outpatient-nursing-assessments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"weight\": 78.2,\r\n    \"pain_score\": 2,\r\n    \"pain_location\": \"Joints\",\r\n    \"nursing_notes\": \"Patient feeling slightly better after medication.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/outpatient-nursing-assessments/1",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "outpatient-nursing-assessments",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/api/outpatient-nursing-assessments/6",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "outpatient-nursing-assessments",
+                "6"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     }
