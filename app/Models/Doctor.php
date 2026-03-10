@@ -35,12 +35,48 @@ class Doctor extends Model
         // 'family_id',
         'health_unit_id',
         'national_id',
-        'name',
+        // 'name',
         'phone',
         'specialization',
         'license_number',
         'start_date',
     ];
+
+    // public function hasAnyRelatedRecords()
+    // {
+    //     // 1. هنجيب كل الميثودز اللي متعرفة جوه كلاس الدكتور
+    //     $methods = (new \ReflectionClass($this))->getMethods(\ReflectionMethod::IS_PUBLIC);
+
+    //     foreach ($methods as $method)
+    //     {
+    //         // بنفلتر الميثودز اللي مش بتاخد parameters (عشان العلاقات مش بتاخد parameters)
+    //         if ($method->getNumberOfParameters() > 0) continue;
+
+    //         try
+    //         {
+    //             // بنشغل الميثود ونشوف هي بترجع Object علاقة ولا لأ
+    //             $return = $method->invoke($this);
+
+    //             // لو العلاقة من نوع HasMany أو MorphMany (يعني الدكتور "صاحب" سجلات تانية)
+    //             if ($return instanceof \Illuminate\Database\Eloquent\Relations\HasMany || 
+    //                 $return instanceof \Illuminate\Database\Eloquent\Relations\MorphMany)
+    //             {
+                    
+    //                 // لو لقينا سجل واحد بس في العلاقة دي، نرجع true فوراً (صدمة الأداء)
+    //                 if ($return->exists())
+    //                 {
+    //                     return true; 
+    //                 }
+    //             }
+    //         }
+    //         catch (\Throwable $e)
+    //         {
+    //             continue;
+    //         }
+    //     }
+
+    //     return false;
+    // }
 
     // الدكتور كـ "طبيب أسرة" بيتابع عائلات كتير
     public function familyFollowUps()

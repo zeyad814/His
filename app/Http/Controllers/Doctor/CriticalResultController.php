@@ -118,6 +118,25 @@ class CriticalResultController extends Controller
         );
     }
 
+    public function markAsRead($id)
+    {
+        $doctor = $this->getAuthenticatedDoctor();
+
+        // بنبحث عن الإشعار جوه إشعارات الدكتور ده بس (للحماية)
+        $notification = $doctor->notifications()->where('id', $id)->first();
+        if (!$notification)
+        {
+            return ApiResponse::errorResponse('Notification not found', 404);
+        }
+
+        $notification->markAsRead();
+
+        return ApiResponse::successResponse(
+            'Notification marked as read successfully',
+            200
+        );
+    }
+
     public function respondToResult(Request $request, $id)
     {
         $doctor = $this->getAuthenticatedDoctor();

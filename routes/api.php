@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Doctor\BirthScreeningController;
@@ -331,8 +332,20 @@ Route::middleware('auth:sanctum')->group(function () {
         });
     });
 
+// =========================================================================================================================== //
     // Admin
-    Route::middleware('admin')->group(function () {});
+    Route::middleware('admin')->group(function () {
+        Route::prefix('admin')->group(function () {    
+            // Doctors Management
+            Route::prefix('/doctors')->as('admin.doctors.')->group(function () {
+                Route::get('/', [DoctorController::class, 'index'])->name('index');           // عرض كل الدكاترة
+                Route::post('/store', [DoctorController::class, 'store'])->name('store');     // إضافة دكتور جديد
+                Route::get('/show/{id}', [DoctorController::class, 'show'])->name('show');    // عرض بيانات دكتور محدد
+                Route::put('/update/{id}', [DoctorController::class, 'update'])->name('update'); // تحديث بيانات دكتور
+                Route::delete('/delete/{id}', [DoctorController::class, 'destroy'])->name('destroy'); // حذف دكتور
+            });
+        });
+    });
 
     // Logout
     Route::post('/logout', [LogoutController::class, 'logout']);
