@@ -1,9 +1,10 @@
 {
   "info": {
-    "_postman_id": "dd233605-5d54-42b7-8a79-8e2858b9b1d1",
+    "_postman_id": "2c79bed3-1f88-42b8-8303-d086df297aed",
     "name": "HIS",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "43804063"
+    "_exporter_id": "43985827",
+    "_collection_link": "https://go.postman.co/collection/43985827-2c79bed3-1f88-42b8-8303-d086df297aed?source=collection_link"
   },
   "item": [
     {
@@ -7103,6 +7104,147 @@
                     "doctors",
                     "delete",
                     "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Nurses",
+          "item": [
+            {
+              "name": "Index",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/nurses/",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "nurses",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Store",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Samy Ali\",\r\n    \"email\": \"samy.nurse@example.com\",\r\n    \"password\": \"password123\",\r\n    \"national_id\": \"29501011234590\",\r\n    // \"health_unit_id\": 1,\r\n    \"phone\": \"01012345678\",\r\n    \"start_date\": \"2023-01-15\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/nurses/store",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "nurses",
+                    "store"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Show",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Samy Ali\",\r\n    \"email\": \"samy.nurse@example.com\",\r\n    \"password\": \"password123\",\r\n    \"national_id\": \"29501011234590\",\r\n    \"health_unit_id\": 1,\r\n    \"phone\": \"01012345678\",\r\n    \"start_date\": \"2023-01-15\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/nurses/show/2",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "nurses",
+                    "show",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Samy Ali Updated\",\r\n    \"email\": \"samy.newemail@example.com\",\r\n    \"national_id\": \"29501011234590\",\r\n    \"phone\": \"01199887766\",\r\n    // \"health_unit_id\": 2,\r\n    \"start_date\": \"2023-02-01\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/nurses/update/2",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "nurses",
+                    "update",
+                    "2"
                   ]
                 }
               },

@@ -16,7 +16,7 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            // 'name' => $this->name,
             'email' => $this->email,
             'role' => $this->role,
             $this->role => $this->when($this->userable, function () {
@@ -27,6 +27,9 @@ class UserResource extends JsonResource
 
                     case 'admin':
                         return new AdminResource($this->userable);
+                    
+                    case 'nurse':
+                        return new NurseResource($this->userable);
 
                     // case 'receptionist':
                     //     return new ReceptionistResource($this->userable);

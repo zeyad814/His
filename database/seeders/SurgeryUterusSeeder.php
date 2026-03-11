@@ -4,26 +4,32 @@ namespace Database\Seeders;
 
 use App\Models\FamilyPlanning;
 use App\Models\SurgeryUterus;
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Doctor; // تأكد من استدعاء الموديل
+use App\Models\Nurse;  // تأكد من استدعاء الموديل
 use Illuminate\Database\Seeder;
 
 class SurgeryUterusSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
+        // هات أول سجل متاح من كل جدول
         $familyPlanning = FamilyPlanning::first();
-        $doctor = User::where('role', 'doctor')->first() ?? User::first();
-        $nurse = User::where('role', 'nurse')->first() ?? User::first();
+        
+        // هات ID الدكتور من جدول الـ doctors والـ ممرضة من جدول الـ nurses
+        $doctor = Doctor::first();
+        $nurse = Nurse::first();
 
-        // 1. إنشاء العملية أولاً وحفظها في متغير
+        // لو الجداول فاضية، الـ Seeder هيضرب، فممكن تعمل check بسيط
+        if (!$doctor || !$nurse) {
+            $this->command->error("برجاء تشغيل DoctorSeeder و NurseSeeder أولاً!");
+            return;
+        }
+
+        // 1. إنشاء عملية تركيب لولب
         $surgery = SurgeryUterus::create([
             'family_planning_id' => $familyPlanning?->id ?? 1,
-            'doctor_id' => $doctor?->id ?? 1,
-            'nurse_id' => $nurse?->id ?? 1,
+            'doctor_id' => $doctor->id, // ID من جدول doctors
+            'nurse_id' => $nurse->id,   // ID من جدول nurses
             'diagnosis' => 'حالة تركيب لولب نحاسي - متابعة دورية',
             'patient_age' => 27,
             'procedure_type' => 'IUD_insertion',
@@ -40,7 +46,6 @@ class SurgeryUterusSeeder extends Seeder
             'procedure_time' => '12:00',
         ]);
 
-        
         $surgery->equipments()->createMany([
             ['name' => 'Vaginal Speculum (منظار مهبلي)', 'status' => 'Used'],
             ['name' => 'Tenaculum Forceps (جفت معقم)', 'status' => 'Used'],
@@ -48,16 +53,19 @@ class SurgeryUterusSeeder extends Seeder
             ['name' => 'IUD Kit', 'status' => 'Used'],
         ]);
 
-        
+        // 2. إنشاء عملية تركيب كبسولة
         $implantSurgery = SurgeryUterus::create([
             'family_planning_id' => $familyPlanning?->id ?? 1,
-            'doctor_id' => $doctor?->id ?? 1,
-            'nurse_id' => $nurse?->id ?? 1,
+            'doctor_id' => $doctor->id,
+            'nurse_id' => $nurse->id,
             'diagnosis' => 'تركيب كبسولة لمنع الحمل',
             'patient_age' => 32,
             'procedure_type' => 'Implant_insertion',
             'procedure_date' => now()->subDay()->format('Y-m-d'),
             'procedure_time' => '10:30',
+            // ضيف باقي الحقول المطلوبة لو الـ Migration بيطلبها (زي الـ booleans اللي فوق)
+            'patient_identity_verified' => true,
+            'informed_consent_signed' => true,
         ]);
 
         $implantSurgery->equipments()->createMany([
@@ -67,5 +75,3 @@ class SurgeryUterusSeeder extends Seeder
         ]);
     }
 }
-    
-

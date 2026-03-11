@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\NurseController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Doctor\BirthScreeningController;
@@ -338,6 +339,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
 // =========================================================================================================================== //
+    
     // Admin
     Route::middleware('admin')->group(function () {
         Route::prefix('admin')->group(function () {    
@@ -349,8 +351,28 @@ Route::middleware('auth:sanctum')->group(function () {
                 Route::put('/update/{id}', [DoctorController::class, 'update'])->name('update'); // تحديث بيانات دكتور
                 Route::delete('/delete/{id}', [DoctorController::class, 'destroy'])->name('destroy'); // حذف دكتور
             });
+
+            // Nurses Management
+            Route::prefix('/nurses')->as('admin.nurses.')->group(function () {
+                Route::get('/', [NurseController::class, 'index'])->name('index');           // عرض كل الممرضات (Paginated)
+                Route::post('/store', [NurseController::class, 'store'])->name('store');     // إضافة ممرضة جديدة
+                Route::get('/show/{id}', [NurseController::class, 'show'])->name('show');    // عرض بيانات ممرضة محددة
+                Route::put('/update/{id}', [NurseController::class, 'update'])->name('update'); // تحديث بيانات ممرضة
+                Route::delete('/delete/{id}', [NurseController::class, 'destroy'])->name('destroy'); // حذف ممرضة
+            });
         });
     });
+
+// =========================================================================================================================== //
+
+    // Nurse
+    Route::middleware('nurse')->group(function () {
+        Route::prefix('nurse')->group(function () {
+            // 
+        });
+    });
+
+// =========================================================================================================================== //
 
     // Logout
     Route::post('/logout', [LogoutController::class, 'logout']);
