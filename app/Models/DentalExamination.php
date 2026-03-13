@@ -7,33 +7,50 @@ use Illuminate\Database\Eloquent\Model;
 
 class DentalExamination extends Model
 {
+    //
     use HasFactory;
 
     protected $fillable = [
-        'family_member_id',
-        'location_type',
-        'occupation',
-        'dental_trauma_index',
-        'permanent_teeth_status',
-        'primary_teeth_status',
-        'primary_dentition_step',
-        'cpi_code',
-        'dental_fluorosis',
-        'extra_oral_code',
-        'white_spot_lesions',
-        'tmj_clicking',
-        'tmj_tenderness',
-        'tmj_reduced_mobility',
-        'enamel_defects',
-        'tooth_development_anomalies',
-        'clefts',
-        'oral_mucosa_condition',
-        'oral_mucosa_location',
-        'occlusion',
+        "family_member_id",
+        "doctor_id",
+        "occupation",
+        "location_type",
+        "extra_oral_exam",
+        "tmj_symptom",
+        "tmj_signs",
+        "tmj_clicking",
+        "tmj_tenderness",
+        "tmj_reduced_mobility",
+        "mucosa_condition",
+        "mucosa_location",
+        "mucosa_other",
+        "cpi_sections",
+        "fluorosis_index",
+        "trauma_index",
+        "white_spot_lesions",
+        "enamel_defects",
+        "developmental_anomalies",
+        "clefts",
+        "occlusion_class",
+        "primary_mesial_step",
+    ];
+
+    protected $casts = [
+        'cpi_sections' => 'array',
     ];
 
     public function familyMember()
     {
         return $this->belongsTo(FamilyMember::class);
+    }
+    
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+
+    public function toothStatuses()
+    {
+        return $this->hasMany(ToothStatus::class);
     }
 }

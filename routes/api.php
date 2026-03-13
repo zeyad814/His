@@ -14,6 +14,7 @@ use App\Http\Controllers\Doctor\ChronicDiseaseVisitController;
 use App\Http\Controllers\Doctor\ClinicalExaminationController;
 use App\Http\Controllers\Doctor\CriticalResultController;
 use App\Http\Controllers\Doctor\CvRiskAssessmentController;
+use App\Http\Controllers\Doctor\DentalExaminationController;
 use App\Http\Controllers\Doctor\DiabetesFollowUpController;
 use App\Http\Controllers\Doctor\FamilyController;
 use App\Http\Controllers\Doctor\FamilyInjectionController;
@@ -276,6 +277,15 @@ Route::middleware('auth:sanctum')->group(function () {
                 // الإشعارات (Notifications)
                 Route::get('/notifications', [CriticalResultController::class, 'getMyNotifications'])->name('notifications.index');
                 Route::patch('/notifications/{id}/mark-as-read', [CriticalResultController::class, 'markAsRead'])->name('notifications.read');
+            });
+
+            // Dental Examinations
+            Route::prefix('/dental-examinations')->as('doctor.dental-examinations.')->group(function () {
+                // Route::get('/{family_member_id}', [DentalExaminationController::class, 'index'])->name('index');                
+                Route::post('/store', [DentalExaminationController::class, 'store'])->name('store');
+                Route::get('/show/{id}', [DentalExaminationController::class, 'show'])->name('show');
+                Route::put('/update/{id}', [DentalExaminationController::class, 'update'])->name('update');
+                Route::delete('/delete/{id}', [DentalExaminationController::class, 'destroy'])->name('destroy');
             });
 
             // Cardiovascular Risk Assessment 
