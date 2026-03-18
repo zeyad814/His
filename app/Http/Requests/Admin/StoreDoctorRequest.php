@@ -33,7 +33,7 @@ class StoreDoctorRequest extends FormRequest
             'license_number' => 'required|string|unique:doctors,license_number',
             'start_date' => 'required|date',
 
-            // 'health_unit_id' => 'required|exists:health_units,id',
+            'health_unit_id' => 'required|exists:health_units,id',
             // 'department_id' => 'required|exists:departments,id',
         ];
     }

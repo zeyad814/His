@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('super_admins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("health_unit_id")->constrained("health_units")->onDelete("cascade");
-            $table->char('national_id',14)->unique();
-            $table->string('phone', 20)->nullable();
+            $table->string('employee_number')->unique();    // رقم الموظف بالوزارة
+            $table->string('phone')->unique();
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('super_admins');
     }
 };

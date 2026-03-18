@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('nurses', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('health_unit_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('health_unit_id')->constrained()->cascadeOnDelete();
             $table->char('national_id',14)->unique();
             $table->string('phone', 20)->nullable();
             $table->date('start_date');

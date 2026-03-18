@@ -28,7 +28,7 @@ class DoctorFactory extends Factory
 
         return [
             // 'family_id' => Family::inRandomOrder(null)->first()?->id,
-            'health_unit_id' => HealthUnit::inRandomOrder(null)->first()?->id,
+            'health_unit_id' => 1,
             'national_id' => $this->faker->unique()->numerify('##############'),
             'phone' => $this->faker->phoneNumber(),
             'specialization' => $spec,

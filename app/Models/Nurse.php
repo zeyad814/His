@@ -10,7 +10,7 @@ class Nurse extends Model
     use HasFactory;
 
     protected $fillable = [
-        // 'health_unit_id',
+        'health_unit_id',
         'national_id',
         // 'name',
         'phone',

@@ -15,7 +15,7 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        Admin::factory()->count(3)->create()->each(function ($admin) {
+        Admin::factory()->count(3)->create(['health_unit_id' => 1])->each(function ($admin) {
             User::factory()->create([
                 'name' => 'Admin',
                 'email' => 'admin'.$admin->id.'@example.com',

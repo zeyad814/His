@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreDoctorRequest;
 use App\Http\Requests\Admin\UpdateDoctorRequest;
+use App\Http\Resources\DoctorResource;
 use App\Models\Doctor;
 use App\Traits\ApiResponse;
 use App\Traits\HasAdminContext;
@@ -22,6 +23,13 @@ class DoctorController extends Controller
     public function index()
     {
         $admin = $this->getAuthenticatedAdmin();
+        $doctors = Doctor::with(['user', 'healthUnit'])->paginate(10);
+
+        return ApiResponse::successResponse(
+            'Doctors list retrieved successfully.',
+            200,
+            DoctorResource::collection($doctors)->response()->getData(true)
+        );
     }
 
     /**
@@ -40,6 +48,7 @@ class DoctorController extends Controller
                 "specialization" => $data["specialization"],
                 "license_number" => $data["license_number"],
                 "start_date" => $data["start_date"],
+                "health_unit_id" => $data["health_unit_id"],
             ]);
 
             $doctor->user()->create([
@@ -53,7 +62,7 @@ class DoctorController extends Controller
             return ApiResponse::successResponse(
                 'Doctor profile and access account created successfully.',
                 200,
-                ['doctor_id' => $doctor->id]
+                new DoctorResource($doctor)
             );
         }
         catch (\Exception $e)
@@ -84,7 +93,7 @@ class DoctorController extends Controller
         return ApiResponse::successResponse(
             'Doctor profile retrieved successfully.',
             200,
-            $doctor
+            new DoctorResource($doctor)
         );
     }
 
@@ -126,7 +135,7 @@ class DoctorController extends Controller
             return ApiResponse::successResponse(
                 'Doctor profile and security credentials updated successfully.',
                 200,
-                $doctor
+                new DoctorResource($doctor)
             );
         }
         catch (\Exception $e)

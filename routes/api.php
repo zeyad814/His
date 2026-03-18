@@ -38,6 +38,9 @@ use App\Http\Controllers\Doctor\SurgeryUterusController;
 use App\Http\Controllers\Doctor\VerbalOrderController;
 use App\Http\Controllers\Doctor\VisitController;
 use App\Http\Controllers\OutpatientNursingAssessmentController;
+use App\Http\Controllers\SuperAdmin\AdminController;
+use App\Http\Controllers\SuperAdmin\HealthAdministrationController;
+use App\Http\Controllers\SuperAdmin\HealthUnitController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -351,34 +354,62 @@ Route::middleware('auth:sanctum')->group(function () {
 // =========================================================================================================================== //
     
     // Admin
-    Route::middleware('admin')->group(function () {
-        Route::prefix('admin')->group(function () {    
-            // Doctors Management
-            Route::prefix('/doctors')->as('admin.doctors.')->group(function () {
-                Route::get('/', [DoctorController::class, 'index'])->name('index');           // عرض كل الدكاترة
-                Route::post('/store', [DoctorController::class, 'store'])->name('store');     // إضافة دكتور جديد
-                Route::get('/show/{id}', [DoctorController::class, 'show'])->name('show');    // عرض بيانات دكتور محدد
-                Route::put('/update/{id}', [DoctorController::class, 'update'])->name('update'); // تحديث بيانات دكتور
-                Route::delete('/delete/{id}', [DoctorController::class, 'destroy'])->name('destroy'); // حذف دكتور
-            });
+    Route::middleware('admin')->prefix('admin')->group(function () {
+        // Doctors Management
+        Route::prefix('/doctors')->as('admin.doctors.')->group(function () {
+            Route::get('/', [DoctorController::class, 'index'])->name('index');           // عرض كل الدكاترة
+            Route::post('/store', [DoctorController::class, 'store'])->name('store');     // إضافة دكتور جديد
+            Route::get('/show/{id}', [DoctorController::class, 'show'])->name('show');    // عرض بيانات دكتور محدد
+            Route::put('/update/{id}', [DoctorController::class, 'update'])->name('update'); // تحديث بيانات دكتور
+            Route::delete('/delete/{id}', [DoctorController::class, 'destroy'])->name('destroy'); // حذف دكتور
+        });
 
-            // Nurses Management
-            Route::prefix('/nurses')->as('admin.nurses.')->group(function () {
-                Route::get('/', [NurseController::class, 'index'])->name('index');           // عرض كل الممرضات (Paginated)
-                Route::post('/store', [NurseController::class, 'store'])->name('store');     // إضافة ممرضة جديدة
-                Route::get('/show/{id}', [NurseController::class, 'show'])->name('show');    // عرض بيانات ممرضة محددة
-                Route::put('/update/{id}', [NurseController::class, 'update'])->name('update'); // تحديث بيانات ممرضة
-                Route::delete('/delete/{id}', [NurseController::class, 'destroy'])->name('destroy'); // حذف ممرضة
-            });
+        // Nurses Management
+        Route::prefix('/nurses')->as('admin.nurses.')->group(function () {
+            Route::get('/', [NurseController::class, 'index'])->name('index');           // عرض كل الممرضات (Paginated)
+            Route::post('/store', [NurseController::class, 'store'])->name('store');     // إضافة ممرضة جديدة
+            Route::get('/show/{id}', [NurseController::class, 'show'])->name('show');    // عرض بيانات ممرضة محددة
+            Route::put('/update/{id}', [NurseController::class, 'update'])->name('update'); // تحديث بيانات ممرضة
+            Route::delete('/delete/{id}', [NurseController::class, 'destroy'])->name('destroy'); // حذف ممرضة
         });
     });
 
 // =========================================================================================================================== //
 
     // Nurse
-    Route::middleware('nurse')->group(function () {
-        Route::prefix('nurse')->group(function () {
-            // 
+    Route::middleware('nurse')->prefix('nurse')->group(function () {
+        // 
+    });
+
+// =========================================================================================================================== //
+
+    // Super Admin
+    Route::middleware('super_admin')->prefix('super-admin')->group(function () {
+        // Health Administration
+        Route::prefix('/health-administrations')->as('super-admin.health_administrations.')->group(function () {
+            Route::get('/', [HealthAdministrationController::class, 'index'])->name('index');           // عرض كل الإدارات (5 بالصفحة)
+            Route::post('/store', [HealthAdministrationController::class, 'store'])->name('store');     // إضافة إدارة جديدة
+            Route::get('/show/{id}', [HealthAdministrationController::class, 'show'])->name('show');    // عرض تفاصيل إدارة معينة
+            Route::put('/update/{id}', [HealthAdministrationController::class, 'update'])->name('update'); // تحديث بيانات إدارة
+            Route::delete('/delete/{id}', [HealthAdministrationController::class, 'destroy'])->name('destroy'); // حذف إدارة
+        });
+
+        // Healh Unit
+        Route::prefix('/health-units')->as('super-admin.health_units.')->group(function () {
+            Route::get('/', [HealthUnitController::class, 'index'])->name('index');
+            Route::post('/store', [HealthUnitController::class, 'store'])->name('store');
+            Route::get('/show/{id}', [HealthUnitController::class, 'show'])->name('show');
+            Route::put('/update/{id}', [HealthUnitController::class, 'update'])->name('update');
+            Route::delete('/delete/{id}', [HealthUnitController::class, 'destroy'])->name('destroy');
+        });
+
+        // Admins Management
+        Route::prefix('/admins')->as('super-admin.admins.')->group(function () {
+            Route::get('/', [AdminController::class, 'index'])->name('index');
+            Route::post('/store', [AdminController::class, 'store'])->name('store');
+            Route::get('/show/{id}', [AdminController::class, 'show'])->name('show');
+            Route::put('/update/{id}', [AdminController::class, 'update'])->name('update');
+            Route::delete('/delete/{id}', [AdminController::class, 'destroy'])->name('destroy');
         });
     });
 

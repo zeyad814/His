@@ -10,11 +10,13 @@ class HealthUnit extends Model
     use HasFactory;
 
     protected $fillable = [
-        'health_administration_id',
-        'name',
-        'address',
-        'email',
-        'phone',
+        "health_administration_id",
+        "name",
+        "code",
+        "address",
+        "city",
+        "email",
+        "phone",
     ];
 
     public function healthAdministration()
@@ -35,5 +37,10 @@ class HealthUnit extends Model
     public function medicalProcedures()
     {
         return $this->hasMany(MedicalProcedure::class);
+    }
+
+    public function admins()
+    {
+        return $this->hasMany(Admin::class);
     }
 }

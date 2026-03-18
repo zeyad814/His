@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('health_administration_id')->constrained()->cascadeOnDelete();
             $table->string('name');
+            $table->string('code')->unique();
             $table->string('address')->nullable();
+            $table->string('city');
             $table->string('email')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('phone')->unique()->nullable();
             $table->timestamps();
         });
     }

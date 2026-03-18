@@ -42,7 +42,7 @@
                         "header": [],
                         "body": {
                             "mode": "raw",
-                            "raw": "// Doctor\r\n{\r\n    \"email\": \"test@example.com\",\r\n    // \"email\": \"fisher.fleta@example.com\",\r\n    \"password\": \"password\"\r\n}\r\n\r\n// Admin\r\n// {\r\n//     \"email\": \"admin1@example.com\",\r\n//     \"password\": \"password\"\r\n// }\r\n\r\n// Nurse\r\n// {\r\n//     \"email\": \"nurse1@app.com\",\r\n//     \"password\": \"password\"\r\n// }",
+                            "raw": "// Doctor\r\n// {\r\n//     \"email\": \"test@example.com\",\r\n//     // \"email\": \"fisher.fleta@example.com\",\r\n//     \"password\": \"password\"\r\n// }\r\n\r\n// Super Admin\r\n{\r\n    \"email\": \"super@app.com\",\r\n    \"password\": \"password\"\r\n}\r\n\r\n// Admin\r\n// {\r\n//     \"email\": \"admin1@example.com\",\r\n//     \"password\": \"password\"\r\n// }\r\n\r\n// Nurse\r\n// {\r\n//     \"email\": \"nurse1@app.com\",\r\n//     \"password\": \"password\"\r\n// }",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -51,8 +51,13 @@
                         },
                         "url": {
                             "raw": "{{url}}/api/login",
-                            "host": ["{{url}}"],
-                            "path": ["api", "login"]
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "login"
+                            ]
                         }
                     },
                     "response": []
@@ -68,8 +73,13 @@
                         },
                         "url": {
                             "raw": "{{url}}/api/logout",
-                            "host": ["{{url}}"],
-                            "path": ["api", "logout"]
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "logout"
+                            ]
                         }
                     },
                     "response": []
@@ -107,8 +117,14 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/family/store",
-                                            "host": ["{{url}}"],
-                                            "path": ["api", "family", "store"]
+                                            "host": [
+                                                "{{url}}"
+                                            ],
+                                            "path": [
+                                                "api",
+                                                "family",
+                                                "store"
+                                            ]
                                         }
                                     },
                                     "response": []
@@ -135,7 +151,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/family/store/member/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "family",
@@ -169,7 +187,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/family/assign/doctor/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "family",
@@ -203,7 +223,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/family/store/medical/history/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "family",
@@ -238,7 +260,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/family/store/death/record/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "family",
@@ -273,7 +297,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/family/store/housing/info/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "family",
@@ -308,7 +334,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/family/store/social/research/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "family",
@@ -346,7 +374,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/family/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "family",
@@ -379,7 +409,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/family/update/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "family",
@@ -397,7 +429,9 @@
                                         "header": [],
                                         "url": {
                                             "raw": "{{url}}/api/family/edit/members/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "family",
@@ -431,7 +465,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/family/update/members/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "family",
@@ -468,7 +504,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/family/assign/doctor/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "family",
@@ -488,7 +526,9 @@
                                         "header": [],
                                         "url": {
                                             "raw": "{{url}}/api/family/medical-history/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "family",
@@ -507,7 +547,9 @@
                                         "header": [],
                                         "url": {
                                             "raw": "{{url}}/api/family/death-records/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "family",
@@ -526,7 +568,9 @@
                                         "header": [],
                                         "url": {
                                             "raw": "{{url}}/api/family/housing-info/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "family",
@@ -545,7 +589,9 @@
                                         "header": [],
                                         "url": {
                                             "raw": "{{url}}/api/family/social-research/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "family",
@@ -572,8 +618,13 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/families",
-                                    "host": ["{{url}}"],
-                                    "path": ["api", "families"]
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "families"
+                                    ]
                                 }
                             },
                             "response": []
@@ -598,8 +649,15 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/families/show/1",
-                                    "host": ["{{url}}"],
-                                    "path": ["api", "families", "show", "1"]
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "families",
+                                        "show",
+                                        "1"
+                                    ]
                                 }
                             },
                             "response": []
@@ -640,7 +698,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/physical-examination/history",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -673,7 +733,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/general-examination/vitals",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -706,7 +768,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/general-examination/systemic-exam",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -739,7 +803,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/general-examination/final-exam",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -768,7 +834,9 @@
                                                 ],
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/physical-examination/edit/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -793,7 +861,9 @@
                                                 ],
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/general-examination/vitals/edit/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -819,7 +889,9 @@
                                                 ],
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/general-examination/systemic-exam/edit/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -845,7 +917,9 @@
                                                 ],
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/general-examination/final-exam/edit/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -873,7 +947,9 @@
                                         ],
                                         "url": {
                                             "raw": "{{url}}/api/doctor/family-members/1/full-examination",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -915,7 +991,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/family-member/1/significant-data/index",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -950,7 +1028,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/family-member/1/significant-data/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -976,7 +1056,9 @@
                                         ],
                                         "url": {
                                             "raw": "{{url}}/api/doctor/family-member/significant-data/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -1011,7 +1093,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/family-member/significant-data/update/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -1046,7 +1130,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/family-member/significant-data/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -1088,7 +1174,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/hypertension/store/step-1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1122,7 +1210,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/hypertension/store/step-2",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1156,7 +1246,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/hypertension/store/step-3",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1190,7 +1282,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/hypertension/store/step-4",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1227,7 +1321,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/hypertension/edit-step-1/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1255,7 +1351,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/hypertension/update-step-1/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1287,7 +1385,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/hypertension/edit-step-2/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1319,7 +1419,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/hypertension/edit-step-3/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1351,7 +1453,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/hypertension/edit-step-4/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1390,7 +1494,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}api/doctor/hypertension/1/show",
-                                            "host": ["{{url}}api"],
+                                            "host": [
+                                                "{{url}}api"
+                                            ],
                                             "path": [
                                                 "doctor",
                                                 "hypertension",
@@ -1423,7 +1529,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/hypertension/1/delete",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -1465,7 +1573,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/diabetes-follow-up/store/step-1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1499,7 +1609,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/diabetes-follow-up/store/step-2",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1533,7 +1645,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/diabetes-follow-up/store/step-3",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1567,7 +1681,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/diabetes-follow-up/store/step-4",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1604,7 +1720,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/diabetes-follow-up/edit-step-1/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1632,7 +1750,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/diabetes-follow-up/update-step-1/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1664,7 +1784,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/diabetes-follow-up/edit-step-2/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1696,7 +1818,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/diabetes-follow-up/edit-step-3/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1728,7 +1852,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/diabetes-follow-up/edit-step-4/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -1767,7 +1893,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/diabetes-follow-up/1/show",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -1801,7 +1929,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/diabetes-follow-up/1/delete",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -1840,7 +1970,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/birth-screening/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -1876,7 +2008,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/birth-screening/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -1910,7 +2044,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/birth-screening/store-special-cases",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -1946,7 +2082,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/birth-screening/show/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -1983,7 +2121,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/birth-screening/edit-special-cases/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2022,7 +2162,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/growth-visit/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2058,7 +2200,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/growth-visit/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2092,7 +2236,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/doctor/growth-visit/update/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "doctor",
                                                 "growth-visit",
@@ -2122,7 +2268,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/clinical-examination/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2155,7 +2303,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/clinical-examination/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2191,7 +2341,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/clinical-examination/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2225,7 +2377,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/clinical-examination/update/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2259,7 +2413,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/clinical-examination/delete/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2290,7 +2446,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-milestones/stages",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2326,7 +2484,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-milestones/questions",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2359,7 +2519,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-milestones/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2395,7 +2557,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-milestones/show/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2432,7 +2596,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-milestones/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2471,7 +2637,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-growth/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2507,7 +2675,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-growth/edit/7",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2544,7 +2714,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-growth/history/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2586,7 +2758,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-above-five-vital/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2619,7 +2793,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-above-five-vital/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2655,7 +2831,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-above-five-vital/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2689,7 +2867,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-above-five-vital/delete/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2731,7 +2911,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-above-five-clinical/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2764,7 +2946,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-above-five-clinical/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2800,7 +2984,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-above-five-clinical/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2834,7 +3020,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/child-above-five-clinical/delete/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2871,7 +3059,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/psychological-support-visit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2904,7 +3094,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/psychological-support-visit/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2922,7 +3114,9 @@
                                         "header": [],
                                         "url": {
                                             "raw": "{{url}}/api/doctor/psychological-support-visit/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2950,7 +3144,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/psychological-support-visit/update/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -2969,7 +3165,9 @@
                                         "header": [],
                                         "url": {
                                             "raw": "{{url}}/api/doctor/psychological-support-visit/delete/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3011,7 +3209,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/cv-risk-assessments/store-step1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -3044,7 +3244,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/cv-risk-assessments/store-step2/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -3078,7 +3280,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/cv-risk-assessments/store-step3/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -3102,7 +3306,9 @@
                                                 "header": [],
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/cv-risk-assessments/edit-step1/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -3121,7 +3327,9 @@
                                                 "header": [],
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/cv-risk-assessments/edit-step2/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -3140,7 +3348,9 @@
                                                 "header": [],
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/cv-risk-assessments/edit-step3/1",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -3174,7 +3384,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/cv-risk-assessments/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3192,7 +3404,9 @@
                                         "header": [],
                                         "url": {
                                             "raw": "{{url}}/api/doctor/cv-risk-assessments/show/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3226,7 +3440,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/cv-risk-assessments/update-step1/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3245,7 +3461,9 @@
                                         "header": [],
                                         "url": {
                                             "raw": "{{url}}/api/doctor/cv-risk-assessments/delete/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3287,7 +3505,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/verbal-orders/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3320,7 +3540,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/verbal-orders/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3353,7 +3575,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/verbal-orders/1/confirm",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3390,7 +3614,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/verbal-orders/show/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3427,7 +3653,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/verbal-orders/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3461,7 +3689,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/verbal-orders/update/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3495,7 +3725,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/verbal-orders/delete/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3537,7 +3769,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/radiological-requests/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3570,7 +3804,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/radiological-requests/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3606,7 +3842,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/radiological-requests/show/2",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3643,7 +3881,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/radiological-requests/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3677,7 +3917,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/radiological-requests/update/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3711,7 +3953,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/radiological-requests/delete/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3750,7 +3994,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/radiology-reports/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3786,7 +4032,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/radiology-reports/show/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3805,7 +4053,9 @@
                                         "header": [],
                                         "url": {
                                             "raw": "{{url}}/api/doctor/radiology-reports/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3833,7 +4083,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/radiology-reports/update/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3875,7 +4127,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/referrals/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3908,7 +4162,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/referrals/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3944,7 +4200,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/referrals/show/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -3981,7 +4239,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/referrals/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4015,7 +4275,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/referrals/update/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4049,7 +4311,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/referrals/delete/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4088,7 +4352,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/feedback-referrals/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4124,7 +4390,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/feedback-referrals/show/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4161,7 +4429,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/feedback-referrals/edit/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4195,7 +4465,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/feedback-referrals/update/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4232,7 +4504,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/physiotherapy-assessments/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4265,7 +4539,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/physiotherapy-assessments/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4301,7 +4577,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/physiotherapy-assessments/show/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4335,7 +4613,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/physiotherapy-assessments/update/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4369,7 +4649,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/physiotherapy-assessments/delete/2",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4414,7 +4696,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/critical-results/notifications",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -4447,7 +4731,9 @@
                                                 },
                                                 "url": {
                                                     "raw": "{{url}}/api/doctor/critical-results/notifications/1/mark-as-read",
-                                                    "host": ["{{url}}"],
+                                                    "host": [
+                                                        "{{url}}"
+                                                    ],
                                                     "path": [
                                                         "api",
                                                         "doctor",
@@ -4469,7 +4755,9 @@
                                         "header": [],
                                         "url": {
                                             "raw": "{{url}}/api/doctor/critical-results/receiving-doctors",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4502,7 +4790,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/critical-results/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4538,7 +4828,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/critical-results/show/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4572,7 +4864,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/critical-results/respond/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4606,7 +4900,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/critical-results/re-test/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4640,7 +4936,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/critical-results/update/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4674,7 +4972,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/critical-results/delete/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4716,7 +5016,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/dental-examinations/store",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4753,7 +5055,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/dental-examinations/show/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4790,7 +5094,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/dental-examinations/update/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4827,7 +5133,9 @@
                                         },
                                         "url": {
                                             "raw": "{{url}}/api/doctor/dental-examinations/delete/1",
-                                            "host": ["{{url}}"],
+                                            "host": [
+                                                "{{url}}"
+                                            ],
                                             "path": [
                                                 "api",
                                                 "doctor",
@@ -4879,8 +5187,14 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/visits",
-                                    "host": ["{{url}}"],
-                                    "path": ["api", "doctor", "visits"]
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "doctor",
+                                        "visits"
+                                    ]
                                 }
                             },
                             "response": []
@@ -4905,7 +5219,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/family-members/1/visits",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -4930,7 +5246,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/family-members/1/visits/9?a",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -4974,7 +5292,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/family-members/1/visits/8/edit",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5010,7 +5330,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/family-members/2/visits/8",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5036,7 +5358,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/family-members/2/visits/9",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5074,7 +5398,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/chronic-diseases",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5111,7 +5437,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/chronic-diseases",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5141,7 +5469,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/chronic-diseases/3",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5174,7 +5504,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/chronic-diseases/3",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5198,7 +5530,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/chronic-diseases/3",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5227,7 +5561,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/chronic-disease/1/disease-visits",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5261,7 +5597,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/chronic-disease/2/disease-visits",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5286,7 +5624,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/chronic-disease/2/disease-visits/3",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5321,7 +5661,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/chronic-disease/2/disease-visits/3",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5347,7 +5689,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/chronic-disease/2/disease-visits/2",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5378,8 +5722,14 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/pregnancies",
-                                    "host": ["{{url}}"],
-                                    "path": ["api", "doctor", "pregnancies"]
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "doctor",
+                                        "pregnancies"
+                                    ]
                                 }
                             },
                             "response": []
@@ -5406,8 +5756,14 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/pregnancies",
-                                    "host": ["{{url}}"],
-                                    "path": ["api", "doctor", "pregnancies"]
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "doctor",
+                                        "pregnancies"
+                                    ]
                                 }
                             },
                             "response": []
@@ -5432,7 +5788,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/pregnancies/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5465,7 +5823,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/pregnancies/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5489,7 +5849,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/pregnancies/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5523,7 +5885,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/pregnancy_visits",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5555,7 +5919,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/pregnancy_visits",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5578,7 +5944,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/pregnancy_visits/2",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5611,7 +5979,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/pregnancy_visits/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5635,7 +6005,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/pregnancy_visits/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5664,8 +6036,13 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/postnatal-care",
-                                    "host": ["{{url}}"],
-                                    "path": ["api", "postnatal-care"]
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "postnatal-care"
+                                    ]
                                 }
                             },
                             "response": []
@@ -5692,8 +6069,14 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/postnatal-care",
-                                    "host": ["{{url}}"],
-                                    "path": ["api", "doctor", "postnatal-care"]
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "doctor",
+                                        "postnatal-care"
+                                    ]
                                 }
                             },
                             "response": []
@@ -5711,7 +6094,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/postnatal-care/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5744,7 +6129,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/postnatal-care/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5768,7 +6155,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/postnatal-care/2",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5809,7 +6198,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/obesity-records/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5842,7 +6233,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/obesity-records/store",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5878,7 +6271,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/obesity-records/edit/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5912,7 +6307,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/obesity-records/delete/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -5942,8 +6339,14 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/family-planning",
-                                    "host": ["{{url}}"],
-                                    "path": ["api", "doctor", "family-planning"]
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "doctor",
+                                        "family-planning"
+                                    ]
                                 }
                             },
                             "response": []
@@ -5970,8 +6373,14 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/family-planning",
-                                    "host": ["{{url}}"],
-                                    "path": ["api", "doctor", "family-planning"]
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "doctor",
+                                        "family-planning"
+                                    ]
                                 }
                             },
                             "response": []
@@ -5989,7 +6398,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/family-planning/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6022,7 +6433,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/family-planning/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6046,7 +6459,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/family-planning/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6075,7 +6490,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/family-planning/1/follow-ups",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "family-planning",
@@ -6108,7 +6525,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/family-planning/2/follow-ups",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "family-planning",
@@ -6132,7 +6551,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/family-planning/2/follow-ups/2",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "family-planning",
@@ -6166,7 +6587,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/family-planning/2/follow-ups/2",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "family-planning",
@@ -6191,7 +6614,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/family-planning/2/follow-ups/2",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "family-planning",
@@ -6221,8 +6646,14 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/surgery-uterus",
-                                    "host": ["{{url}}"],
-                                    "path": ["api", "doctor", "surgery-uterus"]
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "doctor",
+                                        "surgery-uterus"
+                                    ]
                                 }
                             },
                             "response": []
@@ -6249,8 +6680,14 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/surgery-uterus",
-                                    "host": ["{{url}}"],
-                                    "path": ["api", "doctor", "surgery-uterus"]
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "doctor",
+                                        "surgery-uterus"
+                                    ]
                                 }
                             },
                             "response": []
@@ -6268,7 +6705,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/surgery-uterus/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6301,7 +6740,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/surgery-uterus/2",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6325,7 +6766,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/surgery-uterus/3",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6354,7 +6797,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/family-injections",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6386,7 +6831,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/family-injections",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6409,7 +6856,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/family-injections/2",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6442,7 +6891,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/family-injections/2",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6466,7 +6917,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/family-injections/2",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6495,7 +6948,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/premarital-screenings",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6527,7 +6982,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/premarital-screenings",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6550,7 +7007,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/premarital-screenings/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6583,7 +7042,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/doctor/premarital-screenings/2",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6607,7 +7068,9 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/doctor/premarital-screenings/2",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "doctor",
@@ -6647,9 +7110,16 @@
                                     "raw": "{\r\n    \"family_member_id\": 1,\r\n    \"visit_id\": 10,\r\n    \"test_type_and_value\": \"Potassium: 7.2 mmol/L (Critical High)\",\r\n    \"result_generated_at\": \"2026-03-08 05:05:00\", \r\n    \"notified_at\": \"2026-03-08 05:06:00\",\r\n    \"notification_method\": \"telephone\",\r\n    \"receiving_clinic\": \"ICU - Intensive Care Unit\",\r\n    \"recipient_id\": 5,\r\n    \"doctor_action\": \"Adjusted medication and ordered immediate ECG.\"\r\n}"
                                 },
                                 "url": {
-                                    "raw": "{{url}}/api/admin/doctors/index",
-                                    "host": ["{{url}}"],
-                                    "path": ["api", "admin", "doctors", "index"]
+                                    "raw": "{{url}}/api/admin/doctors/",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "admin",
+                                        "doctors",
+                                        ""
+                                    ]
                                 }
                             },
                             "response": []
@@ -6667,7 +7137,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\r\n    \"name\": \"Dr. Sarah Mahmoud Yassin\",\r\n    \"email\": \"sarah.yassin@healthsystem.com\",\r\n    \"password\": \"SecurePassword99!\",\r\n    \"password_confirmation\": \"SecurePassword99!\",\r\n    \"role\": \"doctor\",\r\n    \"national_id\": \"29505151234567\",\r\n    \"phone\": \"01122334455\",\r\n    \"specialization\": \"Pediatrics\",\r\n    \"license_number\": \"LIC-7890-PEDI\",\r\n    \"start_date\": \"2024-02-01\"\r\n    // \"health_unit_id\": 1\r\n}",
+                                    "raw": "{\r\n    \"name\": \"Dr. Sarah Mahmoud Yassin\",\r\n    \"email\": \"sarah.yassin@healthsystem.com\",\r\n    \"password\": \"SecurePassword99!\",\r\n    \"password_confirmation\": \"SecurePassword99!\",\r\n    \"role\": \"doctor\",\r\n    \"national_id\": \"29505151234567\",\r\n    \"phone\": \"01122334455\",\r\n    \"specialization\": \"Pediatrics\",\r\n    \"license_number\": \"LIC-7890-PEDI\",\r\n    \"start_date\": \"2024-02-01\",\r\n    \"health_unit_id\": 1\r\n}",
                                     "options": {
                                         "raw": {
                                             "language": "json"
@@ -6676,8 +7146,15 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/admin/doctors/store",
-                                    "host": ["{{url}}"],
-                                    "path": ["api", "admin", "doctors", "store"]
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "admin",
+                                        "doctors",
+                                        "store"
+                                    ]
                                 }
                             },
                             "response": []
@@ -6706,14 +7183,16 @@
                                     }
                                 },
                                 "url": {
-                                    "raw": "{{url}}/api/admin/doctors/show/7",
-                                    "host": ["{{url}}"],
+                                    "raw": "{{url}}/api/admin/doctors/show/5",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "admin",
                                         "doctors",
                                         "show",
-                                        "7"
+                                        "5"
                                     ]
                                 }
                             },
@@ -6741,7 +7220,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/admin/doctors/update/7",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "admin",
@@ -6775,7 +7256,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/admin/doctors/delete/1",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "admin",
@@ -6805,8 +7288,15 @@
                                 ],
                                 "url": {
                                     "raw": "{{url}}/api/admin/nurses/",
-                                    "host": ["{{url}}"],
-                                    "path": ["api", "admin", "nurses", ""]
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "admin",
+                                        "nurses",
+                                        ""
+                                    ]
                                 }
                             },
                             "response": []
@@ -6824,7 +7314,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\r\n    \"name\": \"Samy Ali\",\r\n    \"email\": \"samy.nurse@example.com\",\r\n    \"password\": \"password123\",\r\n    \"national_id\": \"29501011234590\",\r\n    // \"health_unit_id\": 1,\r\n    \"phone\": \"01012345678\",\r\n    \"start_date\": \"2023-01-15\"\r\n}",
+                                    "raw": "{\r\n    \"name\": \"Samy Ali\",\r\n    \"email\": \"samy.nurse@example.com\",\r\n    \"password\": \"password123\",\r\n    \"national_id\": \"29501011234590\",\r\n    \"health_unit_id\": 1,\r\n    \"phone\": \"01012345678\",\r\n    \"start_date\": \"2023-01-15\"\r\n}",
                                     "options": {
                                         "raw": {
                                             "language": "json"
@@ -6833,8 +7323,15 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/admin/nurses/store",
-                                    "host": ["{{url}}"],
-                                    "path": ["api", "admin", "nurses", "store"]
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "admin",
+                                        "nurses",
+                                        "store"
+                                    ]
                                 }
                             },
                             "response": []
@@ -6863,14 +7360,16 @@
                                     }
                                 },
                                 "url": {
-                                    "raw": "{{url}}/api/admin/nurses/show/2",
-                                    "host": ["{{url}}"],
+                                    "raw": "{{url}}/api/admin/nurses/show/1",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "admin",
                                         "nurses",
                                         "show",
-                                        "2"
+                                        "1"
                                     ]
                                 }
                             },
@@ -6898,7 +7397,9 @@
                                 },
                                 "url": {
                                     "raw": "{{url}}/api/admin/nurses/update/2",
-                                    "host": ["{{url}}"],
+                                    "host": [
+                                        "{{url}}"
+                                    ],
                                     "path": [
                                         "api",
                                         "admin",
@@ -6935,8 +7436,13 @@
                         ],
                         "url": {
                             "raw": "{{url}}/api/outpatient-nursing-assessments",
-                            "host": ["{{url}}"],
-                            "path": ["api", "outpatient-nursing-assessments"]
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "outpatient-nursing-assessments"
+                            ]
                         }
                     },
                     "response": []
@@ -6963,8 +7469,13 @@
                         },
                         "url": {
                             "raw": "{{url}}/api/outpatient-nursing-assessments",
-                            "host": ["{{url}}"],
-                            "path": ["api", "outpatient-nursing-assessments"]
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "outpatient-nursing-assessments"
+                            ]
                         }
                     },
                     "response": []
@@ -6989,8 +7500,13 @@
                         },
                         "url": {
                             "raw": "{{url}}/api/outpatient-nursing-assessments",
-                            "host": ["{{url}}"],
-                            "path": ["api", "outpatient-nursing-assessments"]
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "outpatient-nursing-assessments"
+                            ]
                         }
                     },
                     "response": []
@@ -7017,7 +7533,9 @@
                         },
                         "url": {
                             "raw": "{{url}}/api/outpatient-nursing-assessments/1",
-                            "host": ["{{url}}"],
+                            "host": [
+                                "{{url}}"
+                            ],
                             "path": [
                                 "api",
                                 "outpatient-nursing-assessments",
@@ -7040,7 +7558,9 @@
                         ],
                         "url": {
                             "raw": "{{url}}/api/outpatient-nursing-assessments/6",
-                            "host": ["{{url}}"],
+                            "host": [
+                                "{{url}}"
+                            ],
                             "path": [
                                 "api",
                                 "outpatient-nursing-assessments",
@@ -7049,6 +7569,563 @@
                         }
                     },
                     "response": []
+                }
+            ]
+        },
+        {
+            "name": "Super Admin",
+            "item": [
+                {
+                    "name": "Health Administration",
+                    "item": [
+                        {
+                            "name": "Index",
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n  \"family_member_id\": 1,\r\n  \"occupation\": \"Software Engineer\",\r\n  \"location_type\": 1,\r\n  \"extra_oral_exam\": 0,\r\n  \"tmj_symptom\": 1, \r\n  \"tmj_signs\": 1,\r\n  \"tmj_clicking\": true,\r\n  \"tmj_tenderness\": true,\r\n  \"tmj_reduced_mobility\": false,\r\n  \"mucosa_condition\": 1,\r\n  \"mucosa_location\": 2,\r\n  \"mucosa_other\": \"Leukoplakia observed on the left buccal mucosa\", \r\n  \"cpi_sections\": [\"0\", \"1\", \"2\", \"0\", \"1\", \"X\"],\r\n  \"fluorosis_index\": 1,\r\n  \"trauma_index\": 2,\r\n  \"white_spot_lesions\": \"Decalcification spots on labial surfaces of 11 and 21\",\r\n  \"enamel_defects\": \"Localized enamel hypoplasia on the lower left first molar\", \r\n  \"developmental_anomalies\": \"Microdontia observed in upper lateral incisors\",\r\n  \"clefts\": \"Repaired unilateral cleft lip\", \r\n  \"occlusion_class\": 2, \r\n  \"primary_mesial_step\": 1, \r\n  \"tooth_statuses\": [\r\n    {\r\n      \"tooth_number\": 11,\r\n      \"crown_status\": 0,\r\n      \"root_status\": 0\r\n    },\r\n    {\r\n      \"tooth_number\": 12,\r\n      \"crown_status\": 1,\r\n      \"root_status\": 0\r\n    }\r\n  ]\r\n}"
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/super-admin/health-administrations/",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "super-admin",
+                                        "health-administrations",
+                                        ""
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Store",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"إدارة شرق الطبية\",\r\n    \"address\": \"شارع الحرية، الإسكندرية\",\r\n    \"email\": \"east_admin@health.gov.eg\",\r\n    \"phone\": \"01012345678\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/super-admin/health-administrations/store",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "super-admin",
+                                        "health-administrations",
+                                        "store"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Show",
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"إدارة شرق الطبية\",\r\n    \"address\": \"شارع الحرية، الإسكندرية\",\r\n    \"email\": \"east_admin@health.gov.eg\",\r\n    \"phone\": \"01012345678\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/super-admin/health-administrations/show/1",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "super-admin",
+                                        "health-administrations",
+                                        "show",
+                                        "1"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Update",
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"إدارة شرق الطبية المطورة\",\r\n    \"address\": \"المقر الجديد، سموحة\",\r\n    \"email\": \"new_east@health.gov.eg\",\r\n    \"phone\": \"01222222222\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/super-admin/health-administrations/update/2",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "super-admin",
+                                        "health-administrations",
+                                        "update",
+                                        "2"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Delete",
+                            "request": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"إدارة شرق الطبية المطورة\",\r\n    \"address\": \"المقر الجديد، سموحة\",\r\n    \"email\": \"new_east@health.gov.eg\",\r\n    \"phone\": \"01222222222\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/super-admin/health-administrations/delete/1",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "super-admin",
+                                        "health-administrations",
+                                        "delete",
+                                        "1"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "Health Unit",
+                    "item": [
+                        {
+                            "name": "Index",
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n  \"family_member_id\": 1,\r\n  \"occupation\": \"Software Engineer\",\r\n  \"location_type\": 1,\r\n  \"extra_oral_exam\": 0,\r\n  \"tmj_symptom\": 1, \r\n  \"tmj_signs\": 1,\r\n  \"tmj_clicking\": true,\r\n  \"tmj_tenderness\": true,\r\n  \"tmj_reduced_mobility\": false,\r\n  \"mucosa_condition\": 1,\r\n  \"mucosa_location\": 2,\r\n  \"mucosa_other\": \"Leukoplakia observed on the left buccal mucosa\", \r\n  \"cpi_sections\": [\"0\", \"1\", \"2\", \"0\", \"1\", \"X\"],\r\n  \"fluorosis_index\": 1,\r\n  \"trauma_index\": 2,\r\n  \"white_spot_lesions\": \"Decalcification spots on labial surfaces of 11 and 21\",\r\n  \"enamel_defects\": \"Localized enamel hypoplasia on the lower left first molar\", \r\n  \"developmental_anomalies\": \"Microdontia observed in upper lateral incisors\",\r\n  \"clefts\": \"Repaired unilateral cleft lip\", \r\n  \"occlusion_class\": 2, \r\n  \"primary_mesial_step\": 1, \r\n  \"tooth_statuses\": [\r\n    {\r\n      \"tooth_number\": 11,\r\n      \"crown_status\": 0,\r\n      \"root_status\": 0\r\n    },\r\n    {\r\n      \"tooth_number\": 12,\r\n      \"crown_status\": 1,\r\n      \"root_status\": 0\r\n    }\r\n  ]\r\n}"
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/super-admin/health-units/",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "super-admin",
+                                        "health-units",
+                                        ""
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Store",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"health_administration_id\": 1,\r\n    \"name\": \"وحدة المندرة لطب الأسرة\",\r\n    \"code\": \"UNIT-7701\",\r\n    \"city\": \"الإسكندرية\",\r\n    \"address\": \"شارع الملك، المندرة بحري\",\r\n    \"email\": \"mandara.unit@health.gov.eg\",\r\n    \"phone\": \"035551234\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/super-admin/health-units/store",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "super-admin",
+                                        "health-units",
+                                        "store"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Show",
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"إدارة شرق الطبية\",\r\n    \"address\": \"شارع الحرية، الإسكندرية\",\r\n    \"email\": \"east_admin@health.gov.eg\",\r\n    \"phone\": \"01012345678\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/super-admin/health-units/show/1",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "super-admin",
+                                        "health-units",
+                                        "show",
+                                        "1"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Update",
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"وحدة المندرة لطب الأسرة - المقر المطور\",\r\n    \"code\": \"UNIT-003\",\r\n    \"city\": \"الإسكندرية\",\r\n    \"address\": \"شارع الملك، المندرة بحري - بجوار المحطة\",\r\n    \"email\": \"updated.mandara@health.gov.eg\",\r\n    \"phone\": \"035551234\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/super-admin/health-units/update/2",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "super-admin",
+                                        "health-units",
+                                        "update",
+                                        "2"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Delete",
+                            "request": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"إدارة شرق الطبية المطورة\",\r\n    \"address\": \"المقر الجديد، سموحة\",\r\n    \"email\": \"new_east@health.gov.eg\",\r\n    \"phone\": \"01222222222\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/super-admin/health-units/delete/1",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "super-admin",
+                                        "health-units",
+                                        "delete",
+                                        "1"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "Admins Management",
+                    "item": [
+                        {
+                            "name": "Index",
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n  \"family_member_id\": 1,\r\n  \"occupation\": \"Software Engineer\",\r\n  \"location_type\": 1,\r\n  \"extra_oral_exam\": 0,\r\n  \"tmj_symptom\": 1, \r\n  \"tmj_signs\": 1,\r\n  \"tmj_clicking\": true,\r\n  \"tmj_tenderness\": true,\r\n  \"tmj_reduced_mobility\": false,\r\n  \"mucosa_condition\": 1,\r\n  \"mucosa_location\": 2,\r\n  \"mucosa_other\": \"Leukoplakia observed on the left buccal mucosa\", \r\n  \"cpi_sections\": [\"0\", \"1\", \"2\", \"0\", \"1\", \"X\"],\r\n  \"fluorosis_index\": 1,\r\n  \"trauma_index\": 2,\r\n  \"white_spot_lesions\": \"Decalcification spots on labial surfaces of 11 and 21\",\r\n  \"enamel_defects\": \"Localized enamel hypoplasia on the lower left first molar\", \r\n  \"developmental_anomalies\": \"Microdontia observed in upper lateral incisors\",\r\n  \"clefts\": \"Repaired unilateral cleft lip\", \r\n  \"occlusion_class\": 2, \r\n  \"primary_mesial_step\": 1, \r\n  \"tooth_statuses\": [\r\n    {\r\n      \"tooth_number\": 11,\r\n      \"crown_status\": 0,\r\n      \"root_status\": 0\r\n    },\r\n    {\r\n      \"tooth_number\": 12,\r\n      \"crown_status\": 1,\r\n      \"root_status\": 0\r\n    }\r\n  ]\r\n}"
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/super-admin/admins/",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "super-admin",
+                                        "admins",
+                                        ""
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Store",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"Admin Name\",\r\n    \"email\": \"admin@example.com\",\r\n    \"password\": \"password123\",\r\n    \"password_confirmation\": \"password123\",\r\n    \"national_id\": \"29901011234567\",\r\n    \"phone\": \"01012345678\",\r\n    \"health_unit_id\": 1\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/super-admin/admins/store",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "super-admin",
+                                        "admins",
+                                        "store"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Show",
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"إدارة شرق الطبية\",\r\n    \"address\": \"شارع الحرية، الإسكندرية\",\r\n    \"email\": \"east_admin@health.gov.eg\",\r\n    \"phone\": \"01012345678\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/super-admin/admins/show/4",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "super-admin",
+                                        "admins",
+                                        "show",
+                                        "4"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Update",
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"Ahmed Updated\",\r\n    \"email\": \"admin@example.com\",\r\n    \"national_id\": \"29001011234567\",\r\n    \"phone\": \"01099998888\",\r\n    \"password\": \"newpassword123\", \r\n    \"password_confirmation\": \"newpassword123\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/super-admin/admins/update/4",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "super-admin",
+                                        "admins",
+                                        "update",
+                                        "4"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Delete",
+                            "request": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"إدارة شرق الطبية المطورة\",\r\n    \"address\": \"المقر الجديد، سموحة\",\r\n    \"email\": \"new_east@health.gov.eg\",\r\n    \"phone\": \"01222222222\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/super-admin/admins/delete/4",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "super-admin",
+                                        "admins",
+                                        "delete",
+                                        "4"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
                 }
             ]
         }
@@ -7070,7 +8147,9 @@
                 "type": "text/javascript",
                 "packages": {},
                 "requests": {},
-                "exec": [""]
+                "exec": [
+                    ""
+                ]
             }
         },
         {
@@ -7079,7 +8158,9 @@
                 "type": "text/javascript",
                 "packages": {},
                 "requests": {},
-                "exec": [""]
+                "exec": [
+                    ""
+                ]
             }
         }
     ],

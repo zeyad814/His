@@ -14,11 +14,13 @@ class HealthUnitSeeder extends Seeder
     public function run(): void
     {
         HealthUnit::create([
-        'health_administration_id' => 1,
-        'name' => 'وحدة صحة الأسرة (أ)',
-        'address' => 'مصر الجديدة',
-        'email' => 'unit1@health.gov.eg',
-        'phone' => '0123456789'
-    ]);
+            'health_administration_id' => 1,
+            'name' => 'وحدة صحة الأسرة (أ)',
+            'code' => 'UNIT-001',
+            'city' => 'القاهرة',
+            'address' => 'مصر الجديدة',
+            'email' => 'unit1@health.gov.eg',
+            'phone' => '0123456789'
+        ]);
     }
 }

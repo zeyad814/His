@@ -18,7 +18,7 @@ class NurseSeeder extends Seeder
             'national_id' => '29501011234567',
             'phone' => '01099887766',
             'start_date' => '2020-01-01',
-            // 'health_unit_id' => 1, // فك الكومنت لو الجدول موجود وفيه بيانات
+            'health_unit_id' => 1,
         ]);
 
         // 2. ننشئ اليوزر المرتبط بها باستخدام علاقة الـ Morph

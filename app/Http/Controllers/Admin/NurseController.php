@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreNurseRequest;
 use App\Http\Requests\Admin\UpdateNurseRequest;
+use App\Http\Resources\NurseResource;
 use App\Models\Nurse;
 use App\Traits\ApiResponse;
 use App\Traits\HasAdminContext;
@@ -33,7 +34,7 @@ class NurseController extends Controller
         return ApiResponse::successResponse(
             'Nurses records fetched successfully.',
             200,
-            $nurses
+            NurseResource::collection($nurses)->response()->getData(true)
         );
     }
 
@@ -52,6 +53,7 @@ class NurseController extends Controller
                 'national_id' => $data["national_id"],
                 'phone' => $data["phone"],
                 'start_date' => $data["start_date"],
+                'health_unit_id' => $data["health_unit_id"],
             ]);
 
             // 2. Create the User record (Polymorphic)
@@ -59,14 +61,14 @@ class NurseController extends Controller
                 'name' => $data["name"],
                 'email' => $data["email"],
                 'password' => Hash::make($data["password"]),
-                'role' => 'data',
+                'role' => 'nurse',
             ]);
 
             DB::commit();
              return ApiResponse::successResponse(
                 'Nurse profile and access account created successfully.',
                 201,
-                ['nurse_id' => $nurse->id]
+                new NurseResource($nurse)
             );
         }
         catch(\Exception $e)
@@ -97,7 +99,7 @@ class NurseController extends Controller
         return ApiResponse::successResponse(
             'Nurse details fetched successfully.',
             200,
-            $nurse
+            new NurseResource($nurse)
         );
     }
 
@@ -137,7 +139,7 @@ class NurseController extends Controller
              return ApiResponse::successResponse(
                 'Nurse profile and access account updated successfully.',
                 201,
-                ['nurse_id' => $nurse->id]
+                new NurseResource($nurse)
             );
         }
         catch(\Exception $e)
@@ -153,7 +155,7 @@ class NurseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $this->getAuthenticatedAdmin();
     }

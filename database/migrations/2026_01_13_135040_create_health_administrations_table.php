@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('health_administrations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('address')->nullable();
-            $table->string('email')->nullable();
-             $table->string('phone')->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('phone')->unique()->nullable();
             $table->timestamps();
         });
     }

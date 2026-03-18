@@ -5,23 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Model
+class SuperAdmin extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
-        "national_id",
-        "phone",
-        "health_unit_id"
+        'employee_number',
+        'phone',
     ];
 
     public function user()
     {
         return $this->morphOne(User::class, 'userable');
-    }
-
-    public function healthUnit()
-    {
-        return $this->belongsTo(HealthUnit::class);
     }
 }

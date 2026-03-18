@@ -25,6 +25,9 @@ class UserResource extends JsonResource
                     case 'doctor':
                         return new DoctorResource($this->userable);
 
+                    case 'super_admin':
+                        return new SuperAdminResource($this->userable);
+                    
                     case 'admin':
                         return new AdminResource($this->userable);
                     

@@ -30,6 +30,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call([
+            HealthAdministrationSeeder::class,
+            HealthUnitSeeder::class,
+        ]);
+
         // User::factory(10)->create();
         $this->call(DoctorSeeder::class);
 
@@ -66,9 +71,8 @@ class DatabaseSeeder extends Seeder
             PhysiotherapyAssessmentSeeder::class,
             CriticalResultSeeder::class,
             DentalExaminationSeeder::class,
+            SuperAdminSeeder::class,
 
-            HealthAdministrationSeeder::class,
-            HealthUnitSeeder::class,
             NurseSeeder::class,
             SurgeryUterusSeeder::class,
             FamilyInjectionSeeder::class,

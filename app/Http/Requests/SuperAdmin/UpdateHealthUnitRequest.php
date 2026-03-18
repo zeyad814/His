@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\SuperAdmin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreNurseRequest extends FormRequest
+class UpdateHealthUnitRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,14 +21,15 @@ class StoreNurseRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('id');
+
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8',
-            'national_id' => 'required|size:14|unique:nurses,national_id',
-            'health_unit_id' => 'required|exists:health_units,id',
-            'phone' => 'nullable|string|max:20',
-            'start_date' => 'required|date',
+            'code' => 'required|string|max:50|unique:health_units,code,' . $id,
+            'address' => 'nullable|string|max:500',
+            'city' => 'required|string|max:100',
+            'email' => 'nullable|email|max:255',
+            'phone' => ['nullable', 'string', 'max:20', 'unique:health_units,phone,' . $id,'regex:/^([0-9\s\-\+\(\)]*)$/'],
         ];
     }
 }
