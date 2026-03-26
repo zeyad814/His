@@ -50,12 +50,10 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/login', [LoginController::class, 'login']);
- Route::apiResource('outpatient-nursing-assessments', OutpatientNursingAssessmentController::class);
 
 // Doctor
 Route::middleware('auth:sanctum')->group(function () {
 
- Route::apiResource('outpatient-nursing-assessments', OutpatientNursingAssessmentController::class);
 
     // Doctor
     Route::middleware('doctor')->group(function () {
@@ -378,7 +376,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Nurse
     Route::middleware('nurse')->prefix('nurse')->group(function () {
-        // 
+         Route::apiResource('outpatient-nursing-assessments', OutpatientNursingAssessmentController::class);
+
     });
 
 // =========================================================================================================================== //

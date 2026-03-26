@@ -7,11 +7,13 @@ use App\Http\Requests\UpdateOutpatientNursingAssessmentRequest;
 use App\Http\Resources\OutpatientNursingAssessmentResource;
 use App\Models\OutpatientNursingAssessment;
 use App\Traits\ApiResponse;
+use App\Traits\HasNurseContext;
 use Illuminate\Support\Facades\DB;
 
 class OutpatientNursingAssessmentController extends Controller
 {
     use ApiResponse;
+    use HasNurseContext;
 
     /**
      * Display a listing of the resource.
@@ -36,6 +38,8 @@ class OutpatientNursingAssessmentController extends Controller
      */
     public function store(StoreOutpatientNursingAssessmentRequest $request)
     {
+        $nurse = $this->getAuthenticatedNurse();
+
         return DB::transaction(function () use ($request) {
             $nurseId = 1;
             // 1. تخزين التقييم الرئيسي
@@ -94,6 +98,8 @@ class OutpatientNursingAssessmentController extends Controller
      */
     public function update(UpdateOutpatientNursingAssessmentRequest $request, OutpatientNursingAssessment $outpatient_nursing_assessment)
     {
+        $nurse = $this->getAuthenticatedNurse();
+        
         return DB::transaction(function () use ($request, $outpatient_nursing_assessment) {
 
             // 1. تحديث البيانات الأساسية
