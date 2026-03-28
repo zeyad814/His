@@ -11,12 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('geriatric_assessment_masters', function (Blueprint $table) {
+        Schema::create('geriatric_assessments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('family_member_id')->constrained()->cascadeOnDelete();
             $table->foreignId('doctor_id')->constrained()->cascadeOnDelete();
-            $table->date('assessment_date'); // تاريخ التقييم
+
+            //general result 
+            $table->string('overall_status')->nullable();
+            $table->text('doctor_recommendations')->nullable();
+
+            $table->softDeletes();
             $table->timestamps();
+            
         });
     }
 
@@ -25,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('geriatric_assessment_masters');
+        Schema::dropIfExists('geriatric_assessments');
     }
 };

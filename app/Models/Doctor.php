@@ -61,7 +61,7 @@ class Doctor extends Model
     //             if ($return instanceof \Illuminate\Database\Eloquent\Relations\HasMany || 
     //                 $return instanceof \Illuminate\Database\Eloquent\Relations\MorphMany)
     //             {
-                    
+
     //                 // لو لقينا سجل واحد بس في العلاقة دي، نرجع true فوراً (صدمة الأداء)
     //                 if ($return->exists())
     //                 {
@@ -135,12 +135,6 @@ class Doctor extends Model
         return $this->hasMany(FamilyInjection::class);
     }
 
-
-
-    public function geriatricAssessments()
-    {
-        return $this->hasMany(GeriatricAssessmentMaster::class);
-    }
 
     public function medicalProcedures()
     {
@@ -286,5 +280,10 @@ class Doctor extends Model
     public function finalizedCriticalResults()
     {
         return $this->hasMany(CriticalResult::class, 'doctor_id');
+    }
+
+    public function geriatricAssessments()
+    {
+        return $this->hasMany(GeriatricAssessment::class);
     }
 }

@@ -89,10 +89,6 @@ class FamilyMember extends Model
         return $this->hasMany(PremaritalScreening::class);
     }
 
-    public function geriatricAssessments()
-    {
-        return $this->hasMany(GeriatricAssessmentMaster::class);
-    }
 
     public function medicalProcedures()
     {
@@ -183,5 +179,10 @@ class FamilyMember extends Model
     public function criticalResults()
     {
         return $this->hasMany(CriticalResult::class, 'family_member_id');
+    }
+
+    public function geriatricAssessments()
+    {
+        return $this->hasMany(GeriatricAssessment::class);
     }
 }

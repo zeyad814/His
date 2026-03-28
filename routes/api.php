@@ -22,6 +22,7 @@ use App\Http\Controllers\Doctor\FamilyPlanningController;
 use App\Http\Controllers\Doctor\FamilyPlanningFollowUpController;
 use App\Http\Controllers\Doctor\FeedbackReferralController;
 use App\Http\Controllers\Doctor\GeneralExaminationController;
+use App\Http\Controllers\Doctor\GeriatricAssessmentController;
 use App\Http\Controllers\Doctor\HypertensionStepController;
 use App\Http\Controllers\Doctor\ObesityRecordController;
 use App\Http\Controllers\Doctor\PhysiotherapyAssessmentController;
@@ -346,6 +347,9 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::apiResource('family-injections', FamilyInjectionController::class);
 
             Route::apiResource('premarital-screenings', PremaritalScreeningController::class);
+
+            //Geriatric
+            Route::apiResource('geriatric-assessments', GeriatricAssessmentController::class);
         });
     });
 

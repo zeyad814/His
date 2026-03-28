@@ -7081,6 +7081,157 @@
               "response": []
             }
           ]
+        },
+        {
+          "name": "Geriatric Assessment",
+          "item": [
+            {
+              "name": "index",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/doctor/geriatric-assessments",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "doctor",
+                    "geriatric-assessments"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "store",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"family_member_id\": 2,\r\n    \"overall_status\": \"Stable\",\r\n    \"doctor_recommendations\": \"المريض يحتاج لمتابعة دورية كل 3 أشهر مع الالتزام بالمشي يومياً.\",\r\n    \"answers\": [\r\n        {\r\n            \"question_id\": 1,\r\n            \"answer_value\": \"true\"\r\n        },\r\n        {\r\n            \"question_id\": 6,\r\n            \"answer_value\": \"يعاني من نهجان بسيط عند بذل مجهود\"\r\n        },\r\n        {\r\n            \"question_id\": 7,\r\n            \"answer_value\": \"2\"\r\n        },\r\n        {\r\n            \"question_id\": 11,\r\n            \"answer_value\": \"1\"\r\n        },\r\n        {\r\n            \"question_id\": 14,\r\n            \"answer_value\": \"4\"\r\n        },\r\n        {\r\n            \"question_id\": 19,\r\n            \"answer_value\": \"false\"\r\n        }\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/doctor/geriatric-assessments",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "doctor",
+                    "geriatric-assessments"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/doctor/geriatric-assessments/1",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "doctor",
+                    "geriatric-assessments",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"family_member_id\": 2,\r\n    \"overall_status\": \"Improved\",\r\n    \"doctor_recommendations\": \"تمت مراجعة الحالة وهناك تحسن ملحوظ، نستمر على نفس الخطة العلاجية.\",\r\n    \"answers\": [\r\n        {\r\n            \"question_id\": 1,\r\n            \"answer_value\": \"false\" \r\n        },\r\n        {\r\n            \"question_id\": 6,\r\n            \"answer_value\": \"لا يوجد نهجان حالياً، الحالة مستقرة جداً.\"\r\n        },\r\n        {\r\n            \"question_id\": 7,\r\n            \"answer_value\": \"0\" \r\n        },\r\n        {\r\n            \"question_id\": 14,\r\n            \"answer_value\": \"5\"\r\n        }\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/doctor/geriatric-assessments/2",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "doctor",
+                    "geriatric-assessments",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/doctor/geriatric-assessments/1",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "doctor",
+                    "geriatric-assessments",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
         }
       ]
     },
