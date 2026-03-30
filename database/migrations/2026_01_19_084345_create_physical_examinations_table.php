@@ -14,17 +14,30 @@ return new class extends Migration
         Schema::create('physical_examinations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('family_member_id')->constrained()->cascadeOnDelete();
-            $table->text('family_history')->nullable();
-            $table->text('hospitalization')->nullable(); //تاريخ الدخول للمستشفيات
-            $table->text('lab_tests_results')->nullable(); //التحاليل الطبيه و نتائجها
-            $table->text('special_habits')->nullable();
+            
+            // Medical History
+            $table->text('hospitalization')->nullable();
             $table->text('previous_operations')->nullable();
             $table->text('current_medication')->nullable();
             $table->text('trauma_injuries')->nullable();
-            $table->text('allergy')->nullable();
-            $table->text('adverse_drug_reaction')->nullable(); //تفاعلات عكسيه من ادويه
-            $table->text('abuse_negligence')->nullable(); //إساءه أو إهمال
-            $table->text('psychiatric_history') ->nullable(); //التاريخ النفسي
+            $table->boolean('has_allergy')->default(false);
+            $table->boolean('has_adverse_drug_reaction')->default(false);
+            $table->boolean('has_abuse_negligence')->default(false);
+
+            // Special Habits (Checkboxes)
+            $table->boolean('habit_smoking')->default(false);
+            $table->boolean('habit_alcohol')->default(false);
+            $table->text('habit_other')->nullable();
+
+            // Psychiatric History (Checkboxes)
+            $table->boolean('psych_irrelevant')->default(false);
+            $table->boolean('psych_follow_up')->default(false);
+            $table->boolean('psych_medical_treatment')->default(false);
+            $table->text('psych_other')->nullable();
+
+            // Family History (JSON is best here for the long list)
+            $table->json('family_diseases')->nullable(); // لتخزين مصفوفة الأمراض المختارة
+            $table->text('family_history_other')->nullable();
 
             $table->timestamps();
         });

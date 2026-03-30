@@ -23,17 +23,32 @@ class StoreHistoryRequest extends FormRequest
     {
         return [
             'family_member_id' => 'required|integer|exists:family_members,id',
-            'family_history' => 'nullable|string',
+            // Medical History (Strings)
             'hospitalization' => 'nullable|string',
-            'lab_tests_results' => 'nullable|string',
-            'special_habits' => 'nullable|string',
             'previous_operations' => 'nullable|string',
             'current_medication' => 'nullable|string',
             'trauma_injuries' => 'nullable|string',
-            'allergy' => 'nullable|string',
-            'adverse_drug_reaction' => 'nullable|string',
-            'abuse_negligence' => 'nullable|string',
-            'psychiatric_history' => 'nullable|string',
+            
+            // Medical History (Checkboxes/Booleans)
+            'has_allergy' => 'nullable|boolean',
+            'has_adverse_drug_reaction' => 'nullable|boolean',
+            'has_abuse_negligence' => 'nullable|boolean',
+
+            // Special Habits
+            'habit_smoking' => 'nullable|boolean',
+            'habit_alcohol' => 'nullable|boolean',
+            'habit_other' => 'nullable|string|max:500',
+
+            // Psychiatric History
+            'psych_irrelevant' => 'nullable|boolean',
+            'psych_follow_up' => 'nullable|boolean',
+            'psych_medical_treatment' => 'nullable|boolean',
+            'psych_other' => 'nullable|string|max:500',
+
+            // Family History
+            'family_diseases' => 'nullable|array',
+            'family_diseases.*' => 'string|in:TB,Asthma,Cardiac,Consanguinity,Diabetes,Hypertension,Renal,Blood Dis.,Twins,Epilepsy,Cancer,Congenital anomalies,Psychiatric', // اختياري: للتأكد إن القيم المختارة مطابقة للـ UI
+            'family_history_other' => 'nullable|string|max:1000',
         ];
     }
 }

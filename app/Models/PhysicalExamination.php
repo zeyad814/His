@@ -11,17 +11,34 @@ class PhysicalExamination extends Model
 
     protected $fillable = [
         'family_member_id',
-        'family_history',
         'hospitalization',
-        'lab_tests_results',
-        'special_habits',
         'previous_operations',
         'current_medication',
         'trauma_injuries',
-        'allergy',
-        'adverse_drug_reaction',
-        'abuse_negligence',
-        'psychiatric_history',
+        'has_allergy',
+        'has_adverse_drug_reaction',
+        'has_abuse_negligence',
+        'habit_smoking',
+        'habit_alcohol',
+        'habit_other',
+        'psych_irrelevant',
+        'psych_follow_up',
+        'psych_medical_treatment',
+        'psych_other',
+        'family_diseases',
+        'family_history_other',
+    ];
+
+    protected $casts = [
+        'family_diseases' => 'array',
+        'has_allergy' => 'boolean',
+        'has_adverse_drug_reaction' => 'boolean',
+        'has_abuse_negligence' => 'boolean',
+        'habit_smoking' => 'boolean',
+        'habit_alcohol' => 'boolean',
+        'psych_irrelevant' => 'boolean',
+        'psych_follow_up' => 'boolean',
+        'psych_medical_treatment' => 'boolean',
     ];
 
     public function familyMember()
